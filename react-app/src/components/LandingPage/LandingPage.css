@@ -1,0 +1,13 @@
+.landingPage {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding-top: 5em;
+}
+
+
+.landingPage__contents {
+    width: 59%;
+    display: flex;
+    justify-content: center;
+}
