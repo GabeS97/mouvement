@@ -1,0 +1,18 @@
+.home {
+    display: flex;
+    height: 100vh;
+    flex-direction: row;
+}
+
+
+.home__leftBar {
+    flex: 0.12;
+    z-index: 1;
+    background-color: rgb(247, 246, 243);
+    height: 100%;
+}
+
+.home__rightBar {
+    flex: .88;
+    z-index: 1;
+}

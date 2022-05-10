@@ -29,7 +29,9 @@ const NavBar = () => {
           </div>
 
           <div className="navBar__login">
-            Log in
+            <NavLink to='/login' style={{ textDecoration: 'none', color: 'black' }}>
+              Log in
+            </NavLink>
           </div>
 
           <div className="navBar__freeTrial">
