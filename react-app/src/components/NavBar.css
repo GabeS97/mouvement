@@ -1,0 +1,63 @@
+.navBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  column-gap: 5em;
+  height: 3em;
+  padding-top: 1em;
+  font-weight: bold;
+  background-color: rgb(255, 254, 252);
+}
+
+.navBar__left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 2em;
+}
+
+.navBar__logo {
+  display: flex;
+  align-items: center;
+  font-weight: bolder;
+  column-gap: .5em;
+  font-size: large;
+  cursor: pointer;
+}
+
+.navBar__aboutUs {
+    cursor: pointer;
+}
+
+.navBar__right {
+  display: flex;
+  column-gap: 2em;
+  justify-content: center;
+  align-items: center;
+}
+
+.navBar__freeTrial {
+    background-color: rgb(225, 98, 89);
+    color: white;
+    border:  solid 1px rgb(190, 86, 68);
+    padding: 5px 10px;
+    display: flex;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.navBar__freeTrial:hover {
+    background-color: rgb(207, 83, 73);
+}
+
+
+.navBar__contacts, .navBar__login {
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.navBar__contacts:hover, .navBar__login:hover {
+    background-color: rgb(247, 246, 244);
+}
