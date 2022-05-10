@@ -1,13 +1,259 @@
 .landingPage {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    padding-top: 5em;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding-top: 8em;
 }
 
-
 .landingPage__contents {
-    width: 59%;
-    display: flex;
-    justify-content: center;
+  width: 65%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  row-gap: 5em;
+  height: fit-content;
+}
+
+.landingPage__oneWorkspace {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  height: 25em;
+  font-size: 17px;
+}
+
+.landingPage__oneWorkspace__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* background-color: black; */
+  row-gap: 1em;
+  height: 100%;
+}
+
+.landingPage__oneWorkspace h1 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-sizing: border-box;
+  font-weight: 669;
+  text-align: left;
+  font-size: 74px;
+}
+
+.landingPage__oneWorkspace h2 {
+  font-size: 19px;
+  font-weight: 430;
+}
+
+.landingPage__oneWorkspace__image {
+  height: 100%;
+}
+.landingPage__oneWorkspace img {
+  height: 330px;
+  display: flex;
+  align-items: flex-start;
+  width: 500px;
+}
+
+.landingPage__freeTrial {
+  background-color: rgb(225, 98, 89);
+  color: white;
+  border: solid 1px rgb(190, 86, 68);
+  padding: 5px 10px;
+  display: flex;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.landingPage__freeTrial:hover {
+  background-color: rgb(207, 83, 73);
+}
+
+.landingPage__trustedBy > p {
+  font-size: 11px;
+  font-weight: 554;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.landingPage__teams {
+  display: flex;
+  justify-content: space-between;
+}
+
+.landingPage__teams__texts {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 6em;
+  /* background-color: black; */
+  flex-direction: column;
+  justify-content: center;
+  /* height: 30em; */
+  text-align: left;
+  row-gap: 1em;
+  font-size: 17px;
+}
+
+.landingPage__teams__image > img {
+  height: 50px;
+  /* width: 98px; */
+}
+
+.landingPage__teams__vid {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.landingPage__teams__vid > video {
+  box-shadow: 3px 6px rgb(236, 235, 233);
+  border-radius: 15px;
+}
+
+.landingPage__teams__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* background-color: black; */
+  row-gap: 1em;
+  height: 100%;
+}
+
+.landingPage__teams__text > h3 {
+  font-size: 30px;
+  font-weight: 669;
+}
+
+.landingPage__teams__text > p {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 19px;
+}
+
+.landingPage__context {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.landingPage__context__leftText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 6em;
+  row-gap: 1em;
+  height: 100%;
+}
+
+.landingPage__context__leftText > img {
+  height: 50px;
+}
+
+.landingPage__context__texts {
+  row-gap: 1em;
+  display: flex;
+}
+
+.landingPage__context__leftText > h3 {
+  font-size: 30px;
+  font-weight: 669;
+}
+
+.landingPage__context__leftText p {
+  font-size: 19px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.landingPage__context__rightImage > img {
+  display: flex;
+  width: 800px;
+  height: 500px;
+  border-radius: 15px;
+}
+
+.landingPage__workflow__texts {
+  row-gap: 1em;
+  display: flex;
+}
+
+.landingPage__workflow__leftText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 6em;
+  row-gap: 1em;
+  height: 100%;
+}
+
+.landingPage__workflow {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.landingPage__workflow__leftText > img {
+  height: 40px;
+}
+
+.landingPage__workflow__leftText > h3 {
+  font-size: 30px;
+  font-weight: 669;
+}
+
+.landingPage__workflow__leftText p {
+  font-size: 19px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.landingPage__workflow__video > video {
+  box-shadow: 3px 6px rgb(236, 235, 233);
+  border-radius: 15px;
+}
+
+.landingPage__workflow__video {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.landingPage__benefit {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.landingPage__benefit__texts {
+  row-gap: 1em;
+  display: flex;
+}
+
+.landingPage__benefit__leftText > h3 {
+  font-size: 30px;
+  font-weight: 669;
+}
+
+.landingPage__benefit__leftText p {
+  font-size: 19px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.landingPage__benefit__leftText > img {
+  height: 60px;
+}
+
+.landingPage__benefit__rightImage > img {
+  display: flex;
+  width: 800px;
+  height: 500px;
+  border-radius: 15px;
+}
+
+.landingPage__benefit__leftText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 6em;
+  row-gap: 1em;
+  height: 100%;
 }
