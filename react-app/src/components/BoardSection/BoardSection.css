@@ -1,86 +1,90 @@
 .boardSection {
-    display: flex;
-    flex-direction: column;
-    /* background-color: lightblue; */
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .boardSection__user__profile {
-    display: flex;
-    padding-top: 1em;
-    column-gap: .5em;
-    padding-left: 1em;
-    align-items: center;
-
+  display: flex;
+  padding-top: 1em;
+  column-gap: 0.5em;
+  padding-left: 1em;
+  align-items: center;
 }
 
-
 .boardSection__user__image {
-    border: dotted black;
-    height: 20px;
-    width: 20px;
-    display: flex;
-    border-radius: 5px;
-    justify-content: center;
-    align-items: center;
-    background-color: lightpink;
+  border: dotted black;
+  height: 20px;
+  width: 20px;
+  display: flex;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  background-color: lightpink;
 }
 
 .boardSection__user__name {
-    display: flex;
-    font-weight: bold;
-    text-align: center;
-
+  display: flex;
+  font-weight: bold;
+  text-align: center;
 }
 
-
 .boardSection__user__boards {
-    display: flex;
-    flex-direction: column;;
-    justify-content: center;
-    padding-top: 1em ;
-    margin-left: .5em;
-    max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 1em;
+  /* margin-left: 0.5em; */
+  text-indent: .5em;
+  max-width: 100%;
 
-    /* border: red solid; */
+  /* border: red solid; */
+}
+
+.boardSection__board__container {
+  display: flex;
+  align-items: center;
+  column-gap: 0.5em;
+}
+
+.boardSection__board__container:hover {
+  background-color: rgb(232, 231, 228);
 }
 
 .boardSection__board {
-    display: flex;
-    align-items: center;
-    column-gap: .5em;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    /* border: black dotted; */
-    height: 2.5em;
-    width: 100%;
-    flex-direction: row;
-    cursor: pointer;;
+  display: flex;
+  align-items: center;
+  column-gap: 0.5em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* border: black dotted; */
+  height: 2.5em;
+  width: 100%;
+  flex-direction: row;
+  cursor: pointer;
 }
 
 .boardSection__addAPage {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    cursor: pointer;;
-    column-gap: .8em;
-    height: 2.5em;
-    text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  column-gap: 0.8em;
+  height: 2.5em;
+  text-align: center;
 }
 
-
-
-.boardSection__addAPage:hover, .boardSection__board:hover {
-    background-color: rgb(232,231, 228);
+.boardSection__addAPage:hover,
+.boardSection__board:hover {
+  background-color: rgb(232, 231, 228);
 }
-
 
 .boardSection__delete__button {
-    display: flex;
-    position: relative;
-    justify-content: flex-end;
-    text-align: right;
-    width: 100%;
-    padding-right: .5em;
-    cursor: pointer;
+  display: flex;
+  position: relative;
+  justify-content: flex-end;
+  text-align: right;
+  padding-right: 0.5em;
+  cursor: pointer;
 }

@@ -9,7 +9,7 @@ const editBoardActionCreator = (board) => ({ type: EDIT_BOARD, board })
 const deleteBoardActionCreator = (board) => ({ type: DELETE_BOARD, board })
 
 export const getBoardThunk = () => async dispatch => {
-    const response = await fetch('/api/boards')
+    const response = await fetch('/api/boards/')
     if (response.ok) {
         const boards = await response.json()
         dispatch(getBoardsActionCreator(boards))
@@ -71,6 +71,11 @@ const boardsReducer = (state = {}, action) => {
         case DELETE_BOARD: {
             newState = { ...state }
             delete newState[action.board.id]
+            return newState
+        }
+        case EDIT_BOARD: {
+            newState = { ...state }
+            newState[action.board.id] = action.board
             return newState
         }
         default:

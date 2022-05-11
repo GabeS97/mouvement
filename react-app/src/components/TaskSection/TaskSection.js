@@ -32,13 +32,13 @@ const TaskSection = () => {
     if (template === 'quick note') {
         return <QuickNote boards={boards} />
     } else if (template === 'task list') {
-        return <TaskList />
+        return <TaskList boards={boards} />
     } else if (template === 'reading list') {
-        return <ReadingList />
+        return <ReadingList boards={boards} />
     } else if (template === 'journal') {
-        return <Journal />
+        return <Journal boards={boards} />
     } else if (template === 'personal home') {
-        return <PersonalHome />
+        return <PersonalHome boards={boards} />
     } else {
         return 'Change this to a defautl task list page (make later) '
     }
