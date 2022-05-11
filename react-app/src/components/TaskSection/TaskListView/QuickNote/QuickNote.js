@@ -1,10 +1,20 @@
 import React from 'react'
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { deleteBoardThunk } from '../../../../store/boards';
+import { Modal } from '../../../context/Modal';
+import EditBoard from '../../EditBoard/EditBoard';
 import './QuickNote.css'
-const QuickNote = ({ boards }) => {
+const QuickNote = ({ boards, hideForm}) => {
     const { boardId } = useParams()
     const board = boards.find(board => board.id === +boardId)
+    const dispatch = useDispatch()
+    const [showModal, setShowModal] = useState(false)
+
+
+
     return (
         <div className='quickNote'>
             <div className="quickNote__contents">
@@ -13,9 +23,27 @@ const QuickNote = ({ boards }) => {
                         {board?.icon}
                     </div>
 
-                    <div className="quickNote__descs">
-                        <h1 className='quickNote__title'>{board?.name}</h1>
-                        <h3 className='quickNote__description'>{board?.description}</h3>
+                    <div className="quickNote__boardInfo">
+                        <div className="quickNote__descs">
+                            <div className="quickNote__options">
+                                <h1 className='quickNote__title'>{board?.name}</h1>
+                                <div className="quickNote__editAndDelete">
+                                    <div className="quickNote__edit" onClick={() => setShowModal(true)}>
+                                        Edit
+                                    </div>
+
+                                    {showModal && (
+                                        <Modal onClose={() => setShowModal(false)}>
+                                            <EditBoard board={board} hideForm={hideForm} />
+                                        </Modal>
+                                    )}
+                                    <div className="quickNote__delete" onClick={() => dispatch(deleteBoardThunk(+boardId))}>
+                                        Delete
+                                    </div>
+                                </div>
+                            </div>
+                            <h3 className='quickNote__description'>{board?.description}</h3>
+                        </div>
                     </div>
                 </div>
 

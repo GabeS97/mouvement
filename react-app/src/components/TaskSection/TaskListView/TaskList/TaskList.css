@@ -22,7 +22,9 @@
 .taskList__headers {
   display: flex;
   flex-direction: column;
+  /* padding-bottom: 1em; */
   row-gap: 1em;
+  width: 100%;
 }
 
 .taskList__descs {
@@ -59,6 +61,14 @@
   /* padding: 10px; */
   border-radius: 10px;
 }
+.taskList__options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex-direction: row;
+  column-gap: 0.5em;
+}
 
 .taskList__column h1 {
   text-align: center;
@@ -92,4 +102,27 @@
 
 .taskList__container > div:nth-child(3) {
   background-color: rgb(219, 237, 219);
+}
+
+.taskList__editAndDelete {
+  display: flex;
+  column-gap: 0.5em;
+}
+
+.taskList__edit,
+.taskList__delete {
+  font-weight: bold;
+  width: 5em;
+  border: solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.taskList__boardInfo {
+  display: flex;
+  width: 100%;
+  /* justify-content: space-between; */
+  flex-direction: column;
 }

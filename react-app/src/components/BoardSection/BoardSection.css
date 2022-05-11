@@ -80,11 +80,26 @@
   background-color: rgb(232, 231, 228);
 }
 
-.boardSection__delete__button {
+.boardSection__more__button {
   display: flex;
   position: relative;
   justify-content: flex-end;
   text-align: right;
   padding-right: 0.5em;
   cursor: pointer;
+}
+
+.boardSection__options {
+    position: relative;
+    display: flex;
+
+}
+.boardSection___more__dropdown {
+    position: absolute;
+    display: flex;
+    /* display: none; */
+    top: 0;
+    margin-top: 1em;
+    flex-direction: column;
+    background-color: white;
 }

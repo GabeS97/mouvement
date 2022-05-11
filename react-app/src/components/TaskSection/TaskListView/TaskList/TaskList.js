@@ -1,14 +1,20 @@
 import React from 'react'
+import { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
+import { deleteBoardThunk } from '../../../../store/boards'
+import { Modal } from '../../../context/Modal'
+import EditBoard from '../../EditBoard/EditBoard'
 import './TaskList.css'
-const TaskList = ({ boards }) => {
+const TaskList = ({ boards, hideForm }) => {
     const { boardId } = useParams()
     const board = boards.find(board => board.id === +boardId)
+    const [showModal, setShowModal] = useState(false)
+    const dispatch = useDispatch()
 
     const items = document.querySelectorAll('.taskList__item')
     const columns = document.querySelectorAll('.taskList__column')
 
-    console.log(items)
     items.forEach(item => {
         item.addEventListener('dragstart', dragStart)
         item.addEventListener('dragend', dragEnd)
@@ -44,9 +50,27 @@ const TaskList = ({ boards }) => {
                         {board?.icon}
                     </div>
 
-                    <div className="taskList__descs">
-                        <h1 className='taskList__title'>{board?.name}</h1>
-                        <h3 className='taskList__description'>{board?.description}</h3>
+                    <div className="taskList__boardInfo">
+                        <div className="taskList__descs">
+                            <div className="taskList__options">
+                                <h1 className='taskList__title'>{board?.name}</h1>
+                                <div className="taskList__editAndDelete">
+                                    <div className="taskList__edit" onClick={() => setShowModal(true)}>
+                                        Edit
+                                    </div>
+
+                                    {showModal && (
+                                        <Modal onClose={() => setShowModal(false)}>
+                                            <EditBoard board={board} hideForm={hideForm} />
+                                        </Modal>
+                                    )}
+                                    <div className="taskList__delete" onClick={() => dispatch(deleteBoardThunk(+boardId))}>
+                                        Delete
+                                    </div>
+                                </div>
+                            </div>
+                            <h3 className='taskList__description'>{board?.description}</h3>
+                        </div>
                     </div>
                 </div>
 
