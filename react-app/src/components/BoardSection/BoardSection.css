@@ -1,7 +1,8 @@
 .boardSection {
     display: flex;
     flex-direction: column;
-    /* background-color: lightblue; */
+    background-color: lightblue;
+    width: 100%;
 }
 
 .boardSection__user__profile {
