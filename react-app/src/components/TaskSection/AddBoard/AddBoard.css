@@ -8,10 +8,11 @@
 
 
 .addBoard__form {
-    border: white solid;
+    /* border: black solid; */
     display: flex;
     justify-content: center;
     width: 25em;
+    flex-direction: column;
     height: 25em;
 }
 
@@ -29,6 +30,13 @@
     font-size: 50px;
 }
 
-.addBoard__boardName > input::placeholder {
+.addBoard__descriptiom > input {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    font-size: 20px;
+}
+
+.addBoard__boardName > input::placeholder, .addBoard__descriptiom > input::placeholder{
     color: rgb(225, 225, 224);;
 }
