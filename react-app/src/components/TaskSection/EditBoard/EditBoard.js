@@ -1,10 +1,8 @@
-import React from 'react'
-import { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { useSelector } from 'react-redux'
-import { addBoardThunk } from '../../../store/boards'
-import './AddBoard.css'
-const AddBoard = () => {
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { editBoardThunk } from '../../../store/boards'
+
+const EditBoard = () => {
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user)
     const [currName, setCurrName] = useState('')
@@ -22,7 +20,7 @@ const AddBoard = () => {
             icon: currIcon
         }
 
-        await dispatch(addBoardThunk(add_board))
+        await dispatch(editBoardThunk(add_board))
     }
     const handleName = (e) => {
         setCurrName(e.target.value)
@@ -36,30 +34,30 @@ const AddBoard = () => {
         setCurrSelect(e.target.value)
     }
     return (
-        <div className='addBoard'>
-            <form className='addBoard__form' onSubmit={handleSumbit}>
-                <div className="addBoard__boardName">
+        <div className='editBoard'>
+            <form className='editBoard__form' onSubmit={handleSumbit}>
+                <div className="editBoard__boardName">
                     <input
-                        className='addBoard__name'
+                        className='editBoard__name'
                         placeholder='Untitled'
                         value={currName}
                         onChange={handleName}
                     />
                 </div>
 
-                <div className="addBoard__descriptiom">
+                <div className="editBoard__descriptiom">
                     <input
-                        className='addBoard__boardDescription'
+                        className='editBoard__boardDescription'
                         placeholder='Add a description'
                         value={currDesc}
                         onChange={handleDesc}
                     />
                 </div>
 
-                <div className="addBoard__custom__select">
+                <div className="editBoard__custom__select">
                     <select value={currSelect} onChange={handleSelect}>
                         {/* <option disabled>Templates</option> */}
-                        <option  disabled>Select Template</option>
+                        <option disabled>Select Template</option>
                         <option value='Quick Note'>Quick Note</option>
                         <option value='Task List'>Task List</option>
                         <option value='Reading List '>Reading List</option>
@@ -73,4 +71,4 @@ const AddBoard = () => {
     )
 }
 
-export default AddBoard
+export default EditBoard
