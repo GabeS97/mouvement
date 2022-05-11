@@ -17,8 +17,15 @@ def post_new_board():
     if form.validate_on_submit():
         new_board=Board()
         form.populate_obj(new_board)
-
         db.session.add(new_board)
         db.session.commit()
+
+        print('\n\n', new_board.to_dict(), '\n\n')
         return new_board.to_dict()
 
+@board_routes.route('/<int:id>', methods=['DELETE'])
+def delete_board(id):
+    board_deleted = Board.query.get(id)
+    db.session.delete(board_deleted)
+    db.session.commit()
+    return board_deleted.to_dict()

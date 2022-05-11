@@ -14,7 +14,7 @@ const Home = () => {
 
             <div className="home__rightBar">
                 <Switch>
-                    <Route path='/home/boards/:path'>
+                    <Route path='/home/boards/:boardId/:path'>
                         <TaskSection />
                     </Route>
 

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import { getBoardThunk } from '../../store/boards'
+import { deleteBoardThunk, getBoardThunk } from '../../store/boards'
 import LogoutButton from '../auth/LogoutButton'
 import './BoardSection.css'
 const BoardSection = () => {
@@ -30,7 +30,7 @@ const BoardSection = () => {
 
             <div className="boardSection__user__boards">
                 {boards.map(board => (
-                    <NavLink key={board.id} className="boardSection__board" to={`/home/boards/${board?.name.split(' ').join('_').toLowerCase()}`} style={{ color: 'black', textDecoration: 'none' }} activeStyle={{ backgroundColor: `rgb(232,231, 228)` }}>
+                    <NavLink key={board.id} className="boardSection__board" to={`/home/boards/${board.id}/${board?.name.split(' ').join('_').toLowerCase()}`} style={{ color: 'black', textDecoration: 'none' }} activeStyle={{ backgroundColor: `rgb(232,231, 228)` }}>
                         <i className="fa-solid fa-caret-right"></i>
                         <div className="boardSection__icon">
                             {board?.icon ?
@@ -38,10 +38,11 @@ const BoardSection = () => {
                             }
                         </div>
                         <div className="boardSection__title">
-                            {board?.template ?
-                                <div>{board?.template}</div> : <div>{board?.name}</div>
+                            {board?.name ?
+                                <div>{board?.name}</div> : <div>{board?.template}</div>
                             }
                         </div>
+                        <i className="fa-regular fa-trash-can boardSection__delete__button" onClick={() => dispatch(deleteBoardThunk(board.id))}></i>
                     </NavLink>
                 ))}
 
@@ -49,8 +50,10 @@ const BoardSection = () => {
                     <div className="boardSection__Logo">
                         <i className="fa-solid fa-plus boardSection__add_page"></i>
                     </div>
-                    <NavLink to='/home/add_page' style={{ color: 'black', textDecoration: 'none'}}>
-                        <div className="boardSection__add">Add a Page</div>
+                    <NavLink to='/home/add_page' style={{ color: 'black', textDecoration: 'none', width: '100%' }}>
+                        <div className="boardSection__add">
+                            Add a Page
+                        </div>
                     </NavLink>
                 </div>
             </div>
