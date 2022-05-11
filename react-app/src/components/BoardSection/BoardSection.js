@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { getBoardThunk } from '../../store/boards'
+import LogoutButton from '../auth/LogoutButton'
 import './BoardSection.css'
 const BoardSection = () => {
     const sessionUser = useSelector(state => state.session.user)
@@ -14,6 +15,7 @@ const BoardSection = () => {
 
     return (
         <div className='boardSection'>
+
             <div className="boardSection__user__profile">
                 <div className="boardSection__user__image">
                     {sessionUser?.profile_pic ?
@@ -28,7 +30,8 @@ const BoardSection = () => {
 
             <div className="boardSection__user__boards">
                 {boards.map(board => (
-                    <NavLink className="boardSection__board" to={`/home/boards/${board.id}`} style={{color: 'black', textDecoration: 'none'}} activeStyle={{ backgroundColor: `rgb(232,231, 228)`}}>
+                    <NavLink key={board.id} className="boardSection__board" to={`/home/boards/${board?.name.split(' ').join('_').toLowerCase()}`} style={{ color: 'black', textDecoration: 'none' }} activeStyle={{ backgroundColor: `rgb(232,231, 228)` }}>
+                        <i className="fa-solid fa-caret-right"></i>
                         <div className="boardSection__icon">
                             {board?.icon ?
                                 <div>{board?.icon}</div> : <div>📝</div>
@@ -40,15 +43,18 @@ const BoardSection = () => {
                             }
                         </div>
                     </NavLink>
-                        ))}
+                ))}
 
                 <div className="boardSection__addAPage">
                     <div className="boardSection__Logo">
-                        <i class="fa-solid fa-plus boardSection__add_page"></i>
+                        <i className="fa-solid fa-plus boardSection__add_page"></i>
                     </div>
-                    <div className="boardSection__add">Add a Page</div>
+                    <NavLink to='/home/add_page' style={{ color: 'black', textDecoration: 'none'}}>
+                        <div className="boardSection__add">Add a Page</div>
+                    </NavLink>
                 </div>
             </div>
+            <LogoutButton />
         </div>
     )
 }
