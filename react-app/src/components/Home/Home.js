@@ -1,5 +1,7 @@
 import React from 'react'
+import { Switch, Route } from 'react-router-dom'
 import BoardSection from '../BoardSection/BoardSection'
+import AddBoard from '../TaskSection/AddBoard/AddBoard'
 import TaskSection from '../TaskSection/TaskSection'
 import './Home.css'
 
@@ -11,7 +13,15 @@ const Home = () => {
             </div>
 
             <div className="home__rightBar">
-                <TaskSection /> 
+                <Switch>
+                    <Route path='/home/boards/:path'>
+                        <TaskSection />
+                    </Route>
+
+                    <Route path='/home/add_page'>
+                        <AddBoard />
+                    </Route>
+                </Switch>
             </div>
 
         </div>

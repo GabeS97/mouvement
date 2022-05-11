@@ -1,0 +1,34 @@
+.addBoard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;;
+}
+
+
+.addBoard__form {
+    border: white solid;
+    display: flex;
+    justify-content: center;
+    width: 25em;
+    height: 25em;
+}
+
+.addBoard__boardName {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+}
+
+.addBoard__boardName > input {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    font-size: 50px;
+}
+
+.addBoard__boardName > input::placeholder {
+    color: rgb(225, 225, 224);;
+}

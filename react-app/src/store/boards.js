@@ -62,6 +62,11 @@ const boardsReducer = (state = {}, action) => {
             action.boards.forEach(board => newState[board.id] = board)
             return newState
         }
+        case ADD_BOARD: {
+            newState = { ...state }
+            newState[action.board.id] = action.board
+            return newState
+        }
         default:
             return state
     }

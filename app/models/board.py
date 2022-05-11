@@ -21,9 +21,8 @@ class Board(db.Model):
             'user_id': self.user_id,
             'template': self.template,
             'description': self.description,
-            'name': self.name, 
+            'name': self.name,
             'icon': self.icon
-
             # This will be saved for after graduation
             # 'image_cover': self.image_cover,
         }

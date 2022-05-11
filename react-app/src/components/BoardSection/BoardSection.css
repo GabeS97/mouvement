@@ -38,8 +38,8 @@
     flex-direction: column;;
     justify-content: center;
     padding-top: 1em ;
-    padding-left: .5em;
-    max-width: 180px;
+    margin-left: .5em;
+    max-width: 100%;
 
     /* border: red solid; */
 }

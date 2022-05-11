@@ -9,7 +9,7 @@ def seed_boards():
         name='Getting Started on Mobile',
         description='👋 Welcome to Notion!',
         # image_cover=None,
-        icon= None
+        icon= None,
     )
     board_two = Board(
         user_id= 1,
@@ -17,7 +17,7 @@ def seed_boards():
         name='Quick note',
         description='Quickly create a rich document.',
         # image_cover=None,
-        icon= '📌'
+        icon= '📌',
     )
     board_three = Board(
         user_id= 1,
@@ -25,7 +25,7 @@ def seed_boards():
         name='Task List',
         description='Use this template to track your personal tasks.',
         # image_cover=None,
-        icon='✔️'
+        icon='✔️',
     )
     board_four = Board(
         user_id= 1,
@@ -33,7 +33,7 @@ def seed_boards():
         name='Reading List',
         description='📚 The modern day reading list includes more than just books. We\'ve created a dashboard to help you track books, articles, podcasts, and videos. Each media type has its own view based on the Type property. Change your views to sort content by status, author, type, or publisher ✓Rate content out of 5 stars ✓',
         # image_cover=None,
-        icon='📕'
+        icon='📕',
     )
     board_five = Board(
         user_id= 1,
@@ -41,7 +41,7 @@ def seed_boards():
         name='Journal',
         description='Document your life - daily happenings, special occasions, and reflections on your goals. Categorize entries with tags and automatically capture the date.',
         # image_cover=None,
-        icon='📓'
+        icon='📓',
     )
     board_six= Board(
         user_id= 1,
@@ -49,7 +49,7 @@ def seed_boards():
         name='Personal Home',
         description='Organize everything in your life in one place.',
         # image_cover=None,
-        icon='🏡'
+        icon='🏡',
     )
 
     db.session.add_all([board_one, board_two, board_three, board_four, board_five, board_six])
