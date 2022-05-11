@@ -14,7 +14,7 @@ def seed_boards():
     board_two = Board(
         user_id= 1,
         template='Quick Note',
-        name='Quick note',
+        name='Quick Note',
         description='Quickly create a rich document.',
         # image_cover=None,
         icon= '📌',
@@ -36,7 +36,7 @@ def seed_boards():
         icon='📕',
     )
     board_five = Board(
-        user_id= 1,
+    user_id= 1,
         template='Journal',
         name='Journal',
         description='Document your life - daily happenings, special occasions, and reflections on your goals. Categorize entries with tags and automatically capture the date.',

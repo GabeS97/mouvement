@@ -40,3 +40,7 @@
 .addBoard__boardName > input::placeholder, .addBoard__descriptiom > input::placeholder{
     color: rgb(225, 225, 224);;
 }
+
+.boardSection__add {
+    display: flex;
+}

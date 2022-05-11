@@ -31,8 +31,9 @@ export const editBoardThunk = (board) => async dispatch => {
 }
 
 export const addBoardThunk = (board) => async dispatch => {
-    const response = await fetch(`/api/boards`, {
-        method: 'CREATE',
+    console.log(board, 'this is the payload that is passed into through the AddBoard component, this is the thunk');
+    const response = await fetch(`/api/boards/`, {
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(board)
     })
@@ -65,6 +66,11 @@ const boardsReducer = (state = {}, action) => {
         case ADD_BOARD: {
             newState = { ...state }
             newState[action.board.id] = action.board
+            return newState
+        }
+        case DELETE_BOARD: {
+            newState = { ...state }
+            delete newState[action.board.id]
             return newState
         }
         default:
