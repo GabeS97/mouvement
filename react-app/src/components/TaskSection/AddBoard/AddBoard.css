@@ -12,6 +12,7 @@
     display: flex;
     justify-content: center;
     width: 25em;
+    flex-direction: column;
     height: 25em;
 }
 
@@ -23,6 +24,13 @@
 }
 
 .addBoard__boardName > input {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    font-size: 50px;
+}
+
+.addBoard__descriptiom > input {
     background-color: transparent;
     outline: none;
     border: none;
