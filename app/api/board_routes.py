@@ -29,3 +29,13 @@ def delete_board(id):
     db.session.delete(board_deleted)
     db.session.commit()
     return board_deleted.to_dict()
+
+@board_routes.route('/<int:id>', methods=['PUT'])
+def edit_board(id):
+    form=BoardForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        board_edited = Board.query.get(id)
+        form.populate_obj(board_edited)
+        db.session.commit()
+        return board_edited.to_dict()

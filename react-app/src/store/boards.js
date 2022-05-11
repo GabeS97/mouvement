@@ -73,6 +73,11 @@ const boardsReducer = (state = {}, action) => {
             delete newState[action.board.id]
             return newState
         }
+        case EDIT_BOARD: {
+            newState = { ...state }
+            newState[action.board.id] = action.board
+            return newState
+        }
         default:
             return state
     }

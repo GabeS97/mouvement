@@ -1,7 +1,6 @@
 .boardSection {
     display: flex;
     flex-direction: column;
-    background-color: lightblue;
     width: 100%;
 }
 
