@@ -16,7 +16,7 @@
   width: 50%;
 }
 .quickNote__contents::-webkit-scrollbar {
-    display: none; 
+    display: none;
 }
 
 .quickNote__headers {
