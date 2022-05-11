@@ -1,0 +1,42 @@
+.taskList {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.taskList__contents {
+  /* background-color: pink; */
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  overflow-y: scroll;
+  width: 50%;
+}
+.taskList__contents::-webkit-scrollbar {
+  display: none;
+}
+
+.taskList__headers {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1em;
+}
+
+.taskList__descs {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5em;
+  padding-bottom: 3em;
+}
+
+.taskList__descs > h3 {
+  color: rgb(152, 151, 149);
+  font-size: small;
+}
+
+.taskList__icon {
+  font-size: 80px;
+}
