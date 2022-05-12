@@ -9,7 +9,7 @@ const editTaskActionCreator = (task) => ({ type: EDIT_TASK, task })
 const deleteTaskActionCreator = (task) => ({ type: DELETE_TASK, task })
 
 export const getTasksThunk = (board_id) => async dispatch => {
-    const response = await fetch(`/api/tasks/boards/${board_id}`)
+    const response = await fetch(`/api/tasks/boards/${board_id}/`)
 
     if (response.ok) {
         const tasks = await response.json()
