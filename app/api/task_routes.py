@@ -21,3 +21,10 @@ def post_task(board_id):
         db.session.add(task)
         db.session.commit()
         return task.to_dict()
+
+@task_routes.route('/boards/<int:board_id>/<int:id>', methods=['DELETE'])
+def delete_task(board_id, id):
+    task = Task.query.get(id)
+    db.session.delete(task)
+    db.session.commit()
+    return task.to_dict()
