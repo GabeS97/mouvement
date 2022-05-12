@@ -4,16 +4,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { deleteBoardThunk } from '../../../../store/boards';
 import { Modal } from '../../../context/Modal';
+import AddTask from '../../AddTask/AddTask';
 import EditBoard from '../../EditBoard/EditBoard';
 import QuickList from './QuickList/QuickList';
 import './QuickNote.css'
 
-const QuickNote = ({ boards, hideForm }) => {
+const QuickNote = ({ boards, hideForm, tasks }) => {
     const { boardId } = useParams()
     const board = boards.find(board => board.id === +boardId)
     const dispatch = useDispatch()
     const [showModal, setShowModal] = useState(false)
+    const [showField, setShowField] = useState(false)
 
+    const closeField = () => {
+        setShowField(false)
+    }
 
 
     return (
@@ -55,8 +60,16 @@ const QuickNote = ({ boards, hideForm }) => {
                 </div>
 
                 <div className="quickNote__list">
-                    <h2>Make a to-do-list</h2>
-                    <QuickList />
+                    <>
+                        <div className="quickNote__list__header">
+                            <h2>Make a to-do-list</h2>
+                            <i class="fa-solid fa-plus quickNote__list__addItem" onClick={() => setShowField(true)}></i>
+                        </div>
+                        {showField && (
+                            <AddTask boardId={boardId} closeField={closeField} />
+                        )}
+                    </>
+                    <QuickList tasks={tasks} />
                 </div>
             </div>
         </div>

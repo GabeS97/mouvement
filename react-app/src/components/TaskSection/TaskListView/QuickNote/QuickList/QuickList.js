@@ -1,23 +1,19 @@
 import React, { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { useParams } from 'react-router-dom'
-import { getTasksThunk } from '../../../../../store/tasks'
+import './QuickList.css'
 
-
-const QuickList = () => {
-    const dispatch = useDispatch()
-    const { boardId } = useParams()
-
-    const tasks = Object.values(useSelector(state => state.tasks))
-    console.log(tasks);
-
-    useEffect(() => {
-        dispatch(getTasksThunk(boardId))
-    }, [dispatch])
+const QuickList = ({ tasks }) => {
 
     return (
-        <div>
-
+        <div className='quickList'>
+            {tasks.map(task => (
+                <div className="quickList__checkBox">
+                    <label htmlFor='checkbox' className='boxContainer'>
+                        <input type='checkbox' />
+                        {task.tasks}
+                        {/* <span className='quickList__checked'></span> */}
+                    </label>
+                </div>
+            ))}
         </div>
     )
 }

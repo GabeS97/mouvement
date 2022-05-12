@@ -63,6 +63,11 @@ const tasksReducer = (state = {}, action) => {
             action.tasks.forEach(task => newState[task.id] = task)
             return newState
         }
+        case ADD_TASK: {
+            newState = { ...state }
+            newState[action.task.id] = action.task
+            return newState
+        }
         default:
             return state
     }
