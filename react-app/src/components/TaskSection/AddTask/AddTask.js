@@ -32,7 +32,7 @@ const AddTask = ({ boardId, closeField }) => {
                         placeholder='Enter your new task...'
                         value={currTask}
                         onChange={handleCurrTask}
-                    />
+                    /> 
                 </label>
                 <button type='submit'>Submit</button>
             </form>

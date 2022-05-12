@@ -11,11 +11,13 @@ class Task(db.Model):
     created_at = db.Column(db.DateTime, nullable=False, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, nullable=False, server_default=db.func.now(), server_onupdate=db.func.now())
 
+    board = db.relationship('Board', back_populates='tasks')
 
     def to_dict(self):
         return {
-            'id': self.id, 
+            'id': self.id,
             'user_id': self.user_id,
             'board_id': self.board_id,
-            'tasks': self.tasks
+            'tasks': self.tasks,
+            'board': self.board.name
         }

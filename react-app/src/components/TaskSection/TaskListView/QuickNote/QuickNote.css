@@ -101,24 +101,27 @@
   cursor: pointer;
 }
 
-
 .quickNote__list__header {
   display: flex;
   align-items: center;
   flex-direction: row;
+  width: 100%;
 }
 
+.quickNote__addList {
+  display: flex;
+}
 .quickNote__list__addItem {
+  align-self: center;
   color: rgb(202, 202, 200);
   /* color: red; */
   display: none;
-  position: absolute;
-  right: 55%;
+  /* position: absolute; */
+  /* right: 55%; */
   cursor: pointer;
 }
 
 .quickNote__list:hover .quickNote__list__addItem {
   display: block;
   cursor: pointer;
-
 }

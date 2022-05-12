@@ -32,7 +32,7 @@ export const addTaskThunk = (board_id, task) => async dispatch => {
 }
 
 export const editTaskThunk = (board_id, task) => async dispatch => {
-    const response = await fetch(`/api/tasks/boards/${board_id}/`, {
+    const response = await fetch(`/api/tasks/boards/${board_id}/${task.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(task)
