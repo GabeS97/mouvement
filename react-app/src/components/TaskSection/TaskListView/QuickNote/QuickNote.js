@@ -62,14 +62,18 @@ const QuickNote = ({ boards, hideForm, tasks }) => {
                 <div className="quickNote__list">
                     <>
                         <div className="quickNote__list__header">
-                            <h2>Make a to-do-list</h2>
-                            <i className="fa-solid fa-plus quickNote__list__addItem" onClick={() => setShowField(true)}></i>
+                            <div className="quickList__toDo">
+                                <h2>Make a to-do-list</h2>
+                            </div>
+                            <div className="quickNote__addList">
+                                <i className="fa-solid fa-plus quickNote__list__addItem" onClick={() => setShowField(!showField)}></i>
+                            </div>
                         </div>
                         {showField && (
                             <AddTask boardId={boardId} closeField={closeField} />
                         )}
                     </>
-                    <QuickList tasks={tasks} boardId={boardId}/>
+                    <QuickList tasks={tasks} boardId={boardId} />
                 </div>
             </div>
         </div>

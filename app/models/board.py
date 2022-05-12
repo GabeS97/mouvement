@@ -14,6 +14,7 @@ class Board(db.Model):
     created_at = db.Column(db.DateTime, nullable=False, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, nullable=False, server_default=db.func.now(), server_onupdate=db.func.now())
 
+    tasks = db.relationship('Task', back_populates='board')
 
     def to_dict(self):
         return {

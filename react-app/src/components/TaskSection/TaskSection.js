@@ -34,7 +34,7 @@ const TaskSection = () => {
     const hideForm = () => {
         setShowModal(false)
     }
-    
+
     useEffect(() => {
         dispatch(getBoardThunk())
     }, [dispatch])
@@ -50,8 +50,8 @@ const TaskSection = () => {
         return <Journal boards={boards} hideForm={hideForm} />
     } else if (template === 'personal home') {
         return <PersonalHome boards={boards} hideForm={hideForm} />
-    } else {
-        return 'Change this to a defautl task list page (make later) '
+    // } else {
+    //     return 'Change this to a defautl task list page (make later) '
     }
 
 
