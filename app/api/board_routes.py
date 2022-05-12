@@ -20,7 +20,6 @@ def post_new_board():
         db.session.add(new_board)
         db.session.commit()
 
-        print('\n\n', new_board.to_dict(), '\n\n')
         return new_board.to_dict()
 
 @board_routes.route('/<int:id>', methods=['DELETE'])

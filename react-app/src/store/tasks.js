@@ -68,6 +68,11 @@ const tasksReducer = (state = {}, action) => {
             newState[action.task.id] = action.task
             return newState
         }
+        case DELETE_TASK: {
+            newState = { ...state }
+            delete newState[action.task.id]
+            return newState
+        }
         default:
             return state
     }
