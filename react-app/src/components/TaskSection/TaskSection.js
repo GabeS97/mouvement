@@ -37,11 +37,11 @@ const TaskSection = () => {
     } else if (template === 'task list') {
         return <TaskList boards={boards} hideForm={hideForm} />
     } else if (template === 'reading list') {
-        return <ReadingList boards={boards} />
+        return <ReadingList boards={boards} hideForm={hideForm} />
     } else if (template === 'journal') {
-        return <Journal boards={boards} />
+        return <Journal boards={boards} hideForm={hideForm} />
     } else if (template === 'personal home') {
-        return <PersonalHome boards={boards} />
+        return <PersonalHome boards={boards} hideForm={hideForm} />
     } else {
         return 'Change this to a defautl task list page (make later) '
     }

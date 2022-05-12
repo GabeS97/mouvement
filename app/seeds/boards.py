@@ -3,14 +3,14 @@ from app.models import db, Board
 # This will be saved for after graduation
 
 def seed_boards():
-    board_one = Board(
-        user_id= 1,
-        template=None,
-        name='Getting Started on Mobile',
-        description='👋 Welcome to Notion!',
-        # image_cover=None,
-        icon= None,
-    )
+    # board_one = Board(
+    #     user_id= 1,
+    #     template=None,
+    #     name='Getting Started on Mobile',
+    #     description='👋 Welcome to Notion!',
+    #     # image_cover=None,
+    #     icon= None,
+    # )
     board_two = Board(
         user_id= 1,
         template='Quick Note',
@@ -52,7 +52,7 @@ def seed_boards():
         icon='🏡',
     )
 
-    db.session.add_all([board_one, board_two, board_three, board_four, board_five, board_six])
+    db.session.add_all([board_two, board_three, board_four, board_five, board_six])
     db.session.commit()
 
 def undo_boards():

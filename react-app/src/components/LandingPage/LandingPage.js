@@ -9,11 +9,11 @@ const LandingPage = () => {
                 <div className="landingPage__oneWorkspace">
                     <div className="landingPage__oneWorkspace__text">
                         <h1>One workspace. Every team.</h1>
-                        <h2>We're more than a doc. Or a table. Customize <br></br >Notion to work that way you do.</h2>
+                        <h2>We're more than a doc. Or a table. Customize <br></br >Mouvement to work that way you do.</h2>
 
                         <div className="landingPage__freeTrial">
                             <NavLink to='/signup' style={{ textDecoration: 'none', color: 'white' }}>
-                                Try Notion free
+                                Try Mouvement free
                             </NavLink>
                         </div>
 
@@ -35,7 +35,7 @@ const LandingPage = () => {
                         </div>
                         <div className="landingPage__teams__text">
                             <h3>Team up without <br></br> the chaos</h3>
-                            <p>Connect your teams, projects, and <br></br> docs in Notion — so you can bust silos and move as one.</p>
+                            <p>Connect your teams, projects, and <br></br> docs in Mouvement — so you can bust silos and move as one.</p>
                         </div>
                     </div>
 
@@ -65,7 +65,7 @@ const LandingPage = () => {
                         <div className="landingPage__workflow__leftText">
                             <img src='https://www.notion.so/cdn-cgi/image/format=auto,width=256,quality=100/front-static/pages/product/spot/spot-workflow.png' alt='' />
                             <h3>Build the workflow <br></br>you want</h3>
-                            <p>Customize Notion to make it work the <br></br>way you want it to. <br></br></p>
+                            <p>Customize Mouvement to make it work the <br></br>way you want it to. <br></br></p>
 
                             <p>Just drag and drop to craft the <br></br>dashboard, website, doc, or system you need.</p>
                         </div>

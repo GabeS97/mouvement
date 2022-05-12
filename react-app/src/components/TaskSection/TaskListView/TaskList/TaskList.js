@@ -46,29 +46,33 @@ const TaskList = ({ boards, hideForm }) => {
         <div className="taskList">
             <div className="taskList__contents">
                 <div className="taskList__headers">
-                    <div className="taskList__icon">
-                        {board?.icon}
+                    <div className="taskList__header__container">
+                        <div className="taskList__icon">
+                            {board?.icon}
+                            <h1 className='taskList__title'>{board?.name}</h1>
+                        </div>
+
+                        <div className="taskList__options">
+                            <div className="taskList__editAndDelete">
+                                <div className="taskList__edit" onClick={() => setShowModal(true)}>
+                                    Edit
+                                </div>
+
+                                {showModal && (
+                                    <Modal onClose={() => setShowModal(false)}>
+                                        <EditBoard board={board} hideForm={hideForm} />
+                                    </Modal>
+                                )}
+                                <div className="taskList__delete" onClick={() => dispatch(deleteBoardThunk(+boardId))}>
+                                    Delete
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
                     <div className="taskList__boardInfo">
                         <div className="taskList__descs">
-                            <div className="taskList__options">
-                                <h1 className='taskList__title'>{board?.name}</h1>
-                                <div className="taskList__editAndDelete">
-                                    <div className="taskList__edit" onClick={() => setShowModal(true)}>
-                                        Edit
-                                    </div>
-
-                                    {showModal && (
-                                        <Modal onClose={() => setShowModal(false)}>
-                                            <EditBoard board={board} hideForm={hideForm} />
-                                        </Modal>
-                                    )}
-                                    <div className="taskList__delete" onClick={() => dispatch(deleteBoardThunk(+boardId))}>
-                                        Delete
-                                    </div>
-                                </div>
-                            </div>
                             <h3 className='taskList__description'>{board?.description}</h3>
                         </div>
                     </div>

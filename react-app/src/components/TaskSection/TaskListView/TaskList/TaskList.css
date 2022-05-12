@@ -19,6 +19,16 @@
   display: none;
 }
 
+.taskList__header__container {
+  display: flex;
+
+}
+
+.taskList__description {
+  color: rgb(116, 114, 111);
+  font-size: 15px;
+}
+
 .taskList__headers {
   display: flex;
   flex-direction: column;
@@ -42,6 +52,18 @@
 
 .taskList__icon {
   font-size: 80px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.taskList__title {
+  width: 5em;
+  display: flex;
+}
+
+.taskList__icon > h1 {
+  font-size: 32px;
 }
 
 .taskList__container {
@@ -63,9 +85,10 @@
 }
 .taskList__options {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
   width: 100%;
+  justify-content: flex-end;
   flex-direction: row;
   column-gap: 0.5em;
 }
