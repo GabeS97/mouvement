@@ -1,0 +1,12 @@
+.quickList {
+    display: flex;
+    flex-direction: column;
+    row-gap: .5em;
+}
+
+.boxboxContainer {
+    display: flex;
+    column-gap: .5em;
+    align-items: center;
+
+}

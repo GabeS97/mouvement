@@ -14,6 +14,7 @@ class Task(db.Model):
 
     def to_dict(self):
         return {
+            'id': self.id, 
             'user_id': self.user_id,
             'board_id': self.board_id,
             'tasks': self.tasks

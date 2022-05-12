@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams, useLocation } from 'react-router-dom'
 import { getBoardThunk } from '../../store/boards'
+import { getTasksThunk } from '../../store/tasks'
 import BoardSection from '../BoardSection/BoardSection'
 import Journal from './TaskListView/Journal/Journal'
 import PersonalHome from './TaskListView/PersonalHome/PersonalHome'
@@ -18,6 +19,12 @@ const TaskSection = () => {
     const name = pathname[pathname.length - 1].split('_').join(' ')
     const boards = Object.values(useSelector(state => state.boards))
     const oneBoard = boards.find(board => board.name.toLowerCase() === name)
+    const tasks = Object.values(useSelector(state => state.tasks))
+    console.log(tasks);
+
+    useEffect(() => {
+        dispatch(getTasksThunk(boardId))
+    }, [dispatch])
     const [showModal, setShowModal] = useState(false)
     let template;
     if (oneBoard?.template) {
@@ -27,13 +34,14 @@ const TaskSection = () => {
     const hideForm = () => {
         setShowModal(false)
     }
+    
     useEffect(() => {
         dispatch(getBoardThunk())
     }, [dispatch])
 
 
     if (template === 'quick note') {
-        return <QuickNote boards={boards} hideForm={hideForm} />
+        return <QuickNote boards={boards} hideForm={hideForm} tasks={tasks} />
     } else if (template === 'task list') {
         return <TaskList boards={boards} hideForm={hideForm} />
     } else if (template === 'reading list') {

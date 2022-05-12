@@ -80,7 +80,7 @@
   width: 100%;
 }
 
-.quickNote__list > h2 {
+.quickNote__list > .quickNote__list__header {
   border-bottom: solid 2px rgb(228, 226, 225);
   padding-bottom: 20px;
 }
@@ -101,3 +101,24 @@
   cursor: pointer;
 }
 
+
+.quickNote__list__header {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.quickNote__list__addItem {
+  color: rgb(202, 202, 200);
+  /* color: red; */
+  display: none;
+  position: absolute;
+  right: 55%;
+  cursor: pointer;
+}
+
+.quickNote__list:hover .quickNote__list__addItem {
+  display: block;
+  cursor: pointer;
+
+}
