@@ -10,7 +10,7 @@ def get_all_tasks(board_id):
     tasks = Task.query.filter(Task.board_id == board_id).all()
     return jsonify([task.to_dict() for task in tasks])
 
-@task_routes.route('/boards/<int:board_id>', methods=['POST'])
+@task_routes.route('/boards/<int:board_id>/', methods=['POST'])
 def post_task(board_id):
     form=TaskForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -22,7 +22,7 @@ def post_task(board_id):
         db.session.commit()
         return task.to_dict()
 
-@task_routes.route('/boards/<int:board_id>/<int:id>', methods=['DELETE'])
+@task_routes.route('/boards/<int:board_id>/<int:id>/', methods=['DELETE'])
 def delete_task(board_id, id):
     task = Task.query.get(id)
     db.session.delete(task)

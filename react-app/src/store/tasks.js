@@ -19,7 +19,7 @@ export const getTasksThunk = (board_id) => async dispatch => {
 }
 
 export const addTaskThunk = (board_id, task) => async dispatch => {
-    const response = await fetch(`/api/tasks/boards/${board_id}`, {
+    const response = await fetch(`/api/tasks/boards/${board_id}/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(task)
@@ -32,7 +32,7 @@ export const addTaskThunk = (board_id, task) => async dispatch => {
 }
 
 export const editTaskThunk = (board_id, task) => async dispatch => {
-    const response = await fetch(`/api/tasks/boards/${board_id}`, {
+    const response = await fetch(`/api/tasks/boards/${board_id}/`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(task)
@@ -45,7 +45,7 @@ export const editTaskThunk = (board_id, task) => async dispatch => {
 }
 
 export const deleteTaskThunk = (board_id, task_id) => async dispatch => {
-    const response = await fetch(`/api/tasks/boards/${board_id}/${task_id}`, {
+    const response = await fetch(`/api/tasks/boards/${board_id}/${task_id}/`, {
         method: 'DELETE'
     })
     if (response.ok) {

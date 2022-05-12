@@ -1,7 +1,7 @@
 .quickList {
     display: flex;
     flex-direction: column;
-    row-gap: .5em;
+    justify-content: space-between;
 }
 
 .boxboxContainer {
@@ -9,4 +9,26 @@
     column-gap: .5em;
     align-items: center;
 
+}
+
+.quickList__checkBox {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    height: 2em;
+    align-items: center;
+}
+
+.quickList__checkBox:hover .quickList__delete {
+    display: block;
+    cursor: pointer;
+}
+
+.quickList__checkBox:hover {
+    background-color: rgb(247, 246, 243)
+
+}
+
+.quickList__delete {
+    display: none;
 }
