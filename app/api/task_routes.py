@@ -5,7 +5,7 @@ from app.forms import TaskForm
 
 task_routes = Blueprint('tasks', __name__)
 
-@task_routes.route('/boards/<int:board_id>', methods=['GET'])
+@task_routes.route('/boards/<int:board_id>/', methods=['GET'])
 def get_all_tasks(board_id):
     tasks = Task.query.filter(Task.board_id == board_id).all()
     return jsonify([task.to_dict() for task in tasks])
