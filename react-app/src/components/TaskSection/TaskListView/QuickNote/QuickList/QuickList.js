@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react'
+import { useState } from 'react'
+import { useStore } from 'react-redux'
 import { useSelector, useDispatch } from 'react-redux'
 import { Route } from 'react-router-dom'
 import { NavLink } from 'react-router-dom'
@@ -12,16 +14,37 @@ const QuickList = ({ tasks, boardId }) => {
     const boards = Object.values(useSelector(state => state.boards))
     const board = boards.find(board => board.id === +boardId)
     const sessionUser = useSelector(state => state.session.user)
+    const [currTask, setCurrTask] = useState({})
+    const [currTaskId, setCurrTaskId] = useState()
 
     const handleEdit = (e) => {
         e.preventDefault()
+        let taskId = +e.currentTarget.id
+        let task = tasks.find(task => task.id === taskId)
+        setCurrTask(task)
+        setCurrTaskId(taskId)
+
+        // const edit_toDo = {
+        //     id: taskId,
+        //     user_id: sessionUser?.id,
+        //     board_id: +boardId,
+        //     tasks: task.tasks
+        // }
+
+        let elementEdits = document.getElementById(`task-editables-${taskId}`)
+        elementEdits.contentEditable = 'true'
+    }
+
+    const submitEdit = (e) => {
+        e.preventDefault()
 
         const edit_toDo = {
+            id: currTaskId,
             user_id: sessionUser?.id,
             board_id: +boardId,
-
+            tasks: currTask.tasks
         }
-        console.log(e.currentTarget.id)
+        console.log(edit_toDo)
     }
 
     useEffect(() => {
@@ -33,13 +56,19 @@ const QuickList = ({ tasks, boardId }) => {
     return (
         <div className='quickList'>
             {tasks.map(task => (
-                <div className="quickList__checkBox" key={task.id} id={task.id}>
+                <div className="quickList__checkBox" key={task.id} id={task.id} onClick={handleEdit}>
                     <label htmlFor='checkbox' className='boxContainer'>
                         <input type='checkbox' />
-                        {task.tasks}
+                        <div className="test" contentEditable='false' id={`task-editables-${task.id}`}>
+                            {task.tasks}
+                        </div>
+                        <div className="test_submit" onClick={submitEdit}>
+                            Submit
+                        </div>
                         {/* <span className='quickList__checked'></span> */}
-                    </label>    
+                    </label>
                     <i className="fa-solid fa-trash-can quickList__delete" onClick={() => dispatch(deleteTaskThunk(+boardId, task.id))}></i>
+
                 </div>
                 // <NavLink to={`/home/boards/${+boardId}/${board?.name.split(' ').join('_').toLowerCase()}/tasks/${task.id}`} >
                 //     <SingleListEdit boardId={boardId} task={task} key={task} />
