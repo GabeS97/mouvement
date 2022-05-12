@@ -1,0 +1,102 @@
+.personalHome {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.personalHome__contents {
+  /* background-color: pink; */
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  overflow-y: scroll;
+  width: 50%;
+}
+.personalHome__contents::-webkit-scrollbar {
+  display: none;
+}
+
+.personalHome__headers {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 3em;
+  row-gap: 1em;
+  width: 100%;
+}
+
+.personalHome__descs {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5em;
+}
+
+.personalHome__descs > h3 {
+  color: rgb(152, 151, 149);
+  font-size: small;
+}
+
+.personalHome__icon {
+  font-size: 80px;
+}
+
+.personalHome__options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex-direction: row;
+  column-gap: 0.5em;
+}
+
+.personalHome__boardInfo {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.personalHome__notes {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1em;
+}
+
+.personalHome__notes > h2 {
+  border-bottom: solid 2px rgb(228, 226, 225);
+  padding-bottom: 20px;
+}
+
+.personalHome__notes > p {
+  padding-bottom: 3em;
+}
+
+.personalHome__list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1em;
+  width: 100%;
+}
+
+.personalHome__list > h2 {
+  border-bottom: solid 2px rgb(228, 226, 225);
+  padding-bottom: 20px;
+}
+
+.personalHome__editAndDelete {
+  display: flex;
+  column-gap: 0.5em;
+}
+
+.personalHome__edit,
+.personalHome__delete {
+  font-weight: bold;
+  width: 5em;
+  border: solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}

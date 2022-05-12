@@ -1,0 +1,134 @@
+.readingList {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.readingList__header__container {
+    display: flex;
+}
+
+.readingList__contents {
+  /* background-color: pink; */
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  overflow-y: scroll;
+  width: 50%;
+}
+.readingList__contents::-webkit-scrollbar {
+  display: none;
+}
+
+.readingList__headers {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 3em;
+  row-gap: 1em;
+  width: 100%;
+}
+
+.readingList__descs {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5em;
+}
+
+.readingList__descs > h3 {
+  color: rgb(152, 151, 149);
+  font-size: small;
+}
+
+.readingList__icon {
+  font-size: 80px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.readingList__icon > h1 {
+    font-size: 32px;
+}
+
+.readingList__options {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  flex-direction: row;
+  column-gap: 0.5em;
+}
+
+.readingList__boardInfo {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.readingList__notes {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1em;
+}
+
+/* .readingList__notes > h2 {
+  border-bottom: solid 2px rgb(228, 226, 225);
+  padding-bottom: 20px;
+} */
+
+.readingList__notes > p {
+  padding-bottom: 3em;
+}
+
+.readingList__list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1em;
+  width: 100%;
+}
+
+.readingList__list > h2 {
+  border-bottom: solid 2px rgb(228, 226, 225);
+  padding-bottom: 20px;
+}
+
+.readingList__editAndDelete {
+  display: flex;
+  column-gap: 0.5em;
+}
+
+.readingList__edit,
+.readingList__delete {
+  font-weight: bold;
+  width: 5em;
+  border: solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.readingList__description {
+    display: block;
+    font-size: 16px;
+    text-size-adjust: 100%;
+    width: 80%;
+    word-wrap: break-word;
+    text-align: left;
+}
+
+.readingList__descriptionContainer {
+    display: flex;
+    background-color: rgb(241, 241, 239);
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    /* max-width: 100%; */
+    width: 100%;
+    padding: 20px 10px;
+
+}

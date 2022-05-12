@@ -1,13 +1,14 @@
 import React from 'react'
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { deleteBoardThunk } from '../../../../store/boards';
 import { Modal } from '../../../context/Modal';
 import EditBoard from '../../EditBoard/EditBoard';
+import QuickList from './QuickList/QuickList';
 import './QuickNote.css'
-const QuickNote = ({ boards, hideForm}) => {
+
+const QuickNote = ({ boards, hideForm }) => {
     const { boardId } = useParams()
     const board = boards.find(board => board.id === +boardId)
     const dispatch = useDispatch()
@@ -44,6 +45,7 @@ const QuickNote = ({ boards, hideForm}) => {
                             </div>
                             <h3 className='quickNote__description'>{board?.description}</h3>
                         </div>
+
                     </div>
                 </div>
 
@@ -54,7 +56,7 @@ const QuickNote = ({ boards, hideForm}) => {
 
                 <div className="quickNote__list">
                     <h2>Make a to-do-list</h2>
-                    <p>MAKE THE LSIT FORM THE TASK SEEDS </p>
+                    <QuickList />
                 </div>
             </div>
         </div>
