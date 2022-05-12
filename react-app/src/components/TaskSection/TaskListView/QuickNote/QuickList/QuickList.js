@@ -15,7 +15,7 @@ const QuickList = ({ tasks, boardId }) => {
                         {task.tasks}
                         {/* <span className='quickList__checked'></span> */}
                     </label>
-                    <i className="fa-solid fa-trash-can" onClick={() => dispatch(deleteTaskThunk(+boardId, task.id))}></i>
+                    <i className="fa-solid fa-trash-can quickList__delete" onClick={() => dispatch(deleteTaskThunk(+boardId, task.id))}></i>
                 </div>
             ))}
         </div>
