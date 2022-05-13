@@ -7,16 +7,22 @@ import { Modal } from '../../../context/Modal';
 import { deleteBoardThunk } from '../../../../store/boards';
 import EditBoard from '../../EditBoard/EditBoard';
 import AddReadingList from './AddReadingList/AddReadingList';
+import { deleteTaskThunk } from '../../../../store/tasks';
 
 
-const ReadingList = ({ hideForm, boards, tasks }) => {
+const ReadingList = ({ boards, tasks }) => {
     const { boardId } = useParams()
     const board = boards.find(board => board.id === +boardId)
     const dispatch = useDispatch()
     const [showModal, setShowModal] = useState(false)
     const [mediaModal, setMediaModal] = useState(false)
+    const hideForm = () => {
+        setShowModal(false)
+    }
 
-    
+    const hideMedia = () => {
+        setMediaModal(false)
+    }
     return (
         <div className='readingList'>
             <div className="readingList__contents">
@@ -57,24 +63,33 @@ const ReadingList = ({ hideForm, boards, tasks }) => {
 
                 <div className="readingList__notes">
                     <div className="readingList__addIcon">
-                        <h1>Media</h1>
+                        <h1>What are you reading?</h1>
                         <i class="fa-solid fa-plus fa-lg readingList__plus" style={{ paddingLeft: '5px' }} onClick={() => setMediaModal(true)}></i>
                     </div>
                     {mediaModal &&
                         <Modal onClose={() => setMediaModal(false)}>
-                            <AddReadingList boardId={boardId} />
+                            <AddReadingList boardId={boardId} hideMedia={hideMedia} />
                         </Modal>
                     }
                     {tasks.map(task => (
                         <div className="readingList__medias" >
-                            <li>
-                                <h5>
-                                    {`Category: ${task.media}`}
-                                </h5>
-                                <h4>
-                                    {`${task.tasks} By: ${task.author}`}
-                                </h4>
-                            </li>
+                            <div className="readingList__reads">
+                                <li style={{ listStyle: 'none' }}>
+                                    <h5>
+                                        {`Category: ${task.media}`}
+                                    </h5>
+                                    <h4>
+                                        {`${task.tasks} By: ${task.author}`}
+                                    </h4>
+                                </li>
+                            </div>
+
+                            <div className="readingList__buttons">
+                                <div className="readingList__iconButtons">
+                                    <i className="fa-regular fa-pen-to-square quickList__edit"  ></i>
+                                    <i className="fa-solid fa-trash-can quickList__delete" onClick={() => dispatch(deleteTaskThunk(+boardId, task.id))}></i>
+                                </div>
+                            </div>
                         </div>
                     ))}
                 </div>

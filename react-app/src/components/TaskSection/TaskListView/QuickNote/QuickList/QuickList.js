@@ -29,7 +29,7 @@ const QuickList = ({ tasks, boardId }) => {
         elementEdits.focus()
     }
 
-    const submitEdit = (e) => {
+    const submitEdit = async (e) => {
         e.preventDefault()
         let elementEdits = document.querySelector(`#task-editables-${currTaskId}`)
         const edit_toDo = {
@@ -40,7 +40,8 @@ const QuickList = ({ tasks, boardId }) => {
             // tasks: elementEdits.innerText
         }
         console.log(elementEdits.innerText, '<<<<<<<<<<<<<<<<<<<')
-        return dispatch(editTaskThunk(+boardId, edit_toDo))
+        await dispatch(editTaskThunk(+boardId, edit_toDo))
+        alert('Congratulations, you have successfully edited your note!')
     }
     useEffect(() => {
         dispatch(getBoardThunk())

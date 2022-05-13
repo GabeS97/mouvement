@@ -30,7 +30,6 @@ const EditBoard = ({ board, hideForm }) => {
 
         await dispatch(editBoardThunk(add_board))
         history.push(`/home/boards/${+boardId}/${currName.split(' ').join('_').toLowerCase()}`)
-        hideForm()
     }
     const handleName = (e) => {
         setCurrName(e.target.value)

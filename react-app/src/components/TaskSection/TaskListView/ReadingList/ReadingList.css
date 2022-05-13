@@ -146,7 +146,7 @@
   align-self: center;
   color: rgb(202, 202, 200);
   /* color: red; */
-  display: none;;
+  display: none;
   /* position: absolute; */
   /* right: 55%; */
   cursor: pointer;
@@ -163,5 +163,27 @@
 
 .readingList__notes:hover .readingList__plus {
   display: block;
+}
 
+.readingList__medias {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.readingList__buttons {
+  display: none;
+}
+.readingList__iconButtons {
+  column-gap: 1em;
+  display: flex;
+}
+
+.readingList__medias:hover .readingList__buttons {
+  display: block;
+}
+
+.readingList__medias:hover {
+  background-color: rgb(247, 246, 243);
 }

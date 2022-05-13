@@ -32,7 +32,7 @@ const Journal = ({ hideForm, boards, tasks  }) => {
         setCurrTaskId(taskId)
     }
 
-    const submitEdit = (e) => {
+    const submitEdit = async (e) => {
         e.preventDefault()
         let editableElement = document.getElementById(`journal-task-editable-${currTaskId}`)
         console.log(editableElement, '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~');
@@ -43,7 +43,8 @@ const Journal = ({ hideForm, boards, tasks  }) => {
             board_id: +boardId,
             tasks: editableElement.innerText
         }
-        return dispatch(editTaskThunk(+boardId, edit_journal ))
+        await dispatch(editTaskThunk(+boardId, edit_journal ))
+        alert('Congratulations you have successfully edited your entry!')
     }
 
     useEffect(() => {

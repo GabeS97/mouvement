@@ -35,7 +35,7 @@
   justify-content: center;
   padding-top: 1em;
   /* margin-left: 0.5em; */
-  text-indent: .5em;
+  text-indent: 0.5em;
   max-width: 100%;
 
   /* border: red solid; */
@@ -90,16 +90,40 @@
 }
 
 .boardSection__options {
-    position: relative;
-    display: flex;
-
+  position: relative;
+  display: flex;
 }
 .boardSection___more__dropdown {
-    position: absolute;
-    display: flex;
-    /* display: none; */
-    top: 0;
-    margin-top: 1em;
-    flex-direction: column;
-    background-color: white;
+  position: absolute;
+  display: flex;
+  /* display: none; */
+  top: 0;
+  margin-top: 1em;
+  flex-direction: column;
+  background-color: white;
+}
+
+.boardSection__logoutButton {
+  display: flex;
+  /* background-color: black; */
+  margin-bottom: 1em;
+  justify-content: center;
+  /* position: relative; */
+  align-items: flex-end;
+  bottom: 0;
+  height: 100%;
+}
+
+.logout__button {
+  display: flex;
+  background-color: transparent;
+  justify-content: center;
+  height: 2em;
+  align-items: center;
+  width: 80%;
+  cursor: pointer;
+}
+
+.logout__button:hover {
+  transform: scale(1.02);
 }
