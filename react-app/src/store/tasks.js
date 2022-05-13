@@ -19,6 +19,8 @@ export const getTasksThunk = (board_id) => async dispatch => {
 }
 
 export const addTaskThunk = (board_id, task) => async dispatch => {
+    console.log('thunk response >>>>>>>>>>>>>>', board_id, task);
+
     const response = await fetch(`/api/tasks/boards/${board_id}/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -60,7 +62,7 @@ const tasksReducer = (state = {}, action) => {
     let newState;
     switch (action.type) {
         case GET_TASKS: {
-            newState = { }
+            newState = {}
             action.tasks.forEach(task => newState[task.id] = task)
             return newState
         }

@@ -7,7 +7,7 @@ class Board(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     template = db.Column(db.String(50))
     name = db.Column(db.String(50), unique=True, nullable=False)
-    description = db.Column(db.String(500))
+    description = db.Column(db.String(1000))
     # This will be saved for after graduation
     # image_cover = db.Column(db.String(5000))
     icon = db.Column(db.String(20))

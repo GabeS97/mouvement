@@ -16,7 +16,6 @@ const BoardSection = () => {
 
     return (
         <div className='boardSection'>
-
             <div className="boardSection__user__profile">
                 <div className="boardSection__user__image">
                     {sessionUser?.profile_pic ?
@@ -32,7 +31,7 @@ const BoardSection = () => {
             <div className="boardSection__user__boards">
                 {boards.map(board => (
                     <div className="boardSection__board__container" key={board.id}  >
-                        <NavLink className="boardSection__board" to={`/home/boards/${board.id}/${board?.name.split(' ').join('_').toLowerCase()}`} style={{ color: 'black', textDecoration: 'none' }} activeStyle={{ backgroundColor: `rgb(232,231, 228)` }} onClick={() => dispatch(getTasksThunk(board.id ))}>
+                        <NavLink className="boardSection__board" to={`/home/boards/${board.id}/${board?.name.split(' ').join('_').toLowerCase()}`} style={{ color: 'black', textDecoration: 'none' }} activeStyle={{ backgroundColor: `rgb(232,231, 228)` }} onClick={() => dispatch(getTasksThunk(board.id))}>
                             <i className="fa-solid fa-caret-right"></i>
                             <div className="boardSection__icon">
                                 {board?.icon ?
@@ -73,7 +72,9 @@ const BoardSection = () => {
                     </NavLink>
                 </div>
             </div>
-            <LogoutButton />
+            <div className="boardSection__logoutButton">
+                <LogoutButton/>
+            </div>
         </div>
     )
 }
