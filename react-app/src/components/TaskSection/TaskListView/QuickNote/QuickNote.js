@@ -56,7 +56,7 @@ const QuickNote = ({ boards, hideForm, tasks }) => {
 
                 <div className="quickNote__notes">
                     <h2>Jot down some text</h2>
-                    <p>They found Mary, as usual, deep in the study of thorough-bass and human nature; and had some extracts to admire, and some new observations of threadbare morality to listen to. Catherine and Lydia had information for them of a different sort. CHANGE LATER TO SEEDER VALUE</p>
+                    <p >They found Mary, as usual, deep in the study of thorough-bass and human nature; and had some extracts to admire, and some new observations of threadbare morality to listen to. Catherine and Lydia had information for them of a different sort. CHANGE LATER TO SEEDER VALUE</p>
                 </div>
 
                 <div className="quickNote__list">

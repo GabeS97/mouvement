@@ -163,11 +163,11 @@
 }
 
 .journal__thoughts {
-  /* display: flex;
+  display: flex;
   width: 100%;
   height: fit-content;
   align-items: center;
-  width: 100%; */
+  width: 100%;
 }
 
 .journal__thinks:hover {
@@ -186,15 +186,28 @@
 
 .journal__thinks {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 .journal__trash {
-  display: none;
+  /* display: none; */
 }
 
 
 .journal__thinks:hover .journal__trash {
   display: block;
   cursor: pointer;
+}
+
+.journal__options {
+  display: none;
+}
+
+.journal__thinks:hover .journal__options {
+  display: flex;
+}
+
+.journal__thoughts:focus {
+  border: none;
+  outline: none;
 }

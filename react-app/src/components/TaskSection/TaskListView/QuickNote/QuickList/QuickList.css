@@ -26,6 +26,7 @@
   background-color: rgb(247, 246, 243);
 }
 
+
 .quickList__editAndDelete {
     display: none;
 }
@@ -43,4 +44,9 @@
 
 .quickList__edit, .quickList__delete {
     cursor: pointer;
+}
+
+.quickList__editable__content:focus {
+  border: none;
+  outline: none;
 }
