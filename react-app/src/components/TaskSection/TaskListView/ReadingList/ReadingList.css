@@ -6,7 +6,7 @@
 }
 
 .readingList__header__container {
-    display: flex;
+  display: flex;
 }
 
 .readingList__contents {
@@ -50,7 +50,7 @@
 }
 
 .readingList__icon > h1 {
-    font-size: 32px;
+  font-size: 32px;
 }
 
 .readingList__options {
@@ -113,22 +113,55 @@
 }
 
 .readingList__description {
-    display: block;
-    font-size: 16px;
-    text-size-adjust: 100%;
-    width: 80%;
-    word-wrap: break-word;
-    text-align: left;
+  display: block;
+  font-size: 16px;
+  text-size-adjust: 100%;
+  width: 80%;
+  word-wrap: break-word;
+  text-align: left;
 }
 
 .readingList__descriptionContainer {
-    display: flex;
-    background-color: rgb(241, 241, 239);
-    justify-content: center;
-    align-items: center;
-    text-align: left;
-    /* max-width: 100%; */
-    width: 100%;
-    padding: 20px 10px;
+  display: flex;
+  background-color: rgb(241, 241, 239);
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  /* max-width: 100%; */
+  width: 100%;
+  padding: 20px 10px;
+}
+
+.readingList__notes {
+  width: 100%;
+}
+.readingList__addIcon {
+  border-bottom: solid rgb(241, 241, 239);
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.readingList__plus {
+  align-self: center;
+  color: rgb(202, 202, 200);
+  /* color: red; */
+  display: none;;
+  /* position: absolute; */
+  /* right: 55%; */
+  cursor: pointer;
+}
+
+.readingList__medias > li {
+  display: flex;
+  flex-direction: column;
+}
+
+.readingList__medias h5 {
+  color: rgb(152, 151, 149);
+}
+
+.readingList__notes:hover .readingList__plus {
+  display: block;
 
 }

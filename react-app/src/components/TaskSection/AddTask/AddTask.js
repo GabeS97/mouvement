@@ -17,7 +17,6 @@ const AddTask = ({ boardId, closeField }) => {
             board_id: +boardId,
             tasks: currTask
         }
-        console.log(create_tasks);
         await dispatch(addTaskThunk(+boardId, create_tasks))
         setCurrTasks('')
         closeField()

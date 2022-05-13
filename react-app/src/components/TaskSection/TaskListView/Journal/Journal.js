@@ -7,7 +7,7 @@ import { Modal } from '../../../context/Modal';
 import { deleteBoardThunk } from '../../../../store/boards';
 import EditBoard from '../../EditBoard/EditBoard';
 import { useEffect } from 'react';
-import { getTasksThunk,deleteTaskThunk } from '../../../../store/tasks';
+import { getTasksThunk, deleteTaskThunk } from '../../../../store/tasks';
 import AddTask from '../../AddTask/AddTask';
 import ShowReflection from './ShowReflection/ShowReflection';
 
@@ -58,22 +58,28 @@ const Journal = ({ hideForm, boards }) => {
                         <div className="journal__descs">
                             <h3 className='journal__description'>{board?.description}</h3>
                         </div>
+                        <div className="quickList__instructions" style={{ paddingTop: '5px'}}>
+                            <h5>Please click on journal entry to make an edit</h5>
+                            <h5>Click on "+New" or "Daily Reflection" to make a new entry</h5>
+                            <h5>Hover over the fields  to dispaly edit and delete option</h5>
+                        </div>
                     </div>
                 </div>
                 <div className="journal__dailyReflection">
-                    <div className="journal__newEntry" onClick={() => setShowReflection(true)}>
+                    <div className="journal__newEntry" onClick={() => setShowField(!showField)}>
                         💬 Daily Reflection
                     </div>
 
-                    {showReflection && (
+                    {/* {showReflection && (
                         <Modal onClose={() => setShowReflection(false)}>
                             <ShowReflection />
                         </Modal>
-                    )}
+                    )} */}
                     {items.map(thought => (
                         <div className='journal__thinks'>
                             <div className='journal__thoughts'>{thought.tasks}
                             </div>
+                            <i className="fa-regular fa-pen-to-square quickList__edit"></i>
                             <i class="fa-regular fa-trash-can journal__trash" onClick={() => dispatch(deleteTaskThunk(+boardId, thought.id))}></i>
                         </div>
                     ))}

@@ -63,10 +63,16 @@ const QuickNote = ({ boards, hideForm, tasks }) => {
                     <>
                         <div className="quickNote__list__header">
                             <div className="quickList__toDo">
-                                <h2>Make a to-do-list</h2>
-                            </div>
-                            <div className="quickNote__addList">
-                                <i className="fa-solid fa-plus quickNote__list__addItem" onClick={() => setShowField(!showField)}></i>
+                                <h2 style={{ display: 'flex', }}>Make a to-do-list
+                                    <div className="quickNote__addList">
+                                        <i className="fa-solid fa-plus quickNote__list__addItem" onClick={() => setShowField(!showField)} style={{ paddingLeft: '5px' }}></i>
+                                    </div>
+
+                                </h2>
+                                <div className="quickList__instructions">
+                                    <h5>Please click on journal entry to make an edit</h5>
+                                    <h5>Hover over your Make t a to-do-list or over journal to display + to make a new entry</h5>
+                                </div>
                             </div>
                         </div>
                         {showField && (
