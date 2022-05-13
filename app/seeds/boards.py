@@ -19,14 +19,14 @@ def seed_boards():
         # image_cover=None,
         icon= '📌',
     )
-    board_three = Board(
-        user_id= 1,
-        template='Task List',
-        name='Task List',
-        description='Use this template to track your personal tasks.',
-        # image_cover=None,
-        icon='✔️',
-    )
+    # board_three = Board(
+    #     user_id= 1,
+    #     template='Task List',
+    #     name='Task List',
+    #     description='Use this template to track your personal tasks.',
+    #     # image_cover=None,
+    #     icon='✔️',
+    # )
     board_four = Board(
         user_id= 1,
         template='Reading List',
@@ -52,7 +52,7 @@ def seed_boards():
     #     icon='🏡',
     # )
 
-    db.session.add_all([board_two, board_three, board_four, board_five])
+    db.session.add_all([board_two, board_four, board_five])
     db.session.commit()
 
 def undo_boards():

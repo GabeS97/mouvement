@@ -6,15 +6,17 @@ import { useParams } from 'react-router-dom';
 import { Modal } from '../../../context/Modal';
 import { deleteBoardThunk } from '../../../../store/boards';
 import EditBoard from '../../EditBoard/EditBoard';
+import AddReadingList from './AddReadingList/AddReadingList';
 
 
-const ReadingList = ({ hideForm, boards }) => {
+const ReadingList = ({ hideForm, boards, tasks }) => {
     const { boardId } = useParams()
     const board = boards.find(board => board.id === +boardId)
     const dispatch = useDispatch()
     const [showModal, setShowModal] = useState(false)
+    const [mediaModal, setMediaModal] = useState(false)
 
-
+    
     return (
         <div className='readingList'>
             <div className="readingList__contents">
@@ -54,7 +56,27 @@ const ReadingList = ({ hideForm, boards }) => {
                 </div>
 
                 <div className="readingList__notes">
-                    <h2>Media</h2>
+                    <div className="readingList__addIcon">
+                        <h1>Media</h1>
+                        <i class="fa-solid fa-plus fa-lg readingList__plus" style={{ paddingLeft: '5px' }} onClick={() => setMediaModal(true)}></i>
+                    </div>
+                    {mediaModal &&
+                        <Modal onClose={() => setMediaModal(false)}>
+                            <AddReadingList boardId={boardId} />
+                        </Modal>
+                    }
+                    {tasks.map(task => (
+                        <div className="readingList__medias" >
+                            <li>
+                                <h5>
+                                    {`Category: ${task.media}`}
+                                </h5>
+                                <h4>
+                                    {`${task.tasks} By: ${task.author}`}
+                                </h4>
+                            </li>
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>

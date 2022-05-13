@@ -2,8 +2,10 @@ const GET_BOARDS = 'boards/GET_BOARDS'
 const ADD_BOARD = 'boards/ADD_BOARD'
 const EDIT_BOARD = 'boards/EDIT_BOARD'
 const DELETE_BOARD = 'boards/DELETE_BOARD'
+const GET_ONE_BOARD = 'boards/GET_ONE_BOARD'
 
 const getBoardsActionCreator = (boards) => ({ type: GET_BOARDS, boards })
+const getOneBoardActionCreator = (board) => ({ type: GET_ONE_BOARD, board })
 const addBoardActionCreator = (board) => ({ type: ADD_BOARD, board })
 const editBoardActionCreator = (board) => ({ type: EDIT_BOARD, board })
 const deleteBoardActionCreator = (board) => ({ type: DELETE_BOARD, board })
@@ -13,6 +15,14 @@ export const getBoardThunk = () => async dispatch => {
     if (response.ok) {
         const boards = await response.json()
         dispatch(getBoardsActionCreator(boards))
+        return response
+    }
+}
+export const getOneBoardThunk = (board_id) => async dispatch => {
+    const response = await fetch(`/api/boards/${board_id}`)
+    if (response.ok) {
+        const board = await response.json()
+        dispatch(getOneBoardActionCreator(board))
         return response
     }
 }
@@ -31,7 +41,6 @@ export const editBoardThunk = (board) => async dispatch => {
 }
 
 export const addBoardThunk = (board) => async dispatch => {
-    console.log(board, 'this is the payload that is passed into through the AddBoard component, this is the thunk');
     const response = await fetch(`/api/boards/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -61,6 +70,11 @@ const boardsReducer = (state = {}, action) => {
         case GET_BOARDS: {
             newState = { ...state }
             action.boards.forEach(board => newState[board.id] = board)
+            return newState
+        }
+        case GET_ONE_BOARD: {
+            newState = {}
+            newState[action.board.id] = action.board
             return newState
         }
         case ADD_BOARD: {

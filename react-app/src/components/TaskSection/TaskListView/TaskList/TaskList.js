@@ -1,108 +1,40 @@
-import React, { useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import { deleteBoardThunk } from '../../../../store/boards'
 import { getTasksThunk } from '../../../../store/tasks'
-import { Modal } from '../../../context/Modal'
-import EditBoard from '../../EditBoard/EditBoard'
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import './TaskList.css'
-const TaskList = ({ boards, hideForm }) => {
+
+const TaskList = ({ boards, hideForm, tasks }) => {
+    const [task, setTask] = useState(tasks)
     const { boardId } = useParams()
+    const dispatch = useDispatch()
     const board = boards.find(board => board.id === +boardId)
     const [showModal, setShowModal] = useState(false)
-    const dispatch = useDispatch()
+    // const items = document.querySelectorAll('.taskList__item')
+    // const columns = document.querySelectorAll('.taskList__column')
 
-    const items = document.querySelectorAll('.taskList__item')
-    const columns = document.querySelectorAll('.taskList__column')
+    // const tasks = Object.values(useSelector(state => state.tasks))
+    const handleOnDragEnd = (result) => {
+        if (!result.destination) return;
+        const items = Array.from(task);
+        const [reorderItem] = items.splice(result.source.index, 1);
+        items.splice(result.destination.index, 0, reorderItem)
 
-    const tasks = Object.values(useSelector(state => state.tasks))
+        setTask(items)
+    }
 
     useEffect(() => {
         dispatch(getTasksThunk(+boardId))
     }, [dispatch])
 
 
-
-    items.forEach(item => {
-        item.addEventListener('dragstart', dragStart)
-        item.addEventListener('dragend', dragEnd)
-    })
-    let dragItem = null
-
-    function dragStart() {
-        dragItem = this;
-        setTimeout(() => this.className = 'invisible', 0)
-    }
-    function dragEnd() {
-        this.className = 'taskList__item'
-        dragItem = null;
-    }
-
-    columns.forEach(column => {
-        column.addEventListener('dragover', dragOver);
-        column.addEventListener('drop', dragDrop);
-    });
-
-    function dragOver(e) {
-        e.preventDefault()
-    }
-
-    function dragDrop() {
-        this.append(dragItem)
-    }
     return (
-        <div className="taskList">
-            <div className="taskList__contents">
-                <div className="taskList__headers">
-                    <div className="taskList__header__container">
-                        <div className="taskList__icon">
-                            {board?.icon}
-                            <h1 className='taskList__title'>{board?.name}</h1>
-                        </div>
+        <div className="taskList" style={{ display: 'flex', justifyContent: 'center', height: '100%'}}>
+            <DragDropContext onDragEnd={result => console.log(result)}>
 
-                        <div className="taskList__options">
-                            <div className="taskList__editAndDelete">
-                                <div className="taskList__edit" onClick={() => setShowModal(true)}>
-                                    Edit
-                                </div>
 
-                                {showModal && (
-                                    <Modal onClose={() => setShowModal(false)}>
-                                        <EditBoard board={board} hideForm={hideForm} />
-                                    </Modal>
-                                )}
-                                <div className="taskList__delete" onClick={() => dispatch(deleteBoardThunk(+boardId))}>
-                                    Delete
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div className="taskList__boardInfo">
-                        <div className="taskList__descs">
-                            <h3 className='taskList__description'>{board?.description}</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="taskList__container">
-                    <div className="taskList__column">
-                        <h1>To Do</h1>
-                        {tasks.map(task => (
-                            <div className="taskList__item" draggable="true">{task.tasks}</div>
-                        ))}
-                    </div>
-
-                    <div className="taskList__column">
-                        <h1>Doing</h1>
-                    </div>
-
-                    <div className="taskList__column">
-                        <h1>Done</h1>
-                    </div>
-                </div>
-            </div>
+            </DragDropContext>
         </div>
     )
 }

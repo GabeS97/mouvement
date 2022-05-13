@@ -125,3 +125,7 @@
   display: block;
   cursor: pointer;
 }
+
+.quickList__instructions > h5 {
+  color: rgb(202, 202, 200);
+}

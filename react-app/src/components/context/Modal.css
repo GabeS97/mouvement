@@ -24,15 +24,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;;
-  /* background-color: rgba(255, 255, 255, 0.584); */
-  background-color: white;
-  /* border-radius: 30px; */
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.584);
+  /* background-color: white; */
+  border-radius: 30px;
   margin-top: 5%;
   overflow-y: scroll;
-  height: 40em;
-  width: 50em;
-
+  /* height: 40em;
+  width: 50em; */
+  height: 450px;
+  width: 350px;
 }
 
 #modal-content::-webkit-scrollbar {

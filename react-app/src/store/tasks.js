@@ -60,11 +60,16 @@ const tasksReducer = (state = {}, action) => {
     let newState;
     switch (action.type) {
         case GET_TASKS: {
-            newState = {}
+            newState = { }
             action.tasks.forEach(task => newState[task.id] = task)
             return newState
         }
         case ADD_TASK: {
+            newState = { ...state }
+            newState[action.task.id] = action.task
+            return newState
+        }
+        case EDIT_TASK: {
             newState = { ...state }
             newState[action.task.id] = action.task
             return newState

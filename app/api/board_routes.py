@@ -10,6 +10,11 @@ def all_default_boards():
     boards = Board.query.all()
     return jsonify([board.to_dict() for board in boards])
 
+@board_routes.route('/<int:id>', methods=['GET'])
+def get_one_board(id):
+    boards = Board.query.get(id)
+    return boards.to_dict()
+
 @board_routes.route('/', methods=['POST'])
 def post_new_board():
     form=BoardForm()

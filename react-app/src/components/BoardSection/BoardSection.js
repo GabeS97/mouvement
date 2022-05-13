@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { deleteBoardThunk, getBoardThunk } from '../../store/boards'
+import { getTasksThunk } from '../../store/tasks'
 import LogoutButton from '../auth/LogoutButton'
 import './BoardSection.css'
 const BoardSection = () => {
@@ -31,7 +32,7 @@ const BoardSection = () => {
             <div className="boardSection__user__boards">
                 {boards.map(board => (
                     <div className="boardSection__board__container" key={board.id}  >
-                        <NavLink className="boardSection__board" to={`/home/boards/${board.id}/${board?.name.split(' ').join('_').toLowerCase()}`} style={{ color: 'black', textDecoration: 'none' }} activeStyle={{ backgroundColor: `rgb(232,231, 228)` }}>
+                        <NavLink className="boardSection__board" to={`/home/boards/${board.id}/${board?.name.split(' ').join('_').toLowerCase()}`} style={{ color: 'black', textDecoration: 'none' }} activeStyle={{ backgroundColor: `rgb(232,231, 228)` }} onClick={() => dispatch(getTasksThunk(board.id ))}>
                             <i className="fa-solid fa-caret-right"></i>
                             <div className="boardSection__icon">
                                 {board?.icon ?
