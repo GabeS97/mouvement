@@ -43,16 +43,16 @@ def seed_boards():
         # image_cover=None,
         icon='📓',
     )
-    board_six= Board(
-        user_id= 1,
-        template='Personal Home',
-        name='Personal Home',
-        description='Organize everything in your life in one place.',
-        # image_cover=None,
-        icon='🏡',
-    )
+    # board_six= Board(
+    #     user_id= 1,
+    #     template='Personal Home',
+    #     name='Personal Home',
+    #     description='Organize everything in your life in one place.',
+    #     # image_cover=None,
+    #     icon='🏡',
+    # )
 
-    db.session.add_all([board_two, board_three, board_four, board_five, board_six])
+    db.session.add_all([board_two, board_three, board_four, board_five])
     db.session.commit()
 
 def undo_boards():

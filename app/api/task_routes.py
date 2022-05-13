@@ -28,3 +28,15 @@ def delete_task(board_id, id):
     db.session.delete(task)
     db.session.commit()
     return task.to_dict()
+
+@task_routes.route('/boards/<int:board_id>/<int:id>', methods=['PUT'])
+def edit_task(board_id, id):
+    form=TaskForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        task = Task.query.get(id)
+        form.populate_obj(task)
+
+        db.session.add(task)
+        db.session.commit()
+        return task.to_dict()

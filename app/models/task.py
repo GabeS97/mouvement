@@ -8,6 +8,7 @@ class Task(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     board_id = db.Column(db.Integer, db.ForeignKey('boards.id'), nullable=False)
     tasks =  db.Column(db.String(500), nullable=False)
+    header = db.Column(db.String(50))
     created_at = db.Column(db.DateTime, nullable=False, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, nullable=False, server_default=db.func.now(), server_onupdate=db.func.now())
 
@@ -19,5 +20,7 @@ class Task(db.Model):
             'user_id': self.user_id,
             'board_id': self.board_id,
             'tasks': self.tasks,
-            'board': self.board.name
+            'board': self.board.name,
+            'header': self.header,
+            'created_at': self.created_at
         }

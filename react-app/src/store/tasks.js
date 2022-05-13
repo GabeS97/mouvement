@@ -47,7 +47,7 @@ export const editTaskThunk = (board_id, task) => async dispatch => {
 export const deleteTaskThunk = (board_id, task_id) => async dispatch => {
     const response = await fetch(`/api/tasks/boards/${board_id}/${task_id}/`, {
         method: 'DELETE',
-        body: JSON.stringify({task_id})
+        body: JSON.stringify({ task_id })
     })
     if (response.ok) {
         const task = await response.json()
@@ -60,7 +60,7 @@ const tasksReducer = (state = {}, action) => {
     let newState;
     switch (action.type) {
         case GET_TASKS: {
-            newState = { ...state }
+            newState = {}
             action.tasks.forEach(task => newState[task.id] = task)
             return newState
         }

@@ -1,8 +1,8 @@
-import React from 'react'
-import { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useEffect, useState} from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { deleteBoardThunk } from '../../../../store/boards'
+import { getTasksThunk } from '../../../../store/tasks'
 import { Modal } from '../../../context/Modal'
 import EditBoard from '../../EditBoard/EditBoard'
 import './TaskList.css'
@@ -14,6 +14,14 @@ const TaskList = ({ boards, hideForm }) => {
 
     const items = document.querySelectorAll('.taskList__item')
     const columns = document.querySelectorAll('.taskList__column')
+
+    const tasks = Object.values(useSelector(state => state.tasks))
+
+    useEffect(() => {
+        dispatch(getTasksThunk(+boardId))
+    }, [dispatch])
+
+
 
     items.forEach(item => {
         item.addEventListener('dragstart', dragStart)
@@ -81,10 +89,9 @@ const TaskList = ({ boards, hideForm }) => {
                 <div className="taskList__container">
                     <div className="taskList__column">
                         <h1>To Do</h1>
-                        <div className="taskList__item" draggable="true">Finish TaskList view</div>
-                        <div className="taskList__item" draggable="true">Finish PUT frontend for Boards</div>
-                        <div className="taskList__item" draggable="true">Fix remaining bugs on first feat</div>
-                        <div className="taskList__item" draggable="true">Change to state value later</div>
+                        {tasks.map(task => (
+                            <div className="taskList__item" draggable="true">{task.tasks}</div>
+                        ))}
                     </div>
 
                     <div className="taskList__column">
