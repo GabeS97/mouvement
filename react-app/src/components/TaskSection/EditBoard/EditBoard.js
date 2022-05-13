@@ -46,6 +46,12 @@ const EditBoard = ({ board, hideForm }) => {
     return (
         <div className='editBoard' >
             <form className='editBoard__form' onSubmit={handleEdit}>
+                <div className="editBoard__viewIcon">
+                    {currIcon}
+                </div>
+                <div className="editBoard__icon">
+                    <input value={currIcon} onChange={(e) => setCurrIcon(e.target.value)} />
+                </div>
                 <div className="editBoard__boardName">
                     <input
                         className='editBoard__name'
@@ -70,7 +76,7 @@ const EditBoard = ({ board, hideForm }) => {
                         <option disabled>Select Template</option>
                         <option value='Quick Note'>Quick Note</option>
                         {/* <option value='Task List'>Task List</option> */}
-                        <option value='Reading List '>Reading List</option>
+                        <option value='Reading List'>Reading List</option>
                         <option value='Journal'>Journal</option>
                         {/* <option value='Personal Home'>Personal Home</option> */}
                     </select>
