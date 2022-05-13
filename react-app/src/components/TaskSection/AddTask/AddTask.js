@@ -17,6 +17,7 @@ const AddTask = ({ boardId, closeField }) => {
             board_id: +boardId,
             tasks: currTask
         }
+        console.log(create_tasks);
         await dispatch(addTaskThunk(+boardId, create_tasks))
         setCurrTasks('')
         closeField()
@@ -32,7 +33,7 @@ const AddTask = ({ boardId, closeField }) => {
                         placeholder='Enter your new task...'
                         value={currTask}
                         onChange={handleCurrTask}
-                    /> 
+                    />
                 </label>
                 <button type='submit'>Submit</button>
             </form>

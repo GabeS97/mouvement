@@ -31,8 +31,8 @@ const QuickList = ({ tasks, boardId }) => {
         //     tasks: task.tasks
         // }
 
-        let elementEdits = document.getElementById(`task-editables-${taskId}`)
-        elementEdits.contentEditable = 'true'
+        // let elementEdits = document.getElementById(`task-editables-${taskId}`)
+        // elementEdits.contentEditable = 'true'
     }
 
     const submitEdit = (e) => {
@@ -52,23 +52,26 @@ const QuickList = ({ tasks, boardId }) => {
     }, [dispatch])
 
 
-
+    console.log(currTask, 'this is the currTask component for QuickList')
+    console.log(currTaskId, 'this is the currTaskId component for QuickList')
     return (
         <div className='quickList'>
             {tasks.map(task => (
                 <div className="quickList__checkBox" key={task.id} id={task.id} onClick={handleEdit}>
-                    <label htmlFor='checkbox' className='boxContainer'>
-                        <input type='checkbox' />
-                        <div className="test" contentEditable='false' id={`task-editables-${task.id}`}>
-                            {task.tasks}
-                        </div>
-                        <div className="test_submit" onClick={submitEdit}>
-                            Submit
-                        </div>
-                        {/* <span className='quickList__checked'></span> */}
-                    </label>
+                    <div className="quickList__checkbox__container">
+                        {/* <label htmlFor='checkbox' className='boxContainer'> */}
+                            {/* <input type='checkbox' /> */}
+                            <div className="test" id={`task-editables-${task.id}`}>
+                                {task.tasks}
+                            </div>
+                            {}
+                            {/* <div className="test_submit" onClick={submitEdit}>
+                                Submit
+                            </div> */}
+                            {/* <span className='quickList__checked'></span> */}
+                        {/* </label> */}
+                    </div>
                     <i className="fa-solid fa-trash-can quickList__delete" onClick={() => dispatch(deleteTaskThunk(+boardId, task.id))}></i>
-
                 </div>
                 // <NavLink to={`/home/boards/${+boardId}/${board?.name.split(' ').join('_').toLowerCase()}/tasks/${task.id}`} >
                 //     <SingleListEdit boardId={boardId} task={task} key={task} />

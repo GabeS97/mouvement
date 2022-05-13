@@ -20,7 +20,6 @@ const TaskSection = () => {
     const boards = Object.values(useSelector(state => state.boards))
     const oneBoard = boards.find(board => board.name.toLowerCase() === name)
     const tasks = Object.values(useSelector(state => state.tasks))
-    console.log(tasks);
 
     useEffect(() => {
         dispatch(getTasksThunk(boardId))

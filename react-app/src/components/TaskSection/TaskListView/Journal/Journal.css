@@ -6,7 +6,7 @@
 }
 
 .journal__header__container {
-    display: flex;
+  display: flex;
 }
 .journal__contents {
   /* background-color: pink; */
@@ -25,8 +25,9 @@
 .journal__headers {
   display: flex;
   flex-direction: column;
-  padding-bottom: 3em;
   row-gap: 1em;
+  border-bottom: solid 2px rgb(228, 226, 225);
+  padding-bottom: 1em;
   width: 100%;
 }
 
@@ -50,7 +51,6 @@
 
 .journal__icon > h1 {
   font-size: 32px;
-
 }
 
 .journal__options {
@@ -130,4 +130,71 @@
   /* max-width: 100%; */
   width: 100%;
   padding: 20px 10px;
+}
+
+.journal__newEntry {
+  margin-top: 1em;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  column-gap: 1em;
+  flex-direction: column;
+}
+
+.journal__newEntry:hover {
+  background-color: rgb(241, 241, 239);
+  cursor: pointer;
+}
+
+.journal__dailyReflection {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  row-gap: .5em;
+}
+
+.journal__thinks {
+  display: flex;
+  justify-content: space-between;
+  height: fit-content;
+  align-items: center;
+  width: 100%;
+}
+
+.journal__thoughts {
+  /* display: flex;
+  width: 100%;
+  height: fit-content;
+  align-items: center;
+  width: 100%; */
+}
+
+.journal__thinks:hover {
+  background-color: rgb(241, 241, 239);
+}
+
+.journal__newThought {
+  color: rgb(207, 207, 206);
+  cursor: pointer;
+}
+
+.journal__newThought:hover  {
+  background-color: rgb(241, 241, 239);
+  display: block;
+}
+
+.journal__thinks {
+  display: flex;
+  justify-content: space-between;
+}
+
+.journal__trash {
+  display: none;
+}
+
+
+.journal__thinks:hover .journal__trash {
+  display: block;
+  cursor: pointer;
 }

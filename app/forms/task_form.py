@@ -6,3 +6,4 @@ class TaskForm(FlaskForm):
     user_id = IntegerField('user_id', validators=[DataRequired()])
     board_id = IntegerField('board_id', validators=[DataRequired()])
     tasks = StringField('tasks')
+    header = StringField('header')
