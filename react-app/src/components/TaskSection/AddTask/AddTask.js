@@ -4,8 +4,11 @@ import { addTaskThunk } from '../../../store/tasks'
 import './AddTask.css'
 
 const AddTask = ({ boardId, closeField }) => {
-    const [currTask, setCurrTasks] = useState('')
     const sessionUser = useSelector(state => state.session.user)
+    const [currTask, setCurrTasks] = useState('')
+    const [currMedia, setCurrMedia] = useState('')
+    const [currAuthor, setCurrAuthor] = useState(sessionUser?.username)
+    const [currHeader, setCurrHeader] = useState('Books')
     const dispatch = useDispatch()
     const handleCurrTask = (e) => setCurrTasks(e.target.value)
 
@@ -15,7 +18,10 @@ const AddTask = ({ boardId, closeField }) => {
         const create_tasks = {
             user_id: sessionUser?.id,
             board_id: +boardId,
-            tasks: currTask
+            tasks: currTask,
+            // media: currMedia,
+            // author: currAuthor,
+            // header: currHeader,
         }
         await dispatch(addTaskThunk(+boardId, create_tasks))
         setCurrTasks('')

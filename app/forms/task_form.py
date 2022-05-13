@@ -6,6 +6,6 @@ class TaskForm(FlaskForm):
     user_id = IntegerField('user_id', validators=[DataRequired()])
     board_id = IntegerField('board_id', validators=[DataRequired()])
     tasks = StringField('tasks')
-    media = SelectField('media', choices=['Books', 'Article', 'Podcast', 'Video'])
+    media = StringField('media')
     author = StringField('author')
     header = StringField('header')
