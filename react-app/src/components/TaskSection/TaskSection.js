@@ -53,7 +53,7 @@ const TaskSection = () => {
     } else if (template === 'reading list') {
         return <ReadingList boards={boards} hideForm={hideForm} tasks={tasks} />
     } else if (template === 'journal') {
-        return <Journal boards={boards} hideForm={hideForm} />
+        return <Journal boards={boards} hideForm={hideForm} tasks={tasks} />
     } else if (template === 'personal home') {
         return <PersonalHome boards={boards} hideForm={hideForm} />
         // } else {
