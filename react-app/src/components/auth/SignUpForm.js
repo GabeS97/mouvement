@@ -33,7 +33,7 @@ const SignUpForm = () => {
       password: 'password'
     }
     await dispatch(login(demo.email, demo.password))
-    history.push('/home')
+    history.push('/')
   }
   const updateUsername = (e) => {
     setUsername(e.target.value);
@@ -52,7 +52,7 @@ const SignUpForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/' />;
+    return <Redirect to='/home' />;
   }
 
   return (

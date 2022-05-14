@@ -15,7 +15,7 @@ const Home = () => {
 
             <div className="home__rightBar">
                 <Switch>
-                    <Route path='/home' exact={true}>
+                    <Route path='/' exact={true}>
                         <DefaultHome />
                     </Route>
                     <Route path='/home/boards/:boardId/:path'>

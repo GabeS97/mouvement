@@ -11,7 +11,7 @@ import { getTasksThunk, deleteTaskThunk, editTaskThunk } from '../../../../store
 import AddTask from '../../AddTask/AddTask';
 import ShowReflection from './ShowReflection/ShowReflection';
 
-const Journal = ({ hideForm, boards, tasks }) => {
+const Journal = ({ hideForm, boards, tasks, handleDelete }) => {
     const { boardId } = useParams()
     const board = boards.find(board => board.id === +boardId)
     const dispatch = useDispatch()
@@ -55,6 +55,8 @@ const Journal = ({ hideForm, boards, tasks }) => {
         setShowField(false)
     }
 
+    console.log(typeof boardId);
+
     return (
         <div className='journal'>
             <div className="journal__contents">
@@ -74,7 +76,7 @@ const Journal = ({ hideForm, boards, tasks }) => {
                                         <EditBoard board={board} hideForm={hideForm} />
                                     </Modal>
                                 )}
-                                <div className="journal__delete" onClick={() => dispatch(deleteBoardThunk(+boardId))}>
+                                <div className="journal__delete" onClick={handleDelete}>
                                     Delete
                                 </div>
                             </div>

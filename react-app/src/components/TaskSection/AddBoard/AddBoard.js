@@ -1,16 +1,25 @@
-import React from 'react'
-import { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { useSelector } from 'react-redux'
-import { addBoardThunk } from '../../../store/boards'
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
+import { addBoardThunk, getBoardThunk } from '../../../store/boards'
 import './AddBoard.css'
 const AddBoard = () => {
     const dispatch = useDispatch()
+    const history = useHistory()
     const sessionUser = useSelector(state => state.session.user)
     const [currName, setCurrName] = useState('')
     const [currDesc, setCurrDesc] = useState('')
     const [currSelect, setCurrSelect] = useState('Quick Note')
-    const [currIcon, setCurrIcon] = useState('📗')
+    const [currIcon, setCurrIcon] = useState('🧢')
+    const boards = Object.values(useSelector(state => state.boards))
+    let newBoard = boards[boards.length - 1]
+
+
+    console.log(newBoard);
+    useEffect(() => {
+        dispatch(getBoardThunk())
+    }, [dispatch])
+
     const handleSumbit = async (e) => {
         e.preventDefault()
 
@@ -23,6 +32,9 @@ const AddBoard = () => {
         }
 
         await dispatch(addBoardThunk(add_board))
+        alert('Congratulations! You have just created a new board!')
+        history.push(`/home/boards/${newBoard.id}/${newBoard?.name.split(' ').join('_').toLowerCase()}`)
+
     }
     const handleName = (e) => {
         setCurrName(e.target.value)
@@ -59,7 +71,7 @@ const AddBoard = () => {
                 <div className="addBoard__custom__select">
                     <select value={currSelect} onChange={handleSelect}>
                         {/* <option disabled>Templates</option> */}
-                        <option  disabled>Select Template</option>
+                        <option disabled>Select Template</option>
                         <option value='Quick Note'>Quick Note</option>
                         {/* <option value='Task List'>Task List</option> */}
                         <option value='Reading List'>Reading List</option>

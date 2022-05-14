@@ -13,8 +13,20 @@ const EditBoard = ({ board, hideForm }) => {
     const [currDesc, setCurrDesc] = useState(description ? description : '')
     const [currSelect, setCurrSelect] = useState(template ? template : 'Quick Note')
     const [currIcon, setCurrIcon] = useState(icon ? icon : '📗')
+    const [showEmoji, setShowEmoji] = useState(false)
     const history = useHistory()
 
+
+    let emojis = ['🏆', '🥇', '🥈', '🥉', '🏅', '🎖', '🐶', '🐱', '🐭', '🐹', '🐰', '🦊', '🐻', '🐼', '🐻‍❄️', '🐨', '🐯', '🦁', '🐮', '🐷', '🐽', '🐸', '🐵', '🙈', '🙉', '🙊', '🐒', '🐔', '🐧', '🐦', '🐤', '🐣', '🐥', '🦆', '🦅', '🦉', '🦇', '🐺', '🐗', '🐴', '🦄', '🐝', '🪱', '🐛', '🦋', '🐌', '🐞', '🐜', '🪰', '🪲', '🪳', '🦟', '🦗', '🕷', '🕸', '🦂', '🐢', '🐍', '🦎', '🦖', '🦕', '🐙', '🦑', '🦐', '🦞', '🦀', '🐡', '🐠', '🐟', '🐬', '🐳', '🐋', '🦈', '🐊', '🐅', '🐆', '🦓', '🦍', '🦧', '🦣', '🐘', '🦛', '🦏', '🐪', '🐫', '🦒', '🦘', '🦬', '🐃', '🐂', '🐄', '🐎', '🐖', '🐏', '🐑', '🦙', '🐐', '🦌', '🐕', '🐩', '🦮', '🐕‍🦺', '🐈 ', '🐈‍⬛', '📄', '📑', '🧾', '📊', '📈', '📉', '🗒', '🗓', '📆', '📅', '🗑', '📇', '🗃', '🗳', '🗄', '📋', '📁', '📂', '🗂', '🗞', '📰', '📓', '📔', '📒', '📕', '📗', '📘', '📙', '📚', '📖', '🔖', '🧷', '🔗', '📎', '🖇', '📐', '📏', '🧮', '📌', '📍', '✂️', '🖊', '🖋', '✒️', '🖌', '🖍', '📝', '✏️', '🔍', '🔎', '🔏', '🔐', '🔒', '🔓',]
+
+    const changeIcon = (e) => {
+        let emojiId = +e.currentTarget.id
+        let emoji = document.getElementById(emojiId).innerText
+
+        setCurrIcon(emoji)
+        console.log(emoji)
+        setShowEmoji(false)
+    }
 
     const handleEdit = async (e) => {
         e.preventDefault()
@@ -53,28 +65,50 @@ const EditBoard = ({ board, hideForm }) => {
                 </div>
             </div>
             <form className='editBoard__form' onSubmit={handleEdit}>
-                <div className="editBoard__icon">
-                    <input value={currIcon} onChange={(e) => setCurrIcon(e.target.value)} />
+                <div className="editBoard__icons">
+                    <div className="editBoard__icon">
+
+                        <label>Icon:
+                            <div value={currIcon} className='editIcon__emoji' style={{ cursor: 'pointer', border: 'none', outline: 'none' }} onClick={() => setShowEmoji(!showEmoji)}>{currIcon}</div>
+                        </label>
+
+                    </div>
+                    <>
+                        {showEmoji &&
+                            <div className="editBoard__emoji__dropdown">
+                                {emojis.map((emoji, idx) => (
+                                    <div className='editBoard__emoji' key={idx} id={idx} onClick={changeIcon}>
+                                        {console.log(idx)}
+                                        {emoji}</div>
+                                ))}
+                            </div>
+                        }
+                    </>
                 </div>
                 <div className="editBoard__boardName">
-                    <input
-                        className='editBoard__name'
-                        placeholder='Untitled'
-                        value={currName}
-                        onChange={handleName}
-                    />
+                    <label>Title:
+                        <input
+                            className='editBoard__name'
+                            placeholder='Untitled'
+                            value={currName}
+                            onChange={handleName}
+                        />
+                    </label>
                 </div>
 
                 <div className="editBoard__descriptiom">
-                    <input
-                        className='editBoard__boardDescription'
-                        placeholder='Add a description'
-                        value={currDesc}
-                        onChange={handleDesc}
-                    />
+                    <label>Description:
+                        <input
+                            className='editBoard__boardDescription'
+                            placeholder='Add a description'
+                            value={currDesc}
+                            onChange={handleDesc}
+                        />
+                    </label>
                 </div>
 
                 <div className="editBoard__custom__select">
+                    {/* <label>Select: */}
                     <select value={currSelect} onChange={handleSelect}>
                         {/* <option disabled>Templates</option> */}
                         <option disabled>Select Template</option>
@@ -84,8 +118,9 @@ const EditBoard = ({ board, hideForm }) => {
                         <option value='Journal'>Journal</option>
                         {/* <option value='Personal Home'>Personal Home</option> */}
                     </select>
+                    {/* </label> */}
                 </div>
-                <button type='submit' style={{ cursor: 'pointer'}} className='editBoard__submit'>Edit board</button>
+                <button type='submit' style={{ cursor: 'pointer' }} className='editBoard__submit'>Edit board</button>
             </form>
         </div>
     )

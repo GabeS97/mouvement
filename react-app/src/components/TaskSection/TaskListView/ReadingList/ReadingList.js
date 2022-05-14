@@ -11,7 +11,7 @@ import { deleteTaskThunk, editTaskThunk } from '../../../../store/tasks';
 import EditReadingList from './AddReadingList/EditReadingList/EditReadingList';
 
 
-const ReadingList = ({ boards, tasks }) => {
+const ReadingList = ({ boards, tasks, handleDelete }) => {
     const { boardId } = useParams()
     const board = boards.find(board => board.id === +boardId)
     const sessionUser = useSelector(state => state.session.user)
@@ -85,7 +85,7 @@ const ReadingList = ({ boards, tasks }) => {
                                         <EditBoard board={board} hideForm={hideForm} />
                                     </Modal>
                                 )}
-                                <div className="readingList__delete" onClick={() => dispatch(deleteBoardThunk(+boardId))}>
+                                <div className="readingList__delete" onClick={handleDelete}>
                                     Delete
                                 </div>
                             </div>
