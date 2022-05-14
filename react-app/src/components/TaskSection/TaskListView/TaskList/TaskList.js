@@ -30,7 +30,7 @@ const TaskList = ({ boards, hideForm, tasks }) => {
 
 
     return (
-        <div className="taskList" style={{ display: 'flex', justifyContent: 'center', height: '100%'}}>
+        <div className="taskList" style={{ display: 'flex', justifyContent: 'center', height: '100%' }}>
             <DragDropContext onDragEnd={result => console.log(result)}>
 
 

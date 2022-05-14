@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react'
-import { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams, useLocation } from 'react-router-dom'
-import { getBoardThunk, getOneBoardThunk } from '../../store/boards'
+import { useParams, useLocation, useHistory } from 'react-router-dom'
+import { deleteBoardThunk, getBoardThunk, getOneBoardThunk } from '../../store/boards'
 import { getTasksThunk } from '../../store/tasks'
 import BoardSection from '../BoardSection/BoardSection'
 import Journal from './TaskListView/Journal/Journal'
@@ -16,21 +15,34 @@ const TaskSection = () => {
     const { boardId } = useParams()
     const path = useLocation()
     const dispatch = useDispatch()
+    const history = useHistory()
     const pathname = path.pathname.split('/')
     const name = pathname[pathname.length - 1].split('_').join(' ')
     const boards = Object.values(useSelector(state => state.boards))
     const board = Object.values(useSelector(state => state.boards))
     const oneBoard = boards.find(board => board.name.toLowerCase() === name)
     const tasks = Object.values(useSelector(state => state.tasks))
+    const boardsArr = Object.values(useSelector(state => state.boards))
+    let newBoard = boardsArr[boardsArr.length - 1]
 
+    useEffect(() => {
+        dispatch(getBoardThunk())
+    }, [dispatch])
+
+    const handleDelete = async (e) => {
+        e.preventDefault()
+        await dispatch(deleteBoardThunk(+boardId))
+        history.push(`/home/boards/${newBoard.id}/${newBoard?.name.split(' ').join('_').toLowerCase()}`)
+
+    }
 
     useEffect(() => {
         dispatch(getTasksThunk(+boardId))
     }, [dispatch])
 
-    useEffect(() => {
-        dispatch(getOneBoardThunk(+boardId))
-    }, [dispatch])
+    // useEffect(() => {
+    //     dispatch(getOneBoardThunk(+boardId))
+    // }, [dispatch])
 
     const [showModal, setShowModal] = useState(false)
     let template;
@@ -48,15 +60,17 @@ const TaskSection = () => {
 
 
     if (template === 'quick note') {
-        return <QuickNote boards={boards} hideForm={hideForm} tasks={tasks} />
-    } else if (template === 'task list') {
-        return <TaskList boards={boards} hideForm={hideForm} tasks={tasks} />
-    } else if (template === 'reading list') {
-        return <ReadingList boards={boards} hideForm={hideForm} tasks={tasks} />
+        return <QuickNote boards={boards} hideForm={hideForm} tasks={tasks} handleDelete={handleDelete} />
+    }
+    // else if (template === 'task list') {
+    //     return <TaskList boards={boards} hideForm={hideForm} tasks={tasks} handleDelete={handleDelete} />
+    // }
+    else if (template === 'reading list') {
+        return <ReadingList boards={boards} hideForm={hideForm} tasks={tasks} handleDelete={handleDelete} />
     } else if (template === 'journal') {
-        return <Journal boards={boards} hideForm={hideForm} tasks={tasks} />
-    } else if (template === 'personal home') {
-        return <PersonalHome boards={boards} hideForm={hideForm} />
+        return <Journal boards={boards} hideForm={hideForm} tasks={tasks} handleDelete={handleDelete} />
+    // } else if (template === 'personal home') {
+    //     return <PersonalHome boards={boards} hideForm={hideForm} />
         // } else {
         //     return 'Change this to a defautl task list page (make later) '
     }

@@ -1,20 +1,25 @@
 import React from 'react'
+import { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import { deleteBoardThunk } from '../../../../store/boards';
+import { deleteBoardThunk, getBoardThunk } from '../../../../store/boards';
 import { Modal } from '../../../context/Modal';
 import AddTask from '../../AddTask/AddTask';
 import EditBoard from '../../EditBoard/EditBoard';
 import QuickList from './QuickList/QuickList';
 import './QuickNote.css'
 
-const QuickNote = ({ boards, hideForm, tasks }) => {
+const QuickNote = ({ boards, hideForm, tasks, handleDelete }) => {
     const { boardId } = useParams()
     const board = boards.find(board => board.id === +boardId)
+    const history = useHistory()
     const dispatch = useDispatch()
     const [showModal, setShowModal] = useState(false)
     const [showField, setShowField] = useState(false)
+
+
 
     const closeField = () => {
         setShowField(false)
@@ -43,7 +48,7 @@ const QuickNote = ({ boards, hideForm, tasks }) => {
                                             <EditBoard board={board} hideForm={hideForm} />
                                         </Modal>
                                     )}
-                                    <div className="quickNote__delete" onClick={() => dispatch(deleteBoardThunk(+boardId))}>
+                                    <div className="quickNote__delete" onClick={handleDelete}>
                                         Delete
                                     </div>
                                 </div>
