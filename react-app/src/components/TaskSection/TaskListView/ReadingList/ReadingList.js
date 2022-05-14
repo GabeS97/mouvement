@@ -7,15 +7,25 @@ import { Modal } from '../../../context/Modal';
 import { deleteBoardThunk } from '../../../../store/boards';
 import EditBoard from '../../EditBoard/EditBoard';
 import AddReadingList from './AddReadingList/AddReadingList';
-import { deleteTaskThunk } from '../../../../store/tasks';
+import { deleteTaskThunk, editTaskThunk } from '../../../../store/tasks';
+import EditReadingList from './AddReadingList/EditReadingList/EditReadingList';
 
 
 const ReadingList = ({ boards, tasks }) => {
     const { boardId } = useParams()
     const board = boards.find(board => board.id === +boardId)
+    const sessionUser = useSelector(state => state.session.user)
     const dispatch = useDispatch()
     const [showModal, setShowModal] = useState(false)
     const [mediaModal, setMediaModal] = useState(false)
+    const [taskModal, setTaskModal] = useState(false)
+    const [currTask, setCurrTask] = useState()
+    const [currTaskId, setCurrTaskId] = useState()
+
+    const closeTask = () => {
+        setTaskModal(false)
+    }
+
     const hideForm = () => {
         setShowModal(false)
     }
@@ -23,6 +33,37 @@ const ReadingList = ({ boards, tasks }) => {
     const hideMedia = () => {
         setMediaModal(false)
     }
+
+    const handleEdit = (e) => {
+        e.preventDefault()
+
+        let taskId = +e.currentTarget.id
+        let task = tasks.find(task => task.id === taskId)
+        setCurrTaskId(taskId)
+        setCurrTask(task)
+    }
+
+    const submitEdit = async (e) => {
+        e.preventDefault()
+        let editCategory = document.getElementById(`readingList-category-edit-${currTaskId}`).innerText.split(':')
+        let category = editCategory[editCategory.length - 1]
+
+
+        let readInfo = document.getElementById(`readingList-tasks-edit-${currTaskId}`).innerText.split('By:')
+        let bookAuthor = readInfo[readInfo.length - 1]
+        let book = readInfo[0]
+        const edit_readingList = {
+            id: +e.currentTarget.id,
+            user_id: sessionUser?.id,
+            boardId: +boardId,
+            tasks: book,
+            media: category,
+            author: bookAuthor,
+        }
+        console.log(readInfo)
+        await dispatch(editTaskThunk(+boardId, edit_readingList))
+    }
+
     return (
         <div className='readingList'>
             <div className="readingList__contents">
@@ -72,13 +113,13 @@ const ReadingList = ({ boards, tasks }) => {
                         </Modal>
                     }
                     {tasks.map(task => (
-                        <div className="readingList__medias" >
-                            <div className="readingList__reads">
-                                <li style={{ listStyle: 'none' }}>
-                                    <h5>
+                        <div className="readingList__medias" id={task.id} >
+                            <div className="readingList__reads"  >
+                                <li style={{ listStyle: 'none' }} id={task.id}>
+                                    <h5 id={`readingList-category-edit-${task.id}`} >
                                         {`Category: ${task.media}`}
                                     </h5>
-                                    <h4>
+                                    <h4 id={`readingList-tasks-edit-${task.id}`}>
                                         {`${task.tasks} By: ${task.author}`}
                                     </h4>
                                 </li>
@@ -86,9 +127,15 @@ const ReadingList = ({ boards, tasks }) => {
 
                             <div className="readingList__buttons">
                                 <div className="readingList__iconButtons">
-                                    <i className="fa-regular fa-pen-to-square quickList__edit"  ></i>
+                                    <i className="fa-regular fa-pen-to-square quickList__edit" onClick={() => setTaskModal(!taskModal)}></i>
                                     <i className="fa-solid fa-trash-can quickList__delete" onClick={() => dispatch(deleteTaskThunk(+boardId, task.id))}></i>
                                 </div>
+
+                                {taskModal && (
+                                    <Modal onClose={() => setTaskModal(false)}>
+                                        <EditReadingList task={task} boardId={boardId} closeTask={closeTask} />
+                                    </Modal>
+                                )}
                             </div>
                         </div>
                     ))}

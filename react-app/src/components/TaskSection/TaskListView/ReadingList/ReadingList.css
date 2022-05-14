@@ -168,7 +168,7 @@
 .readingList__medias {
   display: flex;
   align-items: center;
-  width: 100%;
+  width: 100%;;
   justify-content: space-between;
 }
 
@@ -186,4 +186,16 @@
 
 .readingList__medias:hover {
   background-color: rgb(247, 246, 243);
+}
+
+.readingList__category {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.readingList__reads {
+  /* background-color: black  ; */
+  display: flex;
+  width: 100%;
 }

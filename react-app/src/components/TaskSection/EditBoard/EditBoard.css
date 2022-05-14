@@ -1,0 +1,61 @@
+.editBoard {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    /* align-items: center; */
+    flex-direction: column;
+    text-align: center;
+}
+
+.editBoard__viewIcon {
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    height: fit-content;
+    align-items: center;
+    flex-direction: column;
+}
+
+.editBoard__viewIcon {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+}
+
+.icon {
+    font-size: 50px
+}
+.name {
+    font-size: 40px;
+}
+
+.editBoard__form {
+    display: flex;
+    flex-direction: column;
+    row-gap: .5em;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.editBoard__icon > input{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.editBoard__form input, select .editBoard__submit{
+    display: flex;
+    font-weight: bolder;
+
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 15em;
+    border: none;
+    border-radius: 5px;
+    height: 2em;
+}

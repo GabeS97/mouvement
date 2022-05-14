@@ -164,7 +164,7 @@
 
 .journal__thoughts {
   display: flex;
-  width: 100%;
+  width: 100%;;
   height: fit-content;
   align-items: center;
   width: 100%;
@@ -199,11 +199,18 @@
   cursor: pointer;
 }
 
-.journal__options {
+.journal__optionsButtons {
   display: none;
+
+
 }
 
-.journal__thinks:hover .journal__options {
+.journal__moreOptions {
+  display: flex;
+  column-gap: 1em;
+}
+
+.journal__thinks:hover .journal__optionsButtons {
   display: flex;
 }
 

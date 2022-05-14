@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min'
 import { editBoardThunk } from '../../../store/boards'
-
+import './EditBoard.css'
 const EditBoard = ({ board, hideForm }) => {
     const { boardId } = useParams()
     const { user_id, template, name, description, icon } = board
@@ -44,10 +44,15 @@ const EditBoard = ({ board, hideForm }) => {
     }
     return (
         <div className='editBoard' >
-            <form className='editBoard__form' onSubmit={handleEdit}>
-                <div className="editBoard__viewIcon">
+            <div className="editBoard__viewIcon">
+                <div className="icon">
                     {currIcon}
                 </div>
+                <div className="name">
+                    {currName}
+                </div>
+            </div>
+            <form className='editBoard__form' onSubmit={handleEdit}>
                 <div className="editBoard__icon">
                     <input value={currIcon} onChange={(e) => setCurrIcon(e.target.value)} />
                 </div>
@@ -80,7 +85,7 @@ const EditBoard = ({ board, hideForm }) => {
                         {/* <option value='Personal Home'>Personal Home</option> */}
                     </select>
                 </div>
-                <button type='submit'>Edit board</button>
+                <button type='submit' style={{ cursor: 'pointer'}} className='editBoard__submit'>Edit board</button>
             </form>
         </div>
     )
