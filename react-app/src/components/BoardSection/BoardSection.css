@@ -127,3 +127,9 @@
 .logout__button:hover {
   transform: scale(1.02);
 }
+
+.boardSection__addAPage a {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row-reverse;
+}

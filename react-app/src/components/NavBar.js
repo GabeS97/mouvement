@@ -36,7 +36,7 @@ const NavBar = () => {
 
           <div className="navBar__freeTrial">
             <NavLink to='/signup' style={{ textDecoration: 'none', color: 'white' }}>
-              Try Notion free
+              Try Mouvement free
             </NavLink>
           </div>
         </div>

@@ -10,6 +10,7 @@ import PersonalHome from './TaskListView/PersonalHome/PersonalHome'
 import QuickNote from './TaskListView/QuickNote/QuickNote'
 import ReadingList from './TaskListView/ReadingList/ReadingList'
 import TaskList from './TaskListView/TaskList/TaskList'
+import './TaskSelection.css'
 
 const TaskSection = () => {
     const { boardId } = useParams()
@@ -63,7 +64,7 @@ const TaskSection = () => {
 
 
     return (
-        <div>
+        <div className='taskSelection'>
 
         </div>
     )

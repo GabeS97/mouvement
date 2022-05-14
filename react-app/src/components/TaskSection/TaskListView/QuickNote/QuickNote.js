@@ -56,7 +56,7 @@ const QuickNote = ({ boards, hideForm, tasks }) => {
 
                 <div className="quickNote__notes">
                     <h2>Jot down some text</h2>
-                    <p >They found Mary, as usual, deep in the study of thorough-bass and human nature; and had some extracts to admire, and some new observations of threadbare morality to listen to. Catherine and Lydia had information for them of a different sort. CHANGE LATER TO SEEDER VALUE</p>
+                    <p>Jot down your ideas below! Hover to the to-do-list, to display the options to edit and delete. To make an edit, click on the text to make an inline text, and click off from the text item to commit the changes, or you can click on the pen to paper icon.</p>
                 </div>
 
                 <div className="quickNote__list">
@@ -71,7 +71,7 @@ const QuickNote = ({ boards, hideForm, tasks }) => {
                                 </h2>
                                 <div className="quickList__instructions">
                                     <h5>Please click on journal entry to make an edit</h5>
-                                    <h5>Hover over your Make t a to-do-list or over journal to display + to make a new entry</h5>
+                                    <h5>Hover over your Make a to-do-list or over journal to display + to make a new entry</h5>
                                 </div>
                             </div>
                         </div>

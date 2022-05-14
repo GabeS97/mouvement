@@ -39,7 +39,7 @@ def seed_boards():
     user_id= 1,
         template='Journal',
         name='Journal',
-        description='Document your life - daily happenings, special occasions, and reflections on your goals. Categorize entries with tags and automatically capture the date.',
+        description='Document your life - daily happenings, special occasions, and reflections on your goals. ].',
         # image_cover=None,
         icon='📓',
     )

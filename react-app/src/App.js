@@ -31,26 +31,24 @@ function App() {
   return (
     <BrowserRouter>
       {!user &&
-        <Switch>
-          <Route path='/' exact={true}>
-            <NavBar />
-          </Route>
+        <Route path='/' exact={true}>
+          <NavBar />
+        </Route>
 
-        </Switch>
 
       }
       <Switch>
+        {!user &&
+          <Route path='/' exact={true}>
+            <LandingPage />
+          </Route>
+        }
         <ProtectedRoute path='/home'>
           <Home />
         </ProtectedRoute>
         <Route path='/signup' exact={true}>
           <SignUpForm />
         </Route>
-        {!user &&
-          <Route path='/' exact={true}>
-            <LandingPage />
-          </Route>
-        }
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
