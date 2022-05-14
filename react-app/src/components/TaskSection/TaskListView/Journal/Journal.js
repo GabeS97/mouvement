@@ -11,7 +11,7 @@ import { getTasksThunk, deleteTaskThunk, editTaskThunk } from '../../../../store
 import AddTask from '../../AddTask/AddTask';
 import ShowReflection from './ShowReflection/ShowReflection';
 
-const Journal = ({ hideForm, boards, tasks  }) => {
+const Journal = ({ hideForm, boards, tasks }) => {
     const { boardId } = useParams()
     const board = boards.find(board => board.id === +boardId)
     const dispatch = useDispatch()
@@ -43,7 +43,7 @@ const Journal = ({ hideForm, boards, tasks  }) => {
             board_id: +boardId,
             tasks: editableElement.innerText
         }
-        await dispatch(editTaskThunk(+boardId, edit_journal ))
+        await dispatch(editTaskThunk(+boardId, edit_journal))
         alert('Congratulations you have successfully edited your entry!')
     }
 
@@ -69,7 +69,6 @@ const Journal = ({ hideForm, boards, tasks  }) => {
                                 <div className="journal__edit" onClick={() => setShowModal(true)}>
                                     Edit
                                 </div>
-
                                 {showModal && (
                                     <Modal onClose={() => setShowModal(false)}>
                                         <EditBoard board={board} hideForm={hideForm} />
@@ -106,9 +105,11 @@ const Journal = ({ hideForm, boards, tasks  }) => {
                     {items.map(thought => (
                         <div className='journal__thinks' key={thought.id} id={thought.id} onClick={hanldeEdit}>
                             <div className='journal__thoughts' id={`journal-task-editable-${thought.id}`} contentEditable='true' onBlur={submitEdit}>{thought.tasks} </div>
-                            <div className="journal__options">
-                                <i className="fa-regular fa-pen-to-square quickList__edit" onClick={submitEdit}></i>
-                                <i class="fa-regular fa-trash-can journal__trash" onClick={() => dispatch(deleteTaskThunk(+boardId, thought.id))}></i>
+                            <div className="journal__optionsButtons">
+                                <div className="journal__moreOptions">
+                                    <i className="fa-regular fa-pen-to-square quickList__edit" onClick={submitEdit}></i>
+                                    <i class="fa-regular fa-trash-can journal__trash" onClick={() => dispatch(deleteTaskThunk(+boardId, thought.id))}></i>
+                                </div>
                             </div>
                         </div>
                     ))}

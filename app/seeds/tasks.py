@@ -58,7 +58,7 @@ def seed_tasks():
         user_id=1,
         board_id=2,
         media= 'Books',
-        author= 'Normal People',
+        author= 'Sally Rooney ',
         tasks='Noraml People'
 
     )

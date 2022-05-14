@@ -31,7 +31,7 @@ def seed_boards():
         user_id= 1,
         template='Reading List',
         name='Reading List',
-        description='📚 Tell us what you are reading? In todays world, reading can be done in so many differnet medias; books, articles, podcasts, media, and more.... tell us all about it! Hover down to where it says "What are you reading," through that you will find that a + button will appear, this will let you create a list... Click on the text and make edits inline! Hover over the list items and notice there is a button on the right side of your list item, that prompt your to confirm either a delete or commit your edit',
+        description='📚 Tell us what you are reading? Now days, reading can be done in so many differnet medias; books, articles, podcasts, media, and more.... tell us all about it! Hover down to where it says "What are you reading," through that you will find that a + button will appear, this will let you create a list... Hover over the list items and notice there is a button on the right side of your list item, that prompt your to confirm either a delete or an edit to your entry',
         # image_cover=None,
         icon='📕',
     )
