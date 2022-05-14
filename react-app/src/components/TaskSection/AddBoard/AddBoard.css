@@ -6,12 +6,20 @@
     width: 100%;
 }
 
+.addBoard__custom__select > select {
+    border-radius: 5px;
+    width: 15em;
+}
+
 
 .addBoard__form {
     /* border: black solid; */
     display: flex;
     justify-content: center;
+    /* background-color: black; */
     width: 25em;
+    row-gap: 1em;
+    align-items: flex-start;
     flex-direction: column;
     height: 25em;
 }
@@ -43,4 +51,17 @@
 
 .boardSection__add {
     display: flex;
+}
+
+.addBoard__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15em;
+}
+
+.addBoard__boardName::placeholder {
+    display: flex;
+    justify-content: center;
+    align-content: center;
 }

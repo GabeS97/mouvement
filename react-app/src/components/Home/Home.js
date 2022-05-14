@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom'
 import BoardSection from '../BoardSection/BoardSection'
 import AddBoard from '../TaskSection/AddBoard/AddBoard'
 import TaskSection from '../TaskSection/TaskSection'
+import DefaultHome from './DefaultHome/DefaultHome'
 import './Home.css'
 
 const Home = () => {
@@ -14,6 +15,9 @@ const Home = () => {
 
             <div className="home__rightBar">
                 <Switch>
+                    <Route path='/home' exact={true}>
+                        <DefaultHome />
+                    </Route>
                     <Route path='/home/boards/:boardId/:path'>
                         <TaskSection />
                     </Route>

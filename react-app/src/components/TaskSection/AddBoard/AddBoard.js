@@ -67,7 +67,7 @@ const AddBoard = () => {
                         {/* <option value='Personal Home'>Personal Home</option> */}
                     </select>
                 </div>
-                <button type='submit'>Post new board</button>
+                <button type='submit' className='addBoard__button'>Post new board</button>
             </form>
         </div>
     )
