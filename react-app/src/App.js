@@ -38,12 +38,15 @@ function App() {
 
       }
       <Switch>
-        {!user &&
+        {!user ?
           <Route path='/' exact={true}>
             <LandingPage />
+          </Route> :
+          <Route path='/'>
+            <Home />
           </Route>
         }
-        <ProtectedRoute path='/home'>
+        <ProtectedRoute path='/home' >
           <Home />
         </ProtectedRoute>
         <Route path='/signup' exact={true}>
