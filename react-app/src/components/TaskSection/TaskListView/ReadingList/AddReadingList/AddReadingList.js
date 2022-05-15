@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { addTaskThunk } from '../../../../../store/tasks'
-
+import './AddReadingList.css'
 const AddReadingList = ({ boardId, hideMedia }) => {
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user)
@@ -31,6 +31,7 @@ const AddReadingList = ({ boardId, hideMedia }) => {
     }
     return (
         <div className='addReadingList'>
+            <header>Add to Reading List</header>
             <form className='addReadingList__form' onSubmit={handleSumbit}>
                 <div className="addReadingList_tasks">
                     <input
@@ -62,7 +63,7 @@ const AddReadingList = ({ boardId, hideMedia }) => {
                 {/* <div className="addReadingList__custom__media">
                     <input />
                 </div> */}
-                <button type='submit'>Create new list</button>
+                <button type='submit' className='addReadingList__button'>Create new list</button>
             </form>
         </div>
     )

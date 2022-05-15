@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import { editTaskThunk } from '../../../../../../store/tasks'
-
+import './EditReadingList.css'
 const EditReadingList = ({ task, boardId, closeTask }) => {
     const sessionUser = useSelector(state => state.session.user)
     const [currTask, setCurrTask] = useState(task?.tasks ? task?.tasks : '')
@@ -35,38 +35,43 @@ const EditReadingList = ({ task, boardId, closeTask }) => {
             <header>Edit reading</header>
             <form className='addReadingList__form' onSubmit={handleSumbit}>
                 <div className="addReadingList_tasks">
-                    <input
-                        className='addReadingList__task'
-                        placeholder='What are you reading?'
-                        value={currTask}
-                        onChange={hanldeTask}
-                    />
+                    <label>Book:
+                        <input
+                            className='addReadingList__task'
+                            placeholder='What are you reading?'
+                            value={currTask}
+                            onChange={hanldeTask}
+                        />
+                    </label>
                 </div>
-
                 <div className="addReadingList_authors">
-                    <input
-                        className='addReadingList__author'
-                        placeholder='Who wrote this?'
-                        value={currAuthor}
-                        onChange={handleAuthor}
-                    />
+                    <label>Author/Director:
+                        <input
+                            className='addReadingList__author'
+                            placeholder='Who wrote this?'
+                            value={currAuthor}
+                            onChange={handleAuthor}
+                        />
+                    </label>
                 </div>
 
                 <div className="addReadingList__medias">
-                    <input
-                        className='addReadingList__media'
-                        placeholder='Which media is this on?'
-                        value={currMedia}
-                        onChange={handleMedia}
-                    />
+                    <label>Media:
+                        <input
+                            className='addReadingList__media'
+                            placeholder='Which media is this on?'
+                            value={currMedia}
+                            onChange={handleMedia}
+                        />
+                    </label>
                 </div>
 
                 {/* <div className="addReadingList__custom__media">
                     <input />
                 </div> */}
-                <button type='submit'>Create new list</button>
+                <button type='submit' className='editReadingList__button' >Edit list</button>
             </form>
-        </div>
+        </div >
     )
 }
 

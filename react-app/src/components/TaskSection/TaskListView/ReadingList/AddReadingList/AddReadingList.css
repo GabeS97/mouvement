@@ -1,0 +1,61 @@
+.addReadingList {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  /* justify-content: center; */
+  /* align-items: center; */
+  flex-direction: column;
+  text-align: center;
+}
+
+.addReadingList > header {
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  height: fit-content;
+  align-items: center;
+  font-size: 30px;
+  flex-direction: column;
+  margin-top: 1.5em;
+  padding-bottom: 1em;
+  margin-bottom: 2em;
+  border-bottom: dotted white;
+  font-weight: bolder;
+}
+
+.addReadingList__form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5em;
+  align-items: center;
+  text-align: left;
+  height: 100%;
+}
+
+.addReadingList__form input {
+  display: flex;
+  font-weight: bolder;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  font-size: 20px;
+  background-color: transparent;
+  width: 15em;
+  border: none;
+  border-radius: 5px;
+  height: 2em;
+}
+
+.addReadingList__button {
+  display: flex;
+  font-weight: bolder;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  font-size: 20px;
+  background-color: transparent;
+  width: 15em;
+  cursor: pointer;
+  border-radius: 5px;
+  height: 2em;
+}
