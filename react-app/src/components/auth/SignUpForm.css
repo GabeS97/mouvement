@@ -101,3 +101,8 @@
 .signup__login:hover {
   color: rgb(235, 87, 87);
 }
+
+.signup_signupButton:disabled {
+  background-color: lightgray;
+  color: white
+}

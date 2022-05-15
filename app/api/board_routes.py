@@ -5,6 +5,16 @@ from app.forms import BoardForm
 
 board_routes = Blueprint('boards', __name__)
 
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = []
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages.append(f'{error}')
+    return errorMessages
+
 @board_routes.route('/', methods=['GET'])
 def all_default_boards():
     boards = Board.query.all()
@@ -26,6 +36,10 @@ def post_new_board():
         db.session.commit()
 
         return new_board.to_dict()
+    else:
+        print('\n\n', {"errors": validation_errors_to_error_messages(form.errors)}, '\n\n')
+        return {"errors": validation_errors_to_error_messages(form.errors)}, 400
+
 
 @board_routes.route('/<int:id>', methods=['DELETE'])
 def delete_board(id):
@@ -43,3 +57,5 @@ def edit_board(id):
         form.populate_obj(board_edited)
         db.session.commit()
         return board_edited.to_dict()
+    else:
+        return {"errors": validation_errors_to_error_messages(form.errors)}, 400

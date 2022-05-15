@@ -5,6 +5,16 @@ from app.forms import TaskForm
 
 task_routes = Blueprint('tasks', __name__)
 
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = []
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages.append(f'{error}')
+    return errorMessages
+
 @task_routes.route('/boards/<int:board_id>/', methods=['GET'])
 def get_all_tasks(board_id):
     tasks = Task.query.filter(Task.board_id == board_id).all()
@@ -21,6 +31,8 @@ def post_task(board_id):
         db.session.add(task)
         db.session.commit()
         return task.to_dict()
+    else:
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 @task_routes.route('/boards/<int:board_id>/<int:id>/', methods=['DELETE'])
 def delete_task(board_id, id):
@@ -40,3 +52,5 @@ def edit_task(board_id, id):
         db.session.add(task)
         db.session.commit()
         return task.to_dict()
+    else:
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 400

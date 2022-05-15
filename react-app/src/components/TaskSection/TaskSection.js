@@ -23,7 +23,8 @@ const TaskSection = () => {
     const oneBoard = boards.find(board => board.name.toLowerCase() === name)
     const tasks = Object.values(useSelector(state => state.tasks))
     const boardsArr = Object.values(useSelector(state => state.boards))
-    let newBoard = boardsArr[boardsArr.length - 1]
+    let newBoard = boardsArr[boardsArr.length - 2]
+    console.log(newBoard);
 
     useEffect(() => {
         dispatch(getBoardThunk())
@@ -32,9 +33,14 @@ const TaskSection = () => {
     const handleDelete = async (e) => {
         e.preventDefault()
         await dispatch(deleteBoardThunk(+boardId))
-        history.push(`/home/boards/${newBoard.id}/${newBoard?.name.split(' ').join('_').toLowerCase()}`)
-
+        if (boardsArr.length > 1) {
+            history.push(`/home/boards/${newBoard.id}/${newBoard?.name.split(' ').join('_').toLowerCase()}`)
+        } else {
+            history.push('/')
+        }
     }
+
+
 
     useEffect(() => {
         dispatch(getTasksThunk(+boardId))
@@ -45,6 +51,7 @@ const TaskSection = () => {
     // }, [dispatch])
 
     const [showModal, setShowModal] = useState(false)
+
     let template;
     if (oneBoard?.template) {
         template = oneBoard?.template.toLowerCase()
@@ -69,8 +76,8 @@ const TaskSection = () => {
         return <ReadingList boards={boards} hideForm={hideForm} tasks={tasks} handleDelete={handleDelete} />
     } else if (template === 'journal') {
         return <Journal boards={boards} hideForm={hideForm} tasks={tasks} handleDelete={handleDelete} />
-    // } else if (template === 'personal home') {
-    //     return <PersonalHome boards={boards} hideForm={hideForm} />
+        // } else if (template === 'personal home') {
+        //     return <PersonalHome boards={boards} hideForm={hideForm} />
         // } else {
         //     return 'Change this to a defautl task list page (make later) '
     }

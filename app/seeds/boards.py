@@ -43,6 +43,46 @@ def seed_boards():
         # image_cover=None,
         icon='📓',
     )
+    board_six = Board(
+    user_id= 1,
+        template='Journal',
+        name='Journals',
+        description='Document your life - daily happenings, special occasions, and reflections on your goals. ].',
+        # image_cover=None,
+        icon='📓',
+    )
+    board_seven = Board(
+    user_id= 1,
+        template='Journal',
+        name='Journalss',
+        description='Document your life - daily happenings, special occasions, and reflections on your goals. ].',
+        # image_cover=None,
+        icon='📓',
+    )
+    board_eight = Board(
+    user_id= 1,
+        template='Journal',
+        name='Journalsss',
+        description='Document your life - daily happenings, special occasions, and reflections on your goals. ].',
+        # image_cover=None,
+        icon='📓',
+    )
+    board_nine = Board(
+    user_id= 1,
+        template='Journal',
+        name='Journaling',
+        description='Document your life - daily happenings, special occasions, and reflections on your goals. ].',
+        # image_cover=None,
+        icon='📓',
+    )
+    board_ten = Board(
+    user_id= 1,
+        template='Journal',
+        name='Journalssssss',
+        description='Document your life - daily happenings, special occasions, and reflections on your goals. ].',
+        # image_cover=None,
+        icon='📓',
+    )
     # board_six= Board(
     #     user_id= 1,
     #     template='Personal Home',
@@ -52,7 +92,7 @@ def seed_boards():
     #     icon='🏡',
     # )
 
-    db.session.add_all([board_two, board_four, board_five])
+    db.session.add_all([board_two, board_four, board_five, board_six, board_seven, board_eight, board_nine, board_ten])
     db.session.commit()
 
 def undo_boards():

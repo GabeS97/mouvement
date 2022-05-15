@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
@@ -13,11 +14,22 @@ const LoginForm = () => {
   const history = useHistory()
   const dispatch = useDispatch();
 
+
+  useEffect(() => {
+    let validationErrors = []
+    if (email.length === 0) validationErrors.push("Please provide an email address.")
+    if (!email.includes('@')) validationErrors.push("Please provide a valid email.")
+    if (password.length === 0) validationErrors.push("Please provide a password.")
+    setErrors(validationErrors)
+  }, [email, password])
+
   const onLogin = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
     if (data) {
       setErrors(data);
+    } else {
+      history.push('/')
     }
   };
 
@@ -62,7 +74,7 @@ const LoginForm = () => {
 
           <div>
             {errors.map((error, ind) => (
-              <div key={ind}>{error}</div>
+              <div key={ind} style={{ color: 'red' }}>{error}</div>
             ))}
           </div>
           <div >

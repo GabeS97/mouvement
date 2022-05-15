@@ -41,9 +41,9 @@ const BoardSection = () => {
                             <div className="boardSection__title">
                                 {board?.name ?
                                     <div>{board?.name}</div> : <div>{board?.template}</div>
-                                }
-                            </div>
-                        </NavLink>
+                            }
+                        </div>
+                    </NavLink>
                         {/* <i className="fa-regular fa-trash-can boardSection__delete__button" onClick={() => dispatch(deleteBoardThunk(board.id))}></i> */}
                         {/* <div className="boardSection__options">
 
@@ -62,14 +62,14 @@ const BoardSection = () => {
                 ))}
 
                 <div className="boardSection__addAPage">
-                    <div className="boardSection__Logo">
+                    <div className="boardSection__addPageIcon">
                         <i className="fa-solid fa-plus boardSection__add_page"></i>
-                    </div>
                     <NavLink to='/home/add_page' style={{ color: 'black', textDecoration: 'none', width: '100%' }}>
-                        <div className="boardSection__add">
+                        <div className="">
                             Add a Page
                         </div>
                     </NavLink>
+                    </div>
                 </div>
             </div>
             <div className="boardSection__logoutButton">
