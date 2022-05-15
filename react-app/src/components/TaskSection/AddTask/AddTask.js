@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { addTaskThunk } from '../../../store/tasks'
 import './AddTask.css'
@@ -9,8 +10,17 @@ const AddTask = ({ boardId, closeField }) => {
     const [currMedia, setCurrMedia] = useState('')
     const [currAuthor, setCurrAuthor] = useState(sessionUser?.username)
     const [currHeader, setCurrHeader] = useState('Books')
+    const [errors, setErrors] = useState([])
     const dispatch = useDispatch()
     const handleCurrTask = (e) => setCurrTasks(e.target.value)
+
+    useEffect(() => {
+        let validationErrors = []
+        if (!currTask) validationErrors.push('You are required to enter an input before you submit a new entry. ')
+        // if (!currMedia) validationErrors.push('You are required to enter an input before you submit a new entry. ')
+
+        setErrors(validationErrors)
+    }, [currTask, currMedia])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -23,6 +33,7 @@ const AddTask = ({ boardId, closeField }) => {
             // author: currAuthor,
             // header: currHeader,
         }
+
         await dispatch(addTaskThunk(+boardId, create_tasks))
         setCurrTasks('')
         closeField()
@@ -32,6 +43,9 @@ const AddTask = ({ boardId, closeField }) => {
     return (
         <div className='addTask'>
             <form onSubmit={handleSubmit}>
+                {errors.map(error => (
+                    <li key={error}>{error} </li>
+                ))}
                 <label htmlFor='quickNote__new__task'>
                     <input
                         className='quickNote__add__task'
@@ -40,7 +54,7 @@ const AddTask = ({ boardId, closeField }) => {
                         onChange={handleCurrTask}
                     />
                 </label>
-                <button type='submit'>Submit</button>
+                <button type='submit' disabled={errors.length}>Submit</button>
             </form>
         </div>
     )

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { NavLink } from 'react-router-dom';
 import { useHistory, Redirect } from 'react-router-dom';
@@ -8,6 +9,8 @@ import './SignUpForm.css'
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
+  const [fName, setFName] = useState('')
+  const [lName, setLName] = useState('')
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
@@ -15,12 +18,28 @@ const SignUpForm = () => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    const validationErrors = []
+    if (fName.length === 0) validationErrors.push("Please provide a first name.")
+    if (lName.length === 0) validationErrors.push("Please provide a last name.")
+    if (username.length === 0) validationErrors.push("Please provide a username.")
+    if (email.length === 0) validationErrors.push("Please provide an email address.")
+    if (!email.includes('@')) validationErrors.push("Please provide a valid email.")
+    if (password.length === 0) validationErrors.push("Please provide a password.")
+    if (password !== repeatPassword) validationErrors.push("Passwords do not match.")
+
+    setErrors(validationErrors)
+  }, [fName, lName, username, email, password, repeatPassword])
+
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+      const data = await dispatch(signUp(username, email, password, fName, lName));
+      console.log(data);
       if (data) {
         setErrors(data)
+      } else {
+        history.push('/')
       }
     }
   };
@@ -35,22 +54,13 @@ const SignUpForm = () => {
     await dispatch(login(demo.email, demo.password))
     history.push('/')
   }
-  const updateUsername = (e) => {
-    setUsername(e.target.value);
-  };
 
-  const updateEmail = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const updatePassword = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const updateRepeatPassword = (e) => {
-    setRepeatPassword(e.target.value);
-  };
-
+  const updateUsername = (e) => setUsername(e.target.value);
+  const updateEmail = (e) => setEmail(e.target.value);
+  const updatePassword = (e) => setPassword(e.target.value);
+  const updateRepeatPassword = (e) => setRepeatPassword(e.target.value);
+  const updateFirstName = (e) => setFName(e.target.value);
+  const updateLastName = (e) => setLName(e.target.value);
   if (user) {
     return <Redirect to='/home' />;
   }
@@ -72,8 +82,28 @@ const SignUpForm = () => {
 
           <div>
             {errors.map((error, ind) => (
-              <div key={ind}>{error}</div>
+              <div key={ind} style={{ color: 'red', fontSize: 'smaller' }}>{error} </div>
             ))}
+          </div>
+          <div>
+            <label>First Name</label>
+            <input
+              type='text'
+              name='username'
+              placeholder='Enter your first name...'
+              onChange={updateFirstName}
+              value={fName}
+            ></input>
+          </div>
+          <div>
+            <label>Last Name</label>
+            <input
+              type='text'
+              name='username'
+              placeholder='Enter your username...'
+              onChange={updateLastName}
+              value={lName}
+            ></input>
           </div>
           <div>
             <label>User Name</label>
@@ -116,7 +146,7 @@ const SignUpForm = () => {
               required={true}
             ></input>
           </div>
-          <button type='submit' className='signup_signupButton'>Sign Up</button>
+          <button type='submit' className='signup_signupButton' disabled={errors.length > 0}>Sign Up</button>
           <button type='button' onClick={handleDemo} className='signup__demoButton'>Demo</button>
 
           <NavLink to='/login' className='signup__login'>

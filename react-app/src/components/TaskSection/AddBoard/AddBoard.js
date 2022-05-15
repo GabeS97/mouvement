@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { addBoardThunk, getBoardThunk } from '../../../store/boards'
+import UsersList from '../../UsersList'
 import './AddBoard.css'
 const AddBoard = () => {
     const dispatch = useDispatch()
@@ -10,11 +11,26 @@ const AddBoard = () => {
     const [currName, setCurrName] = useState('')
     const [currDesc, setCurrDesc] = useState('')
     const [currSelect, setCurrSelect] = useState('Quick Note')
+    const [errors, setErrors] = useState([])
     const [currIcon, setCurrIcon] = useState('🧢')
     const boards = Object.values(useSelector(state => state.boards))
     let newBoard = boards[boards.length - 1]
 
+    useEffect(() => {
+        let validationErrors = []
+        if (currName.includes('?') || currName.includes('!') || currName.includes('<') || currName.includes('>')) validationErrors.push('The use of special characters are not permited')
+        if (currName.length <= 5) validationErrors.push('Please re-enter a board titila that is longer than 5 characters.');
+        if (currName.length >= 30) validationErrors.push('Please re-enter a board title that is shorter than 30 characters.');
+        if (!currName) validationErrors.push('In order to submit this field, a title is required.');
+        else {
+            setErrors([])
+        }
 
+        setErrors(validationErrors)
+    }, [currName])
+
+
+    console.log(errors)
     console.log(newBoard);
     useEffect(() => {
         dispatch(getBoardThunk())
@@ -31,9 +47,14 @@ const AddBoard = () => {
             icon: currIcon
         }
 
-        await dispatch(addBoardThunk(add_board))
-        alert('Congratulations! You have just created a new board!')
-        history.push(`/home/boards/${newBoard.id}/${newBoard?.name.split(' ').join('_').toLowerCase()}`)
+        const board = await dispatch(addBoardThunk(add_board))
+        console.log(board)
+        if (board.errors) {
+            setErrors(board.errors)
+        } else {
+            alert('Congratulations! You have just created a new board!')
+            history.push(`/home/boards/${newBoard.id}/${newBoard?.name.split(' ').join('_').toLowerCase()}`)
+        }
 
     }
     const handleName = (e) => {
@@ -50,6 +71,11 @@ const AddBoard = () => {
     return (
         <div className='addBoard'>
             <form className='addBoard__form' onSubmit={handleSumbit}>
+                <div className="addBoard__errors">
+                    {errors.map(error => (
+                        <li key={error}>{error}</li>
+                    ))}
+                </div>
                 <div className="addBoard__boardName">
                     <input
                         className='addBoard__name'
@@ -79,7 +105,7 @@ const AddBoard = () => {
                         {/* <option value='Personal Home'>Personal Home</option> */}
                     </select>
                 </div>
-                <button type='submit' className='addBoard__button'>Post new board</button>
+                <button type='submit' className='addBoard__button' disabled={errors.length > 0}>Post new board</button>
             </form>
         </div>
     )
