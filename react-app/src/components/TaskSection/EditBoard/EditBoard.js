@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min'
@@ -13,6 +13,7 @@ const EditBoard = ({ board, hideForm }) => {
     const [currDesc, setCurrDesc] = useState(description ? description : '')
     const [currSelect, setCurrSelect] = useState(template ? template : 'Quick Note')
     const [currIcon, setCurrIcon] = useState(icon ? icon : '📗')
+    const [errors, setErrors] = useState([])
     const [showEmoji, setShowEmoji] = useState(false)
     const history = useHistory()
 
@@ -27,6 +28,20 @@ const EditBoard = ({ board, hideForm }) => {
         console.log(emoji)
         setShowEmoji(false)
     }
+
+    useEffect(() => {
+        let validationErrors = []
+        if (currName.includes('?') || currName.includes('!') || currName.includes('<') || currName.includes('>')) validationErrors.push('The use of special characters are not permited')
+        if (currName.length <= 5) validationErrors.push('Please re-enter a board titila that is longer than 5 characters.');
+        if (currName.length >= 30) validationErrors.push('Please re-enter a board title that is shorter than 30 characters.');
+        if (!currName) validationErrors.push('In order to submit this field, a title is required.');
+        else {
+            setErrors([])
+        }
+
+        setErrors(validationErrors)
+    }, [currName])
+
 
     const handleEdit = async (e) => {
         e.preventDefault()
@@ -65,6 +80,11 @@ const EditBoard = ({ board, hideForm }) => {
                 </div>
             </div>
             <form className='editBoard__form' onSubmit={handleEdit}>
+                <div className="addBoard__errors">
+                    {errors.map(error => (
+                        <li key={error}>{error}</li>
+                    ))}
+                </div>
                 <div className="editBoard__icons">
                     <div className="editBoard__icon">
 
@@ -120,7 +140,7 @@ const EditBoard = ({ board, hideForm }) => {
                     </select>
                     {/* </label> */}
                 </div>
-                <button type='submit' style={{ cursor: 'pointer' }} className='editBoard__submit'>Edit board</button>
+                <button type='submit' style={{ cursor: 'pointer' }} className='editBoard__submit' disabled={errors.length > 0}>Edit board</button>
             </form>
         </div>
     )

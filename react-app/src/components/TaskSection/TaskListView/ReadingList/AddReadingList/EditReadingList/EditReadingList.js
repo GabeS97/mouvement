@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import { editTaskThunk } from '../../../../../../store/tasks'
@@ -14,6 +15,24 @@ const EditReadingList = ({ task, boardId, closeTask }) => {
     const handleMedia = (e) => setCurrMedia(e.target.value)
     const handleAuthor = (e) => setCurrAuthor(e.target.value)
 
+    const [errors, setErrors] = useState([])
+
+
+    useEffect(() => {
+        let validationErrors = []
+        if (currTask.length <= 5) validationErrors.push('Task should not be less than 5 characters.');
+        if (currTask.length >= 30) validationErrors.push('Task should not exceed 30 characters.');
+        if (currMedia.length <= 5) validationErrors.push('Media should not be less than 5 characters.');
+        if (currMedia.length >= 30) validationErrors.push('Media should not exceed 30 characters.');
+        if (currAuthor.length <= 5) validationErrors.push('Author should not be less than 5 characters.');
+        if (currAuthor.length >= 30) validationErrors.push('Author should not exceed 30 characters.');
+        if (!currTask) validationErrors.push('In order to submit this field, a title is required.');
+        else {
+            setErrors([])
+        }
+
+        setErrors(validationErrors)
+    }, [currTask, currAuthor, currMedia])
 
     const handleSumbit = async (e) => {
         e.preventDefault()
@@ -34,6 +53,11 @@ const EditReadingList = ({ task, boardId, closeTask }) => {
         <div className="editReadingList">
             <header>Edit reading</header>
             <form className='addReadingList__form' onSubmit={handleSumbit}>
+                < div className="editReads__errors">
+                    {errors.map(error => (
+                        <li key={error}>{error}</li>
+                    ))}
+                </div>
                 <div className="addReadingList_tasks">
                     <label>Book:
                         <input
@@ -69,8 +93,8 @@ const EditReadingList = ({ task, boardId, closeTask }) => {
                 {/* <div className="addReadingList__custom__media">
                     <input />
                 </div> */}
-                <button type='submit' className='editReadingList__button' >Edit list</button>
-            </form>
+                <button type='submit' className='editReadingList__button' disabled={errors.length > 0}>Edit list</button>
+            </form >
         </div >
     )
 }

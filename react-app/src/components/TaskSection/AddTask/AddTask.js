@@ -17,6 +17,7 @@ const AddTask = ({ boardId, closeField }) => {
     useEffect(() => {
         let validationErrors = []
         if (!currTask) validationErrors.push('You are required to enter an input before you submit a new entry. ')
+        if (currTask.length > 115) validationErrors.push('The length of entry must not exceed 120 characters')
         // if (!currMedia) validationErrors.push('You are required to enter an input before you submit a new entry. ')
 
         setErrors(validationErrors)

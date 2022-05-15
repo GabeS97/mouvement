@@ -16,7 +16,7 @@ const LoginForm = () => {
 
 
   useEffect(() => {
-    let validationErrors = []
+  let validationErrors = []
     if (email.length === 0) validationErrors.push("Please provide an email address.")
     if (!email.includes('@')) validationErrors.push("Please provide a valid email.")
     if (password.length === 0) validationErrors.push("Please provide a password.")

@@ -16,6 +16,8 @@
   justify-content: space-between;
   height: 2em;
   align-items: center;
+  width: 100%;
+  background-color: lightgreen;
 }
 
 .quickList__checkBox:hover .quickList__editAndDelete {
@@ -38,8 +40,8 @@
 .quickList__checkbox__container {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  /* background-color: black; */
+  /* width: 100%; */
+  background-color: lightblue;
 }
 
 .quickList__edit, .quickList__delete {
@@ -49,4 +51,9 @@
 .quickList__editable__content:focus {
   border: none;
   outline: none;
+}
+
+.quickList__editable__content {
+  display: flex;
+  /* background-color: black; */
 }
