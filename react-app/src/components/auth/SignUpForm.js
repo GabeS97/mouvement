@@ -20,6 +20,12 @@ const SignUpForm = () => {
 
   useEffect(() => {
     const validationErrors = []
+    if (fName.length < 3) validationErrors.push('The input for the first name should be 3 characters or longer.')
+    if (fName.length > 20) validationErrors.push('The input for the first name should  be 20 characters or shorter.')
+    if (lName.length < 3) validationErrors.push('The input for the last name should be 3 characters or longer.')
+    if (lName.length > 20) validationErrors.push('The input for the last name should be 20 characters or shorter.')
+    if (username.length < 3) validationErrors.push('The input for the username should be 3 characters or longer.')
+    if (username.length > 20) validationErrors.push('The input for the username should be 20 characters or shorter.')
     if (fName.length === 0) validationErrors.push("Please provide a first name.")
     if (lName.length === 0) validationErrors.push("Please provide a last name.")
     if (username.length === 0) validationErrors.push("Please provide a username.")
@@ -82,7 +88,7 @@ const SignUpForm = () => {
 
           <div>
             {errors.map((error, ind) => (
-              <div key={ind} style={{ color: 'red', fontSize: 'smaller' }}>{error} </div>
+              <div key={ind} style={{ color: 'red', fontSize: 'smaller', textDecoration: 'underline black'}}>{error} </div>
             ))}
           </div>
           <div>

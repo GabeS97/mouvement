@@ -6,11 +6,10 @@
 }
 
 .quickNote__contents {
-  /* background-color: pink; */
   height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  /* align-items: flex-start; */
   justify-content: center;
   overflow-y: scroll;
   width: 50%;
@@ -78,6 +77,14 @@
   flex-direction: column;
   row-gap: 1em;
   width: 100%;
+}
+
+.quickList__list {
+  display: flex;
+  /* background-color: greenyellow; */
+  width: 100%;
+  height: 100%;
+
 }
 
 .quickNote__list > .quickNote__list__header {
