@@ -16,9 +16,9 @@ const NavBar = () => {
             Mouvement
           </div>
 
-          <div className="navBar__aboutUs">
+          {/* <div className="navBar__aboutUs">
             About Us
-          </div>
+          </div> */}
 
 
         </div>
