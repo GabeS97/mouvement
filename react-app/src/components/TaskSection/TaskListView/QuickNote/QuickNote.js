@@ -84,9 +84,9 @@ const QuickNote = ({ boards, hideForm, tasks, handleDelete }) => {
                             <AddTask boardId={boardId} closeField={closeField} />
                         )}
                     </>
-                    <div className="quickList__list">
+                    {/* <div className="quickList__list"> */}
                         <QuickList tasks={tasks} boardId={boardId} />
-                    </div>
+                    {/* </div> */}
                 </div>
             </div>
         </div>
