@@ -1,4 +1,4 @@
-# Flixagram
+# Mouvement
 Welcome to [Mouvement](https://mouvement.herokuapp.com/) an Notion clone made by [Gabriel Sitorus](https://github.com/GabeS97?tab=repositories)
 
 # Index
