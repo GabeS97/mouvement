@@ -16,7 +16,6 @@
   width: 100vw;
   justify-content: center;
   display: flex;
-
 }
 
 .navBar__left {
@@ -30,13 +29,13 @@
   display: flex;
   align-items: center;
   font-weight: bolder;
-  column-gap: .5em;
+  column-gap: 0.5em;
   font-size: large;
   cursor: pointer;
 }
 
 .navBar__aboutUs {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .navBar__right {
@@ -47,27 +46,80 @@
 }
 
 .navBar__freeTrial {
-    background-color: rgb(225, 98, 89);
-    color: white;
-    border:  solid 1px rgb(190, 86, 68);
-    padding: 5px 10px;
-    display: flex;
-    border-radius: 5px;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+  background-color: rgb(225, 98, 89);
+  color: white;
+  border: solid 1px rgb(190, 86, 68);
+  padding: 5px 10px;
+  display: flex;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 
 .navBar__freeTrial:hover {
-    background-color: rgb(207, 83, 73);
+  background-color: rgb(207, 83, 73);
 }
 
-
-.navBar__contacts, .navBar__login {
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 5px;
+.navBar__contacts,
+.navBar__login {
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
 }
-.navBar__contacts:hover, .navBar__login:hover {
-    background-color: rgb(247, 246, 244);
+.navBar__contacts:hover,
+.navBar__login:hover {
+  background-color: rgb(247, 246, 244);
+}
+
+.navBar__developerLinks {
+  display: flex;
+  background-color: white;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  /* row-gap: 1em; */
+  flex-direction: column;
+  height: 5em;
+  font-weight: bold;
+  box-shadow: 3px 6px rgb(236, 235, 233);
+  border-radius: 15px;
+  width: 7em;
+  font-size: large;
+  /* background-color: black; */
+  opacity: 0;
+}
+
+.navBar__developerLinks div {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  /* column-gap: 1em; */
+}
+
+.navBar__contacts:hover .navBar__developerLinks {
+  opacity: 100%;
+  transition-property: opacity, left, top, height;
+  transition-duration: 1s, 2s;
+}
+
+.navBar__developerLinks div:hover {
+  background-color: rgb(247, 246, 244);
+}
+
+.navBar__developerLinks a {
+  display: flex;
+  color: black;
+  align-items: center;
+  column-gap: .5em;
+  justify-content: center;
+  height: 100%;
+  text-decoration: none;
+  /* width: 100%; */
+}
+
+.navBar__linkedin {
+  width: 100%;
 }

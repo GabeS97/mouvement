@@ -1,11 +1,10 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import { Route } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
-import LogoutButton from './auth/LogoutButton';
 import './NavBar.css'
 
 const NavBar = () => {
+  const [showContacts, setShowContacts] = useState(false)
   return (
     <div className="navBar">
       <div className="navBar__container">
@@ -16,16 +15,25 @@ const NavBar = () => {
             Mouvement
           </div>
 
-          <div className="navBar__aboutUs">
+          {/* <div className="navBar__aboutUs">
             About Us
-          </div>
-
+          </div> */}
 
         </div>
 
         <div className="navBar__right">
           <div className="navBar__contacts">
-            Contact developer
+            <div className="navBar__developerContacts">
+              Contact developer
+              <div className="navBar__developerLinks">
+                <div className="navBar__linkedin">
+                  <a target='_blank' id="linkedin_icon" href="https://www.linkedin.com/feed/"><i className="fab fa-github-square"></i>LinkedIn</a>
+                </div>
+                <div className="navBar__github">
+                  <a target='_blank' id="github_icon" href="https://github.com/GabeS97"><i className="fab fa-linkedin"></i>Github</a>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="navBar__login">

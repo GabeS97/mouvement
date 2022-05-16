@@ -8,6 +8,7 @@ import './BoardSection.css'
 const BoardSection = () => {
     const sessionUser = useSelector(state => state.session.user)
     const boards = Object.values(useSelector(state => state.boards))
+    const userBoards = boards.filter(board => board.user_id === sessionUser?.id)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -29,7 +30,7 @@ const BoardSection = () => {
             </div>
 
             <div className="boardSection__user__boards">
-                {boards.map(board => (
+                {userBoards.map(board => (
                     <div className="boardSection__board__container" key={board.id}  >
                         <NavLink className="boardSection__board" to={`/home/boards/${board.id}/${board?.name.split(' ').join('_').toLowerCase()}`} style={{ color: 'black', textDecoration: 'none' }} activeStyle={{ backgroundColor: `rgb(232,231, 228)` }} onClick={() => dispatch(getTasksThunk(board.id))}>
                             <i className="fa-solid fa-caret-right"></i>

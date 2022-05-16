@@ -87,11 +87,9 @@ const EditBoard = ({ board, hideForm }) => {
                 </div>
                 <div className="editBoard__icons">
                     <div className="editBoard__icon">
-
                         <label>Icon:
                             <div value={currIcon} className='editIcon__emoji' style={{ cursor: 'pointer', border: 'none', outline: 'none' }} onClick={() => setShowEmoji(!showEmoji)}>{currIcon}</div>
                         </label>
-
                     </div>
                     <>
                         {showEmoji &&
