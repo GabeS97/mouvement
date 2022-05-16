@@ -48,12 +48,16 @@ const AddBoard = () => {
         }
 
         const board = await dispatch(addBoardThunk(add_board))
-        console.log(board)
+        console.log(board);
         if (board.errors) {
             setErrors(board.errors)
         } else {
             alert('Congratulations! You have just created a new board!')
-            history.push(`/home/boards/${newBoard.id}/${newBoard?.name.split(' ').join('_').toLowerCase()}`)
+            if (newBoard?.id) {
+                history.push(`/home/boards/${newBoard?.id}/${newBoard?.name.split(' ').join('_').toLowerCase()}`)
+            } else {
+                history.push('/')
+            }
         }
 
     }

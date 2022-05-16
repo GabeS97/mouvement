@@ -179,6 +179,7 @@
 .readingList__iconButtons {
   column-gap: 1em;
   display: flex;
+  padding-right: 5px;
 }
 
 .readingList__medias:hover .readingList__buttons {
@@ -198,6 +199,7 @@
 .readingList__reads {
   /* background-color: black  ; */
   display: flex;
+  padding-left: 5px;
   width: 100%;
 }
 
