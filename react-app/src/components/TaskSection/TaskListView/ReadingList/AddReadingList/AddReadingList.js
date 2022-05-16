@@ -20,12 +20,12 @@ const AddReadingList = ({ boardId, hideMedia }) => {
 
     useEffect(() => {
         let validationErrors = []
-        if (currTask.length <= 5) validationErrors.push('Task should not be less than 5 characters.');
-        if (currTask.length >= 30) validationErrors.push('Task should not exceed 30 characters.');
-        if (currMedia.length <= 5) validationErrors.push('Media should not be less than 5 characters.');
-        if (currMedia.length >= 30) validationErrors.push('Media should not exceed 30 characters.');
-        if (currAuthor.length <= 5) validationErrors.push('Author should not be less than 5 characters.');
-        if (currAuthor.length >= 30) validationErrors.push('Author should not exceed 30 characters.');
+        if (currTask.length < 5) validationErrors.push('Task should not be less than 5 characters.');
+        if (currTask.length >= 100) validationErrors.push('Task should not exceed 100 characters.');
+        if (currMedia.length < 5) validationErrors.push('Media should not be less than 5 characters.');
+        if (currMedia.length >= 100) validationErrors.push('Media should not exceed 100 characters.');
+        if (currAuthor.length < 5) validationErrors.push('Author should not be less than 5 characters.');
+        if (currAuthor.length >= 100) validationErrors.push('Author should not exceed 100 characters.');
         if (!currTask) validationErrors.push('In order to submit this field, a title is required.');
         else {
             setErrors([])

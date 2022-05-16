@@ -200,3 +200,17 @@
   display: flex;
   width: 100%;
 }
+
+
+.addReads__errors {
+  display: flex;
+  text-align: left;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  /* align-items: center; */
+  /* background-color:black; */
+  font-size: small;
+  /* list-style-type: none; */
+  color: red;
+}

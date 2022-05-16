@@ -64,6 +64,8 @@ const ReadingList = ({ boards, tasks, handleDelete }) => {
         await dispatch(editTaskThunk(+boardId, edit_readingList))
     }
 
+    console.log(taskModal)
+
     return (
         <div className='readingList'>
             <div className="readingList__contents">
@@ -114,7 +116,7 @@ const ReadingList = ({ boards, tasks, handleDelete }) => {
                     }
                     {tasks.map(task => (
                         <div className="readingList__medias" id={task.id} >
-                            <div className="readingList__reads"  >
+                            <div className="readingList__reads" onClick={() => setTaskModal(true)} >
                                 <li style={{ listStyle: 'none' }} id={task.id}>
                                     <h5 id={`readingList-category-edit-${task.id}`} >
                                         {`Category: ${task.media}`}
@@ -127,16 +129,16 @@ const ReadingList = ({ boards, tasks, handleDelete }) => {
 
                             <div className="readingList__buttons">
                                 <div className="readingList__iconButtons">
-                                    <i className="fa-regular fa-pen-to-square quickList__edit" onClick={() => setTaskModal(!taskModal)}></i>
+                                    <i className="fa-regular fa-pen-to-square quickList__edit" onClick={() => setTaskModal(true)}></i>
                                     <i className="fa-solid fa-trash-can quickList__delete" onClick={() => dispatch(deleteTaskThunk(+boardId, task.id))}></i>
                                 </div>
 
-                                {taskModal && (
-                                    <Modal onClose={() => setTaskModal(false)}>
-                                        <EditReadingList task={task} boardId={boardId} closeTask={closeTask} />
-                                    </Modal>
-                                )}
                             </div>
+                            {taskModal && (
+                                <Modal onClose={() => setTaskModal(false)}>
+                                    <EditReadingList task={task} boardId={boardId} closeTask={closeTask} />
+                                </Modal>
+                            )}
                         </div>
                     ))}
                 </div>
