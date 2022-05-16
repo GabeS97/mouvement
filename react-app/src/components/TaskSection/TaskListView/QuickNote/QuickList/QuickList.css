@@ -57,3 +57,11 @@
   display: flex;
   /* background-color: black; */
 }
+
+.quickList__editable__content {
+  padding-left: 5px;
+}
+
+.quickList__options {
+  padding-right: 5px;
+}

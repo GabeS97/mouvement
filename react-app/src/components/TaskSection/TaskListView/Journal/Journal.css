@@ -168,6 +168,7 @@
   height: fit-content;
   align-items: center;
   width: 100%;
+  padding-left: 5px;
 }
 
 .journal__thinks:hover {
@@ -208,6 +209,7 @@
 .journal__moreOptions {
   display: flex;
   column-gap: 1em;
+  padding-right: 5px;
 }
 
 .journal__thinks:hover .journal__optionsButtons {

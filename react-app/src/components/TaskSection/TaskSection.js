@@ -32,6 +32,7 @@ const TaskSection = () => {
     const handleDelete = async (e) => {
         e.preventDefault()
         await dispatch(deleteBoardThunk(+boardId))
+
         if (boardsArr.length > 1) {
             history.push(`/home/boards/${newBoard.id}/${newBoard?.name.split(' ').join('_').toLowerCase()}`)
         } else {
