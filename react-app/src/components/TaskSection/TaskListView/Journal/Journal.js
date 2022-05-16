@@ -26,16 +26,20 @@ const Journal = ({ hideForm, boards, tasks, handleDelete }) => {
     const hanldeEdit = (e) => {
         e.preventDefault()
         let taskId = +e.currentTarget.id
+        let editableElement = document.getElementById(`journal-task-editable-${taskId}`)
         let task = tasks.find(task => task.id === taskId)
+
+        editableElement.setAttribute('contentEditable', 'true')
+        console.log(editableElement)
 
         setCurrTask(task)
         setCurrTaskId(taskId)
+
     }
 
     const submitEdit = async (e) => {
         e.preventDefault()
         let editableElement = document.getElementById(`journal-task-editable-${currTaskId}`)
-        console.log(editableElement, '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~');
 
         const edit_journal = {
             id: currTaskId,
@@ -43,10 +47,17 @@ const Journal = ({ hideForm, boards, tasks, handleDelete }) => {
             board_id: +boardId,
             tasks: editableElement.innerText
         }
-        await dispatch(editTaskThunk(+boardId, edit_journal))
-        alert('Congratulations you have successfully edited your entry!')
-    }
 
+        setCurrTask(editableElement.innerText)
+        if (edit_journal.tasks.length > 115) {
+            alert('Your entry may not exceed 115 characters.')
+        } else {
+            await dispatch(editTaskThunk(+boardId, edit_journal))
+            editableElement.setAttribute('contentEditable', 'false')
+            console.log(editableElement)
+            alert('Congratulations you have successfully edited your entry!')
+        }
+    }
     useEffect(() => {
         dispatch(getTasksThunk(+boardId))
     }, [dispatch])
@@ -54,8 +65,6 @@ const Journal = ({ hideForm, boards, tasks, handleDelete }) => {
     const closeField = () => {
         setShowField(false)
     }
-
-    console.log(typeof boardId);
 
     return (
         <div className='journal'>
@@ -106,7 +115,7 @@ const Journal = ({ hideForm, boards, tasks, handleDelete }) => {
                     )} */}
                     {items.map(thought => (
                         <div className='journal__thinks' key={thought.id} id={thought.id} onClick={hanldeEdit}>
-                            <div className='journal__thoughts' id={`journal-task-editable-${thought.id}`} contentEditable='true' onBlur={submitEdit}>{thought.tasks} </div>
+                            <div className='journal__thoughts' id={`journal-task-editable-${thought.id}`} contentEditable='false' onBlur={submitEdit}>{thought.tasks} </div>
                             <div className="journal__optionsButtons">
                                 <div className="journal__moreOptions">
                                     <i className="fa-regular fa-pen-to-square quickList__edit" onClick={submitEdit}></i>

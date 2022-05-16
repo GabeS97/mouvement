@@ -24,7 +24,6 @@ const TaskSection = () => {
     const tasks = Object.values(useSelector(state => state.tasks))
     const boardsArr = Object.values(useSelector(state => state.boards))
     let newBoard = boardsArr[boardsArr.length - 2]
-    console.log(newBoard);
 
     useEffect(() => {
         dispatch(getBoardThunk())
