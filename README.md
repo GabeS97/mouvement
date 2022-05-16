@@ -72,4 +72,14 @@ npm install
 ```
 npm start
 ```
+# Landing Page!
+![Screen Shot 2022-05-17 at 6 20 07 AM](https://user-images.githubusercontent.com/86471939/168697659-d499e233-6757-4aa7-bed7-decdf8e36da5.png)
+
+
+# Log in and Sign in layout are identical 
+![Screen Shot 2022-05-17 at 6 18 53 AM](https://user-images.githubusercontent.com/86471939/168697533-59d4647c-556e-4ddb-a88b-b875fe5315ea.png)
+
+# Task board and task list page
+![Screen Shot 2022-05-17 at 6 19 10 AM](https://user-images.githubusercontent.com/86471939/168697565-ba3fa8f2-94f1-4c74-aaba-7ec13365916a.png)
+
 
