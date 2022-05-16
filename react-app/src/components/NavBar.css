@@ -101,7 +101,6 @@
 
 .navBar__contacts:hover .navBar__developerLinks {
   opacity: 100%;
-  transition-property: opacity, left, top, height;
   transition-duration: 1s, 2s;
 }
 
