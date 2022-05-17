@@ -55,7 +55,7 @@ const AddTask = ({ boardId, closeField }) => {
                         onChange={handleCurrTask}
                     />
                 </label>
-                <button type='submit' disabled={errors.length}>Submit</button>
+                <button type='submit' disabled={errors.length} className='addTask__submitButton'>Submit</button>
             </form>
         </div>
     )

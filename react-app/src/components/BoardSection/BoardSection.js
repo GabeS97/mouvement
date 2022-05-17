@@ -33,7 +33,7 @@ const BoardSection = () => {
                 {userBoards.map(board => (
                     <div className="boardSection__board__container" key={board.id}  >
                         <NavLink className="boardSection__board" to={`/home/boards/${board.id}/${board?.name.split(' ').join('_').toLowerCase()}`} style={{ color: 'black', textDecoration: 'none' }} activeStyle={{ backgroundColor: `rgb(232,231, 228)` }} onClick={() => dispatch(getTasksThunk(board.id))}>
-                            <i className="fa-solid fa-caret-right"></i>
+                            {/* <i className="fa-solid fa-caret-right"></i> */}
                             <div className="boardSection__icon">
                                 {board?.icon ?
                                     <div>{board?.icon}</div> : <div>📝</div>
