@@ -1,16 +1,16 @@
 .journal__error {
-    display: flex;
-    text-align: left;
-    flex-direction: column;
-    justify-content: center;
-    text-align: left;
-    /* align-items: center; */
-    /* background-color:black; */
-    font-size: small;
-    /* list-style-type: none; */
-    color: red;
-  }
+  display: flex;
+  text-align: left;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  /* align-items: center; */
+  /* background-color:black; */
+  font-size: small;
+  /* list-style-type: none; */
+  color: red;
+}
 
 .journal__thinks {
-    background-color: black;
+  background-color: black;
 }

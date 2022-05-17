@@ -44,29 +44,30 @@ const QuickList = ({ tasks, boardId }) => {
         }
         await dispatch(editTaskThunk(+boardId, edit_toDo))
     }
-    useEffect(() => {
-        dispatch(getBoardThunk())
-    }, [dispatch])
+
+    // useEffect(() => {
+    //     dispatch(getBoardThunk())
+    // }, [dispatch])
 
 
 
     return (
         <div className='quickList'>
             {tasks.map(task => (
-                <div className="quickList__checkBox" key={task.id} id={task.id} onClick={handleEdit}>
-                    <div className="quickList__checkbox__container">
-                        <div className="quickList__editable__content" contentEditable='true' id={`task-editables-${task.id}`} onBlur={submitEdit}  >
-                            {task.tasks}
-                        </div>
-                    </div>
-                    <div className="quickList__editAndDelete">
-                        <div className="quickList__options">
-                            <i className="fa-regular fa-pen-to-square quickList__edit" onClick={() => dispatch(editTaskThunk)} ></i>
-                            <i className="fa-solid fa-trash-can quickList__delete" onClick={() => dispatch(deleteTaskThunk(+boardId, task.id))}></i>
-                        </div>
-                    </div>
-                </div>
-                // <ToDoList task={task}/>
+                // <div className="quickList__checkBox" key={task.id} id={task.id} onClick={handleEdit}>
+                //     <div className="quickList__checkbox__container">
+                //         <div className="quickList__editable__content" contentEditable='true' id={`task-editables-${task.id}`} onBlur={submitEdit}  >
+                //             {task.tasks}
+                //         </div>
+                //     </div>
+                //     <div className="quickList__editAndDelete">
+                //         <div className="quickList__options">
+                //             <i className="fa-regular fa-pen-to-square quickList__edit" onClick={() => dispatch(editTaskThunk)} ></i>
+                //             <i className="fa-solid fa-trash-can quickList__delete" onClick={() => dispatch(deleteTaskThunk(+boardId, task.id))}></i>
+                //         </div>
+                //     </div>
+                // </div>
+                <ToDoList task={task} boardId={boardId} key={task.id}/>
             ))}
         </div>
     )

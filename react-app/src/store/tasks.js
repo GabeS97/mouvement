@@ -19,8 +19,6 @@ export const getTasksThunk = (board_id) => async dispatch => {
 }
 
 export const addTaskThunk = (board_id, task) => async dispatch => {
-    console.log('thunk response >>>>>>>>>>>>>>', board_id, task);
-
     const response = await fetch(`/api/tasks/boards/${board_id}/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -41,6 +39,7 @@ export const editTaskThunk = (board_id, task) => async dispatch => {
     })
     if (response.ok) {
         const task = await response.json()
+
         dispatch(editTaskActionCreator(task))
         return task
     }

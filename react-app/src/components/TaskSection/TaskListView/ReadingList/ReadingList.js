@@ -13,7 +13,7 @@ import EditReadingList from './AddReadingList/EditReadingList/EditReadingList';
 
 const ReadingList = ({ boards, tasks, handleDelete }) => {
     const { boardId } = useParams()
-    const board = boards.find(board => board.id === +boardId)
+    const board = boards.find(board => board?.id === +boardId)
     const sessionUser = useSelector(state => state.session.user)
     const dispatch = useDispatch()
     const [showModal, setShowModal] = useState(false)
@@ -60,11 +60,8 @@ const ReadingList = ({ boards, tasks, handleDelete }) => {
             media: category,
             author: bookAuthor,
         }
-        console.log(readInfo)
         await dispatch(editTaskThunk(+boardId, edit_readingList))
     }
-
-    console.log(taskModal)
 
     return (
         <div className='readingList'>
@@ -115,14 +112,14 @@ const ReadingList = ({ boards, tasks, handleDelete }) => {
                         </Modal>
                     }
                     {tasks.map(task => (
-                        <div className="readingList__medias" id={task.id} >
+                        <div className="readingList__medias" id={task?.id} key={task.id} >
                             <div className="readingList__reads" onClick={() => setTaskModal(true)} >
-                                <li style={{ listStyle: 'none' }} id={task.id}>
-                                    <h5 id={`readingList-category-edit-${task.id}`} >
-                                        {`Category: ${task.media}`}
+                                <li style={{ listStyle: 'none' }} id={task?.id}>
+                                    <h5 id={`readingList-category-edit-${task?.id}`} >
+                                        {`Category: ${task?.media}`}
                                     </h5>
-                                    <h4 id={`readingList-tasks-edit-${task.id}`}>
-                                        {`${task.tasks} By: ${task.author}`}
+                                    <h4 id={`readingList-tasks-edit-${task?.id}`}>
+                                        {`${task?.tasks} By: ${task?.author}`}
                                     </h4>
                                 </li>
                             </div>
@@ -136,7 +133,7 @@ const ReadingList = ({ boards, tasks, handleDelete }) => {
                             </div>
                             {taskModal && (
                                 <Modal onClose={() => setTaskModal(false)}>
-                                    <EditReadingList task={task} boardId={boardId} closeTask={closeTask} />
+                                    <EditReadingList read={task} boardId={boardId} closeTask={closeTask} />
                                 </Modal>
                             )}
                         </div>

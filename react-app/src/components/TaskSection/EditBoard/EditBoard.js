@@ -95,7 +95,7 @@ const EditBoard = ({ board, hideForm }) => {
                         {showEmoji &&
                             <div className="editBoard__emoji__dropdown">
                                 {emojis.map((emoji, idx) => (
-                                    <div className='editBoard__emoji' key={idx} id={idx} onClick={changeIcon}>
+                                    <div className='editBoard__emoji' key={idx} id={idx} onClick={changeIcon} >
                                         {console.log(idx)}
                                         {emoji}</div>
                                 ))}

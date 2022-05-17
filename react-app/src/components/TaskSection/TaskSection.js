@@ -29,6 +29,10 @@ const TaskSection = () => {
         dispatch(getBoardThunk())
     }, [dispatch])
 
+    useEffect(() => {
+        dispatch(getTasksThunk(+boardId))
+    }, [dispatch, +boardId])
+
     const handleDelete = async (e) => {
         e.preventDefault()
         await dispatch(deleteBoardThunk(+boardId))
@@ -41,15 +45,6 @@ const TaskSection = () => {
     }
 
 
-
-    useEffect(() => {
-        dispatch(getTasksThunk(+boardId))
-    }, [dispatch])
-
-    // useEffect(() => {
-    //     dispatch(getOneBoardThunk(+boardId))
-    // }, [dispatch])
-
     const [showModal, setShowModal] = useState(false)
 
     let template;
@@ -61,9 +56,6 @@ const TaskSection = () => {
         setShowModal(false)
     }
 
-    useEffect(() => {
-        dispatch(getBoardThunk())
-    }, [dispatch])
 
 
     if (template === 'quick note') {
@@ -74,7 +66,9 @@ const TaskSection = () => {
     // }
     else if (template === 'reading list') {
         return <ReadingList boards={boards} hideForm={hideForm} tasks={tasks} handleDelete={handleDelete} />
+        // return <ReadingList boards={boards} hideForm={hideForm}  handleDelete={handleDelete} />
     } else if (template === 'journal') {
+        // return <Journal boards={boards} hideForm={hideForm}  handleDelete={handleDelete} />
         return <Journal boards={boards} hideForm={hideForm} tasks={tasks} handleDelete={handleDelete} />
         // } else if (template === 'personal home') {
         //     return <PersonalHome boards={boards} hideForm={hideForm} />

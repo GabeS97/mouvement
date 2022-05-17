@@ -45,20 +45,6 @@ const BoardSection = () => {
                             }
                         </div>
                     </NavLink>
-                        {/* <i className="fa-regular fa-trash-can boardSection__delete__button" onClick={() => dispatch(deleteBoardThunk(board.id))}></i> */}
-                        {/* <div className="boardSection__options">
-
-                            <i class="fa-solid fa-ellipsis boardSection__more__button"></i>
-                            <div className="boardSection___more__dropdown">
-                                <div className="boardSection__delete">
-                                    Edit
-                                </div>
-
-                                <div className="boardSection__edit">
-                                    Delete
-                                </div>
-                            </div>
-                        </div> */}
                     </div>
                 ))}
 
