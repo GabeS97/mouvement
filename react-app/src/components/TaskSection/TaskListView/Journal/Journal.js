@@ -113,7 +113,9 @@ const Journal = ({ hideForm, boards, tasks, handleDelete }) => {
                     )} */}
                     {items.map(thought => (
                         <div className='journal__thinks' key={thought.id} id={thought.id} onClick={hanldeEdit}>
-                            <input className='journal__thoughts' id={`journal-task-editable-${thought.id}`} onBlur={submitEdit}>{thought.tasks}</input>
+                            <div className='journal__thoughts' id={`journal-task-editable-${thought.id}`} contentEditable='false' suppressContentEditableWarning='true' onBlur={submitEdit}>{thought.tasks}</div>
+
+                            {/* Try to use an <input /> tag to rendere validation errors */}
                             <div className="journal__optionsButtons">
                                 <div className="journal__moreOptions">
                                     <i className="fa-regular fa-pen-to-square quickList__edit" onClick={submitEdit}></i>
