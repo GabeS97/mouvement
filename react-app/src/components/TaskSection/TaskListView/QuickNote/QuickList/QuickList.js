@@ -6,6 +6,7 @@ import { Route } from 'react-router-dom'
 import { NavLink } from 'react-router-dom'
 import { getBoardThunk } from '../../../../../store/boards'
 import { deleteTaskThunk, editTaskThunk } from '../../../../../store/tasks'
+import ToDoList from '../../ToDoList/ToDoList'
 import './QuickList.css'
 import SingleListEdit from './SingleListEdit/SingleListEdit'
 
@@ -65,6 +66,7 @@ const QuickList = ({ tasks, boardId }) => {
                         </div>
                     </div>
                 </div>
+                // <ToDoList task={task}/>
             ))}
         </div>
     )
