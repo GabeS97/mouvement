@@ -73,7 +73,7 @@
 }
 
 .navBar__developerLinks {
-  /* display: none; */
+  display: none;
   background-color: white;
   position: absolute;
   /* justify-content: center;
@@ -91,7 +91,7 @@
   /* width: 7em;
   font-size: large; */
   /* background-color: black; */
-  opacity: 0%;
+  /* opacity: 0%; */
 }
 
 .navBar__links {
@@ -115,9 +115,9 @@
 } */
 
 .navBar__contacts:hover .navBar__developerLinks {
-  /* display: block; */
-  opacity: 100%;
-  transition-duration: 1s, 2s;
+  display: block;
+  /* opacity: 100%;
+  transition-duration: 1s, 2s; */
 }
 
 .navBar__developerLinks a:hover {

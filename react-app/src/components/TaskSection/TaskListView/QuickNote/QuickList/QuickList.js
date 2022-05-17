@@ -18,7 +18,7 @@ const QuickList = ({ tasks, boardId }) => {
     const [currTaskId, setCurrTaskId] = useState()
 
 
-    
+
     const handleEdit = (e) => {
         e.preventDefault()
         let taskId = +e.currentTarget.id
@@ -42,7 +42,6 @@ const QuickList = ({ tasks, boardId }) => {
             // tasks: elementEdits.innerText
         }
         await dispatch(editTaskThunk(+boardId, edit_toDo))
-        alert('Congratulations, you have successfully edited your note!')
     }
     useEffect(() => {
         dispatch(getBoardThunk())

@@ -3,3 +3,19 @@
     list-style-type: none;
     font-size: smaller;
 }
+
+.addTask__submitButton {
+    width: 5em;
+    border-radius: 5px;
+    font-weight: bolder;
+    flex-direction: column;
+    justify-content: center;
+    /* height: 2em; */
+    background-color: transparent;
+    text-align: center;
+}
+
+.addTask > form {
+    display: flex;
+    flex-direction: column;
+}

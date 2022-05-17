@@ -32,7 +32,7 @@ const EditBoard = ({ board, hideForm }) => {
     useEffect(() => {
         let validationErrors = []
         if (currName.includes('?') || currName.includes('!') || currName.includes('<') || currName.includes('>')) validationErrors.push('The use of special characters are not permited')
-        if (currName.length <= 5) validationErrors.push('Please re-enter a board titila that is longer than 5 characters.');
+        if (currName.length <= 5) validationErrors.push('Please re-enter a board title that is longer than 5 characters.');
         if (currName.length >= 30) validationErrors.push('Please re-enter a board title that is shorter than 30 characters.');
         if (!currName) validationErrors.push('In order to submit this field, a title is required.');
         else {

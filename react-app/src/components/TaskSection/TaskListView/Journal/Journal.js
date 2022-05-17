@@ -23,6 +23,14 @@ const Journal = ({ hideForm, boards, tasks, handleDelete }) => {
     const [currTaskId, setCurrTaskId] = useState()
     const [currTask, setCurrTask] = useState()
 
+    useEffect(() => {
+        dispatch(getTasksThunk(+boardId))
+    }, [dispatch])
+
+    const closeField = () => {
+        setShowField(false)
+    }
+
     const hanldeEdit = (e) => {
         e.preventDefault()
         let taskId = +e.currentTarget.id
@@ -30,13 +38,12 @@ const Journal = ({ hideForm, boards, tasks, handleDelete }) => {
         let task = tasks.find(task => task.id === taskId)
 
         editableElement.setAttribute('contentEditable', 'true')
-        console.log(editableElement)
-
-        setCurrTask(task)
+        // setCurrTask(task.tasks)
+        setCurrTask(editableElement.innerText)
         setCurrTaskId(taskId)
-
     }
 
+    // console.log(currTask)
     const submitEdit = async (e) => {
         e.preventDefault()
         let editableElement = document.getElementById(`journal-task-editable-${currTaskId}`)
@@ -54,16 +61,7 @@ const Journal = ({ hideForm, boards, tasks, handleDelete }) => {
         } else {
             await dispatch(editTaskThunk(+boardId, edit_journal))
             editableElement.setAttribute('contentEditable', 'false')
-            console.log(editableElement)
-            alert('Congratulations you have successfully edited your entry!')
         }
-    }
-    useEffect(() => {
-        dispatch(getTasksThunk(+boardId))
-    }, [dispatch])
-
-    const closeField = () => {
-        setShowField(false)
     }
 
     return (
@@ -115,17 +113,17 @@ const Journal = ({ hideForm, boards, tasks, handleDelete }) => {
                     )} */}
                     {items.map(thought => (
                         <div className='journal__thinks' key={thought.id} id={thought.id} onClick={hanldeEdit}>
-                            <div className='journal__thoughts' id={`journal-task-editable-${thought.id}`} contentEditable='false' onBlur={submitEdit}>{thought.tasks} </div>
+                            <input className='journal__thoughts' id={`journal-task-editable-${thought.id}`} onBlur={submitEdit}>{thought.tasks}</input>
                             <div className="journal__optionsButtons">
                                 <div className="journal__moreOptions">
                                     <i className="fa-regular fa-pen-to-square quickList__edit" onClick={submitEdit}></i>
-                                    <i class="fa-regular fa-trash-can journal__trash" onClick={() => dispatch(deleteTaskThunk(+boardId, thought.id))}></i>
+                                    <i className="fa-regular fa-trash-can journal__trash" onClick={() => dispatch(deleteTaskThunk(+boardId, thought.id))}></i>
                                 </div>
                             </div>
                         </div>
                     ))}
                     <div className="journal__newThought" onClick={() => setShowField(!showField)}>
-                        <i class="fa-solid fa-plus"></i>
+                        <i className="fa-solid fa-plus"></i>
                         New
                     </div>
                     {showField && <AddTask closeField={closeField} boardId={boardId} />}
