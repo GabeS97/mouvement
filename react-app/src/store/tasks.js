@@ -1,9 +1,11 @@
 const GET_TASKS = 'tasks/GET_TASKS'
+const GET_ONE_TASK = 'tasks/GET_ONE_TASK'
 const ADD_TASK = 'tasks/ADD_TASK'
 const EDIT_TASK = 'tasks/EDIT_TASK'
 const DELETE_TASK = 'tasks/DELETE_TASK'
 
 const getTasksActionCreator = (tasks) => ({ type: GET_TASKS, tasks })
+const getOneTaskActionCreator = (task) => ({ type: GET_ONE_TASK, task })
 const addTasksActionCreator = (task) => ({ type: ADD_TASK, task })
 const editTaskActionCreator = (task) => ({ type: EDIT_TASK, task })
 const deleteTaskActionCreator = (task) => ({ type: DELETE_TASK, task })
@@ -15,6 +17,16 @@ export const getTasksThunk = (board_id) => async dispatch => {
         const tasks = await response.json()
         dispatch(getTasksActionCreator(tasks))
         return tasks
+    }
+}
+
+export const getOneTaskThunk = (board_id, task) => async dispatch => {
+    const response = await fetch(`/api/tasks/boards/${board_id}/${task.id}`)
+
+    if (response.ok) {
+        const task = await response.json()
+        dispatch(getOneTaskActionCreator(task))
+        return task
     }
 }
 
@@ -31,6 +43,8 @@ export const addTaskThunk = (board_id, task) => async dispatch => {
     }
 }
 
+
+
 export const editTaskThunk = (board_id, task) => async dispatch => {
     const response = await fetch(`/api/tasks/boards/${board_id}/${task.id}`, {
         method: 'PUT',
@@ -39,7 +53,6 @@ export const editTaskThunk = (board_id, task) => async dispatch => {
     })
     if (response.ok) {
         const task = await response.json()
-
         dispatch(editTaskActionCreator(task))
         return task
     }
@@ -63,6 +76,12 @@ const tasksReducer = (state = {}, action) => {
         case GET_TASKS: {
             newState = {}
             action.tasks.forEach(task => newState[task.id] = task)
+            return newState
+        }
+        case GET_ONE_TASK: {
+            newState = {}
+            state['tasks'] = action.task
+            console.log('this is the newState form the getOneThunk: ', newState, 'this is the action from the getOneThunk: ', action)
             return newState
         }
         case ADD_TASK: {

@@ -54,3 +54,8 @@ def edit_task(board_id, id):
         return task.to_dict()
     else:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+@task_routes.route('/boards/<int:board_id>/<int:id>', methods=['GET'])
+def get_one_task(board_id, id):
+        task = Task.query.get(id)
+        return task.to_dict()
