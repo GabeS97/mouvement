@@ -53,7 +53,6 @@ export const editTaskThunk = (board_id, task) => async dispatch => {
     })
     if (response.ok) {
         const task = await response.json()
-
         dispatch(editTaskActionCreator(task))
         return task
     }
@@ -80,8 +79,8 @@ const tasksReducer = (state = {}, action) => {
             return newState
         }
         case GET_ONE_TASK: {
-            newState = { ...state}
-            newState[action.task.id] = action.task
+            newState = {}
+            state['tasks'] = action.task
             console.log('this is the newState form the getOneThunk: ', newState, 'this is the action from the getOneThunk: ', action)
             return newState
         }
