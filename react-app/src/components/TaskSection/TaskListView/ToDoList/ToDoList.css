@@ -14,3 +14,7 @@
 .journal__thinks {
   background-color: black;
 }
+
+.journal__thinks > input:hover {
+  background-color: rgb(241, 241, 239);
+}
