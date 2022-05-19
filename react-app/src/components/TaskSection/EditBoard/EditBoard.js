@@ -134,7 +134,7 @@ const EditBoard = ({ board, hideForm }) => {
                         <option disabled>Select Template</option>
                         <option value='Quick Note'>Quick Note</option>
                         {/* <option value='Task List'>Task List</option> */}
-                        <option value='Reading List'>Reading List</option>
+                        {/* <option value='Reading List'>Reading List</option> */}
                         <option value='Journal'>Journal</option>
                         {/* <option value='Personal Home'>Personal Home</option> */}
                     </select>

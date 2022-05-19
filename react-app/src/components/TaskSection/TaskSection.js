@@ -34,14 +34,14 @@ const TaskSection = () => {
 
     useEffect(() => {
         dispatch(getTasksThunk(+boardId))
-    }, [dispatch, +boardId])
+    }, [dispatch])
 
     const handleDelete = async (e) => {
         e.preventDefault()
         await dispatch(deleteBoardThunk(+boardId))
 
         if (boardsArr.length > 1) {
-            history.push(`/home/boards/${newBoard.id}/${newBoard?.name.split(' ').join('_').toLowerCase()}`)
+            history.push(`/home/boards/${newBoard?.id}/${newBoard?.name.split(' ').join('_').toLowerCase()}`)
         } else {
             history.push('/')
         }
@@ -65,10 +65,11 @@ const TaskSection = () => {
     // else if (template === 'task list') {
     //     return <TaskList boards={boards} hideForm={hideForm} tasks={tasks} handleDelete={handleDelete} />
     // }
-    else if (template === 'reading list') {
-        return <ReadingList boards={boards} hideForm={hideForm} tasks={tasks} handleDelete={handleDelete} />
-        // return <ReadingList boards={boards} hideForm={hideForm}  handleDelete={handleDelete} />
-    } else if (template === 'journal') {
+    // else if (template === 'reading list') {
+    //     return <ReadingList boards={boards} hideForm={hideForm} tasks={tasks} handleDelete={handleDelete} />
+    //     // return <ReadingList boards={boards} hideForm={hideForm}  handleDelete={handleDelete} />
+    // }
+    else if (template === 'journal') {
         // return <Journal boards={boards} hideForm={hideForm}  handleDelete={handleDelete} />
         return <Journal boards={boards} hideForm={hideForm} tasks={tasks} handleDelete={handleDelete} />
         // } else if (template === 'personal home') {

@@ -46,6 +46,7 @@ export const addTaskThunk = (board_id, task) => async dispatch => {
 
 
 export const editTaskThunk = (board_id, task) => async dispatch => {
+    console.log('2. task of thunk from task store: ', 'board_id: ', board_id, 'task: ', task)
     const response = await fetch(`/api/tasks/boards/${board_id}/${task.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -74,16 +75,16 @@ const tasksReducer = (state = {}, action) => {
     let newState;
     switch (action.type) {
         case GET_TASKS: {
-            newState = {}
+            newState = { }
             action.tasks.forEach(task => newState[task.id] = task)
             return newState
         }
-        case GET_ONE_TASK: {
-            newState = {}
-            state['tasks'] = action.task
-            console.log('this is the newState form the getOneThunk: ', newState, 'this is the action from the getOneThunk: ', action)
-            return newState
-        }
+        // case GET_ONE_TASK: {
+        //     newState = {}
+        //     state['tasks'] = action.task
+        //     console.log('this is the newState form the getOneThunk: ', newState, 'this is the action from the getOneThunk: ', action)
+        //     return newState
+        // }
         case ADD_TASK: {
             newState = { ...state }
             newState[action.task.id] = action.task

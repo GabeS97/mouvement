@@ -30,9 +30,9 @@ const AddTask = ({ boardId, closeField }) => {
             user_id: sessionUser?.id,
             board_id: +boardId,
             tasks: currTask,
-            // media: currMedia,
-            // author: currAuthor,
-            // header: currHeader,
+            media: currMedia,
+            author: currAuthor,
+            header: currHeader,
         }
 
         await dispatch(addTaskThunk(+boardId, create_tasks))

@@ -15,7 +15,7 @@ const ShowReflection = () => {
 
                 <div className="showReflection__created__at">
                     <div className="showReflection__created">
-                        <i class="fa-regular fa-clock"></i>
+                        <i className="fa-regular fa-clock"></i>
                         Created
                     </div>
                     <div className="showReflection__timestamp">
