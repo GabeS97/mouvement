@@ -38,7 +38,7 @@
     height: 25em;
 }
 
-.addBoard__boardName {
+.addBoard__boardName, .addBoard__descriptiom {
     display: flex;
     flex-direction: column;
     width: 100%;
