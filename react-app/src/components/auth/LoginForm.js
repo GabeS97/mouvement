@@ -98,7 +98,7 @@ const LoginForm = () => {
             />
           </div>
 
-          <button className='login_loginButton' type='submit'>Login</button>
+          <button className='login_loginButton' type='submit' disabled={errors.length > 0}>Login</button>
           <button className='login__demoButton' type='button' onClick={handleDemo}>Demo</button>
 
           <NavLink to='/signup' className='login__signup'>

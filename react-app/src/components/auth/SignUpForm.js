@@ -23,7 +23,7 @@ const SignUpForm = () => {
     if (fName.length < 3 || fName.length > 20) validationErrors.push('First name should be between 3 - 20 characters')
     if (lName.length < 3 || lName.length > 20) validationErrors.push('Last name should be between 3 - 20 characters.')
     if (username.length < 3 || username.length > 20) validationErrors.push('Username should be beteween 3 - 20 characters.')
-    if (fName.length === 0 || lName.length === 0 || username.length === 0 || email.length === 0 || (password.length === 0)) validationErrors.push("First Name, Last Name, Username, Email, or Password is required")
+    if (fName.length === 0 || lName.length === 0 || username.length === 0 || email.length === 0 || (password.length === 0)) validationErrors.push("First Name, Last Name, Username, Email, or Password fields cannot be empty")
     if (!email.includes('@')) validationErrors.push("Please provide a valid email.")
     if (password !== repeatPassword) validationErrors.push("Passwords do not match.")
 
