@@ -37,7 +37,7 @@ const ToDoList = ({ task, boardId }) => {
     useEffect(() => {
         let errorValidations = []
         let task = document.getElementById('journal-task-editable')
-        if (currTask.length >= 85) { errorValidations.push('Your entry must not exceed 100 characters') }
+        if (currTask.length >= 101) { errorValidations.push('Your entry must not exceed 100 characters') }
         if (currTask.length <= 0) { errorValidations.push(`If a value is not inputed, we will revert to your most recent change upon submit.`) }
 
         setErrors(errorValidations)
@@ -52,7 +52,7 @@ const ToDoList = ({ task, boardId }) => {
                 </div>
             ))}
             <div className='journal__thinks' key={task.id} id={task.id} >
-                <input style={{ border: 'none', outline: 'none' }} type='text' className='journal__thoughts' id={`journal-task-editable`} value={currTask} onChange={(e) => setCurrTask(e.target.value)} maxLength='85' onBlur={submitEdit} placeholder={`If a value is not inputed, we will revert to your most recent change: ${task?.tasks}`} />
+                <input style={{ border: 'none', outline: 'none' }} type='text' className='journal__thoughts' id={`journal-task-editable`} value={currTask} onChange={(e) => setCurrTask(e.target.value)} maxLength='101' onBlur={submitEdit} placeholder={`If a value is not inputed, we will revert to your most recent change: ${task?.tasks}`} />
                 <div className="journal__optionsButtons">
                     <div className="journal__moreOptions">
                         <i className="fa-regular fa-pen-to-square quickList__edit" onClick={submitEdit}></i>
