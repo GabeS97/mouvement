@@ -4,6 +4,7 @@
   align-items: center;
   overflow-y: hidden;
   height: 100vh;
+  overflow-y: scroll;
 }
 
 .signup__navBar {
@@ -32,7 +33,8 @@
   width: 30em;
   align-items: center;
   flex-direction: column;
-  row-gap: 1em;
+  row-gap: .5em;
+  /* overflow-y: scroll; */
   justify-content: center;
 }
 

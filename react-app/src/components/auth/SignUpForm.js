@@ -20,18 +20,11 @@ const SignUpForm = () => {
 
   useEffect(() => {
     const validationErrors = []
-    if (fName.length < 3) validationErrors.push('The input for the first name should be 3 characters or longer.')
-    if (fName.length > 20) validationErrors.push('The input for the first name should  be 20 characters or shorter.')
-    if (lName.length < 3) validationErrors.push('The input for the last name should be 3 characters or longer.')
-    if (lName.length > 20) validationErrors.push('The input for the last name should be 20 characters or shorter.')
-    if (username.length < 3) validationErrors.push('The input for the username should be 3 characters or longer.')
-    if (username.length > 20) validationErrors.push('The input for the username should be 20 characters or shorter.')
-    if (fName.length === 0) validationErrors.push("Please provide a first name.")
-    if (lName.length === 0) validationErrors.push("Please provide a last name.")
-    if (username.length === 0) validationErrors.push("Please provide a username.")
-    if (email.length === 0) validationErrors.push("Please provide an email address.")
+    if (fName.length < 3 || fName.length > 20) validationErrors.push('First name should be between 3 - 20 characters')
+    if (lName.length < 3 || lName.length > 20) validationErrors.push('Last name should be between 3 - 20 characters.')
+    if (username.length < 3 || username.length > 20) validationErrors.push('Username should be beteween 3 - 20 characters.')
+    if (fName.length === 0 || lName.length === 0 || username.length === 0 || email.length === 0 || (password.length === 0)) validationErrors.push("First Name, Last Name, Username, Email, or Password is required")
     if (!email.includes('@')) validationErrors.push("Please provide a valid email.")
-    if (password.length === 0) validationErrors.push("Please provide a password.")
     if (password !== repeatPassword) validationErrors.push("Passwords do not match.")
 
     setErrors(validationErrors)
@@ -88,7 +81,7 @@ const SignUpForm = () => {
 
           <div>
             {errors.map((error, ind) => (
-              <div key={ind} style={{ color: 'red', fontSize: 'smaller', textDecoration: 'underline black'}}>{error} </div>
+              <div key={ind} style={{ color: 'red', fontSize: '10px', textDecoration: 'underline black', width: '100%'}}>{error} </div>
             ))}
           </div>
           <div>
