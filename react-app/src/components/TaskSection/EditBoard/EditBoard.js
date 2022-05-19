@@ -120,7 +120,7 @@ const EditBoard = ({ board, hideForm }) => {
                         <input
                             className='editBoard__boardDescription'
                             placeholder='Add a description'
-                            value={currDesc}
+                            value={currDesc}sadfdsf
                             onChange={handleDesc}
                             maxLength='100'
                         />
@@ -133,10 +133,8 @@ const EditBoard = ({ board, hideForm }) => {
                         {/* <option disabled>Templates</option> */}
                         <option disabled>Select Template</option>
                         <option value='Quick Note'>Quick Note</option>
-                        {/* <option value='Task List'>Task List</option> */}
-                        {/* <option value='Reading List'>Reading List</option> */}
+                        <option value='Reading List'>Reading List</option>
                         <option value='Journal'>Journal</option>
-                        {/* <option value='Personal Home'>Personal Home</option> */}
                     </select>
                     {/* </label> */}
                 </div>
