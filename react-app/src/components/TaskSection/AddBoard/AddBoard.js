@@ -91,7 +91,7 @@ const AddBoard = () => {
                 <div className="addBoard__descriptiom">
                     <input
                         className='addBoard__boardDescription'
-                        placeholder='Add a description'
+                        placeholder='Add a description (optional)'
                         value={currDesc}
                         onChange={handleDesc}
                     />
