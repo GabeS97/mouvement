@@ -11,7 +11,7 @@ import AddTask from '../../AddTask/AddTask';
 import ShowReflection from './ShowReflection/ShowReflection';
 import ToDoList from '../ToDoList/ToDoList';
 
-const Journal = ({ hideForm, boards, handleDelete, tasks }) => {
+const Journal = ({  boards, handleDelete, tasks }) => {
     const { boardId } = useParams()
     const board = boards.find(board => board.id === +boardId)
     const dispatch = useDispatch()
@@ -23,6 +23,10 @@ const Journal = ({ hideForm, boards, handleDelete, tasks }) => {
 
     const closeField = () => {
         setShowField(false)
+    }
+
+    const hideForm = () => {
+        setShowModal(false)
     }
 
 

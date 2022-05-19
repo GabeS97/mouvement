@@ -11,7 +11,7 @@ import EditBoard from '../../EditBoard/EditBoard';
 import QuickList from './QuickList/QuickList';
 import './QuickNote.css'
 
-const QuickNote = ({ boards, hideForm, tasks, handleDelete }) => {
+const QuickNote = ({ boards, tasks, handleDelete }) => {
     const { boardId } = useParams()
     const board = boards.find(board => board.id === +boardId)
     const history = useHistory()
@@ -25,6 +25,9 @@ const QuickNote = ({ boards, hideForm, tasks, handleDelete }) => {
         setShowField(false)
     }
 
+    const hideForm = () => {
+        setShowModal(false)
+    }
 
     return (
         <div className='quickNote'>
