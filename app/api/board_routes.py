@@ -37,7 +37,6 @@ def post_new_board():
 
         return new_board.to_dict()
     else:
-        print('\n\n', {"errors": validation_errors_to_error_messages(form.errors)}, '\n\n')
         return {"errors": validation_errors_to_error_messages(form.errors)}, 400
 
 
