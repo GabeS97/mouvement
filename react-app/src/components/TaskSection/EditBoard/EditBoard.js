@@ -25,7 +25,6 @@ const EditBoard = ({ board, hideForm }) => {
         let emoji = document.getElementById(emojiId).innerText
 
         setCurrIcon(emoji)
-        console.log(emoji)
         setShowEmoji(false)
     }
 
@@ -46,7 +45,7 @@ const EditBoard = ({ board, hideForm }) => {
     const handleEdit = async (e) => {
         e.preventDefault()
 
-        const add_board = {
+        const edit_board = {
             id: +boardId,
             user_id: sessionUser?.id,
             name: currName,
@@ -55,7 +54,7 @@ const EditBoard = ({ board, hideForm }) => {
             icon: currIcon
         }
 
-        await dispatch(editBoardThunk(add_board))
+        await dispatch(editBoardThunk(edit_board))
         history.push(`/home/boards/${+boardId}/${currName.split(' ').join('_').toLowerCase()}`)
         hideForm()
     }
@@ -97,7 +96,6 @@ const EditBoard = ({ board, hideForm }) => {
                             <div className="editBoard__emoji__dropdown">
                                 {emojis.map((emoji, idx) => (
                                     <div className='editBoard__emoji' key={idx} id={idx} onClick={changeIcon} >
-                                        {console.log(idx)}
                                         {emoji}</div>
                                 ))}
                             </div>
