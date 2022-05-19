@@ -133,7 +133,7 @@ const ReadingList = ({ boards, tasks, handleDelete }) => {
                             </div>
                             {taskModal && (
                                 <Modal onClose={() => setTaskModal(false)}>
-                                    <EditReadingList read={task} boardId={boardId} closeTask={closeTask} />
+                                    <EditReadingList task={task} boardId={boardId} closeTask={closeTask} />
                                 </Modal>
                             )}
                         </div>
