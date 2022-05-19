@@ -23,13 +23,12 @@ const ToDoList = ({ task, boardId }) => {
             tasks: currTask
         }
 
-
-        if (edit_journal.tasks) {
+        if (edit_journal.tasks.length > 0 && edit_journal.tasks.length < 100) {
             await dispatch(editTaskThunk(+boardId, edit_journal))
         } else {
             // await dispatch(getOneTaskThunk(+boardId, task))
             // await dispatch(editTaskThunk(+boardId, task))
-                setCurrTask(task.tasks)
+            setCurrTask(task.tasks)
         }
     }
 
@@ -37,7 +36,7 @@ const ToDoList = ({ task, boardId }) => {
     useEffect(() => {
         let errorValidations = []
         let task = document.getElementById('journal-task-editable')
-        if (currTask.length >= 100) { errorValidations.push('Your entry must not exceed 100 characters') }
+        if (currTask.length >= 100) { errorValidations.push('Your entry must not exceed 100 characters, if you proceed to submit, input will revert to most recent change') }
         if (currTask.length <= 0) { errorValidations.push(`If a value is not inputed, we will revert to your most recent change upon submit.`) }
 
         setErrors(errorValidations)
