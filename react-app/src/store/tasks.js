@@ -44,7 +44,6 @@ export const addTaskThunk = (board_id, task) => async dispatch => {
 }
 
 
-
 export const editTaskThunk = (board_id, task) => async dispatch => {
     // console.log('2. task of thunk from task store for our edit button: ', 'board_id: ', board_id, 'task: ', task)
     const response = await fetch(`/api/tasks/boards/${board_id}/${task.id}`, {
@@ -101,7 +100,7 @@ const tasksReducer = (state = {}, action) => {
         case DELETE_TASK: {
             newState = { ...state }
             delete newState[action.task.id]
-            return newState
+        return newState
         }
         default:
             return state

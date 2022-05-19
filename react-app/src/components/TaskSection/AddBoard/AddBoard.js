@@ -84,6 +84,7 @@ const AddBoard = () => {
                         placeholder='Untitled'
                         value={currName}
                         onChange={handleName}
+                        maxLength='30'
                     />
                 </div>
 
