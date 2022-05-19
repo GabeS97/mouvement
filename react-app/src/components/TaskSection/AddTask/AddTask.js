@@ -17,7 +17,7 @@ const AddTask = ({ boardId, closeField }) => {
     useEffect(() => {
         let validationErrors = []
         if (!currTask) validationErrors.push('You are required to enter an input before you submit a new entry. ')
-        if (currTask.length >= 101) validationErrors.push('The length of entry must not exceed 101 characters')
+        if (currTask.length >= 100) validationErrors.push('The length of entry must not exceed 101 characters')
         // if (!currMedia) validationErrors.push('You are required to enter an input before you submit a new entry. ')
 
         setErrors(validationErrors)
@@ -49,7 +49,7 @@ const AddTask = ({ boardId, closeField }) => {
                 ))}
                 <label htmlFor='quickNote__new__task'>
                     <input
-                        maxLength='101'
+                        maxLength='100'
                         className='quickNote__add__task'
                         placeholder='Enter your new task...'
                         value={currTask}
