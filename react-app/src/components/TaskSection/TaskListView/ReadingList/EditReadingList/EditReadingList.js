@@ -2,21 +2,24 @@ import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
-import { editTaskThunk } from '../../../../../../store/tasks'
+import { editTaskThunk } from '../../../../../store/tasks'
 import './EditReadingList.css'
+
 const EditReadingList = ({ task, boardId, closeTask}) => {
     const sessionUser = useSelector(state => state?.session?.user)
     const [currTask, setCurrTask] = useState(task?.tasks ? task?.tasks : '')
     const [currMedia, setCurrMedia] = useState(task?.media ? task?.media : '')
     const [currAuthor, setCurrAuthor] = useState(task?.author ? task?.author : '')
+    const [currTaskId] = useState(task?.id ? task?.id : null)
 
+
+    // console.log(task);
 
     const dispatch = useDispatch()
     const hanldeTask = (e) => setCurrTask(e.target.value)
     const handleMedia = (e) => setCurrMedia(e.target.value)
     const handleAuthor = (e) => setCurrAuthor(e.target.value)
 
-    console.log(task?.id)
     const [errors, setErrors] = useState([])
 
     useEffect(() => {
@@ -31,21 +34,24 @@ const EditReadingList = ({ task, boardId, closeTask}) => {
         else {
             setErrors([])
         }
-
         setErrors(validationErrors)
     }, [currTask, currAuthor, currMedia])
+
+    // console.log("task :", task, 'task_id: :', task?.id, '<<<<<<<<<<<<<<<<<<<<<<<<<<<<< these are the parameters of the edit_media')
 
     const handleSumbit = async (e) => {
         e.preventDefault()
 
         const edit_media = {
             id: task?.id,
+            // id: task?.id,
             user_id: sessionUser?.id,
             board_id: +boardId,
             tasks: currTask,
             media: currMedia,
             author: currAuthor,
         }
+        // console.log('1. this is the edit_media payload from the EditReadingList component: ', edit_media)
         await dispatch(editTaskThunk(+boardId, edit_media))
         closeTask()
     }

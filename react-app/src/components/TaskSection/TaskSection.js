@@ -62,13 +62,10 @@ const TaskSection = () => {
     if (template === 'quick note') {
         return <QuickNote boards={board} hideForm={hideForm} tasks={tasks} handleDelete={handleDelete} />
     }
-    // else if (template === 'task list') {
-    //     return <TaskList boards={boards} hideForm={hideForm} tasks={tasks} handleDelete={handleDelete} />
-    // }
-    // else if (template === 'reading list') {
-    //     return <ReadingList boards={boards} hideForm={hideForm} tasks={tasks} handleDelete={handleDelete} />
-    //     // return <ReadingList boards={boards} hideForm={hideForm}  handleDelete={handleDelete} />
-    // }
+    else if (template === 'reading list') {
+        return <ReadingList boards={boards} hideForm={hideForm} tasks={tasks} handleDelete={handleDelete} />
+        // return <ReadingList boards={boards} hideForm={hideForm}  handleDelete={handleDelete} />
+    }
     else if (template === 'journal') {
         // return <Journal boards={boards} hideForm={hideForm}  handleDelete={handleDelete} />
         return <Journal boards={boards} hideForm={hideForm} tasks={tasks} handleDelete={handleDelete} />

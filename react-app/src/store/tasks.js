@@ -46,7 +46,7 @@ export const addTaskThunk = (board_id, task) => async dispatch => {
 
 
 export const editTaskThunk = (board_id, task) => async dispatch => {
-    console.log('2. task of thunk from task store: ', 'board_id: ', board_id, 'task: ', task)
+    // console.log('2. task of thunk from task store for our edit button: ', 'board_id: ', board_id, 'task: ', task)
     const response = await fetch(`/api/tasks/boards/${board_id}/${task.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -54,6 +54,7 @@ export const editTaskThunk = (board_id, task) => async dispatch => {
     })
     if (response.ok) {
         const task = await response.json()
+        // console.log('4. this is the response that has beenn sent from the PUT backend route: ', task)
         dispatch(editTaskActionCreator(task))
         return task
     }
@@ -75,7 +76,7 @@ const tasksReducer = (state = {}, action) => {
     let newState;
     switch (action.type) {
         case GET_TASKS: {
-            newState = { }
+            newState = {}
             action.tasks.forEach(task => newState[task.id] = task)
             return newState
         }
@@ -93,6 +94,8 @@ const tasksReducer = (state = {}, action) => {
         case EDIT_TASK: {
             newState = { ...state }
             newState[action.task.id] = action.task
+            // console.log('5 this is the newState in the reducer for the edit function: ', newState)
+            // console.log('6 this is the action from the edit function in the reducer: ', action)
             return newState
         }
         case DELETE_TASK: {

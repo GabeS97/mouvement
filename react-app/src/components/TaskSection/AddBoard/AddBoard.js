@@ -30,8 +30,6 @@ const AddBoard = () => {
     }, [currName])
 
 
-    console.log(errors)
-    console.log(newBoard);
     useEffect(() => {
         dispatch(getBoardThunk(sessionUser?.id))
     }, [dispatch])
@@ -103,10 +101,8 @@ const AddBoard = () => {
                         {/* <option disabled>Templates</option> */}
                         <option disabled>Select Template</option>
                         <option value='Quick Note'>Quick Note</option>
-                        {/* <option value='Task List'>Task List</option> */}
-                        {/* <option value='Reading List'>Reading List</option> */}
+                        <option value='Reading List'>Reading List</option>
                         <option value='Journal'>Journal</option>
-                        {/* <option value='Personal Home'>Personal Home</option> */}
                     </select>
                 </div>
                 <button type='submit' className='addBoard__button' disabled={errors.length > 0}>Post new board</button>

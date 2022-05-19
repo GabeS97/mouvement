@@ -43,6 +43,7 @@ def delete_task(board_id, id):
 
 @task_routes.route('/boards/<int:board_id>/<int:id>', methods=['PUT'])
 def edit_task(board_id, id):
+    print('\n\n, 3. this should be the id that was passed in from the frontend ', id, '\n\n')
     form=TaskForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
@@ -51,6 +52,7 @@ def edit_task(board_id, id):
 
         db.session.add(task)
         db.session.commit()
+        print('\n\n, 3.5 this will be the result that is passed back into the thunk response', task.to_dict(), '\n\n')
         return task.to_dict()
     else:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400

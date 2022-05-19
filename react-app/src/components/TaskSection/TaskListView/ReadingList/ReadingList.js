@@ -8,8 +8,9 @@ import { deleteBoardThunk } from '../../../../store/boards';
 import EditBoard from '../../EditBoard/EditBoard';
 import AddReadingList from './AddReadingList/AddReadingList';
 import { deleteTaskThunk, editTaskThunk } from '../../../../store/tasks';
-import EditReadingList from './AddReadingList/EditReadingList/EditReadingList';
 import { Route } from 'react-router-dom';
+import EditReadingList from './EditReadingList/EditReadingList';
+import ReadingListModal from './ReadingListModal/ReadingListModal';
 
 
 const ReadingList = ({ boards, tasks, handleDelete }) => {
@@ -116,32 +117,7 @@ const ReadingList = ({ boards, tasks, handleDelete }) => {
                         </Modal>
                     }
                     {tasks?.map(task => (
-                        <div className="readingList__medias" id={task?.id} key={task.id} >
-                            <div className="readingList__reads" onClick={() => setTaskModal(true)} >
-                                <li style={{ listStyle: 'none' }} id={task?.id}>
-                                    <h5 id={`readingList-category-edit-${task?.id}`} >
-                                        {`Category: ${task?.media}`}
-                                    </h5>
-                                    <h4 id={`readingList-tasks-edit-${task?.id}`}>
-                                        {`${task?.tasks} By: ${task?.author}`}
-                                    </h4>
-                                </li>
-                            </div>
-
-                            <div className="readingList__buttons">
-                                <div className="readingList__iconButtons">
-                                    <i className="fa-regular fa-pen-to-square quickList__edit" onClick={() => setTaskModal(true)}></i>
-                                    <i className="fa-solid fa-trash-can quickList__delete" onClick={() => dispatch(deleteTaskThunk(+boardId, task?.id))}></i>
-                                </div>
-                            </div>
-
-
-                            {taskModal && (
-                                <Modal onClose={() => setTaskModal(false)}>
-                                    <EditReadingList task={task} boardId={boardId} closeTask={closeTask} taskId={task?.id} />
-                                </Modal>
-                            )}
-                        </div>
+                        <ReadingListModal task={task} closeTask={closeTask} boardId={boardId} />
                     ))}
                 </div>
             </div>
