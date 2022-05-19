@@ -4,24 +4,26 @@ import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import { editTaskThunk } from '../../../../../../store/tasks'
 import './EditReadingList.css'
-const EditReadingList = ({ task, boardId, closeTask }) => {
-    const sessionUser = useSelector(state => state.session.user)
+const EditReadingList = ({ task, boardId, closeTask}) => {
+    const sessionUser = useSelector(state => state?.session?.user)
     const [currTask, setCurrTask] = useState(task?.tasks ? task?.tasks : '')
     const [currMedia, setCurrMedia] = useState(task?.media ? task?.media : '')
     const [currAuthor, setCurrAuthor] = useState(task?.author ? task?.author : '')
     const dispatch = useDispatch()
 
+    console.log(currTask)
+
     const hanldeTask = (e) => setCurrTask(e.target.value)
     const handleMedia = (e) => setCurrMedia(e.target.value)
     const handleAuthor = (e) => setCurrAuthor(e.target.value)
 
+    console.log(task?.id)
     const [errors, setErrors] = useState([])
-
 
     useEffect(() => {
         let validationErrors = []
         if (currTask.length <= 5) validationErrors.push('Task should not be less than 5 characters.');
-        if (currTask.length >= 35) validationErrors.push('Task should not exceed 35 characters.');
+        if (currTask.length >= 75) validationErrors.push('Task should not exceed 75 characters.');
         if (currMedia.length < 5) validationErrors.push('Media should not be less than 5 characters.');
         if (currMedia.length >= 50) validationErrors.push('Media should not exceed 50 characters.');
         if (currAuthor.length < 5) validationErrors.push('Author should not be less than 5 characters.');
@@ -45,6 +47,7 @@ const EditReadingList = ({ task, boardId, closeTask }) => {
             media: currMedia,
             author: currAuthor,
         }
+        console.log('1. this is the payload from component', edit_media)
         await dispatch(editTaskThunk(+boardId, edit_media))
         closeTask()
     }
@@ -65,7 +68,7 @@ const EditReadingList = ({ task, boardId, closeTask }) => {
                             placeholder='What are you reading?'
                             value={currTask}
                             onChange={hanldeTask}
-                            maxLength='35'
+                            maxLength='75'
                         />
                     </label>
                 </div>
