@@ -10,8 +10,8 @@ const addBoardActionCreator = (board) => ({ type: ADD_BOARD, board })
 const editBoardActionCreator = (board) => ({ type: EDIT_BOARD, board })
 const deleteBoardActionCreator = (board) => ({ type: DELETE_BOARD, board })
 
-export const getBoardThunk = () => async dispatch => {
-    const response = await fetch('/api/boards/')
+export const getBoardThunk = (user_id) => async dispatch => {
+    const response = await fetch(`/api/boards/${user_id}`)
     if (response.ok) {
         const boards = await response.json()
         dispatch(getBoardsActionCreator(boards))

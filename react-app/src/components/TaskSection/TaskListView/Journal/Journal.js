@@ -11,7 +11,7 @@ import AddTask from '../../AddTask/AddTask';
 import ShowReflection from './ShowReflection/ShowReflection';
 import ToDoList from '../ToDoList/ToDoList';
 
-const Journal = ({  boards, handleDelete, tasks }) => {
+const Journal = ({ boards, handleDelete, tasks }) => {
     const { boardId } = useParams()
     const board = boards.find(board => board.id === +boardId)
     const dispatch = useDispatch()
@@ -51,7 +51,7 @@ const Journal = ({  boards, handleDelete, tasks }) => {
                 <div className="journal__headers">
                     <div className="journal__header__container">
                         <div className="journal__icon">
-                        {board?.icon}
+                            {board?.icon}
                             <h1 className='journal__title'>{board?.name}</h1>
                         </div>
                         <div className="journal__options">

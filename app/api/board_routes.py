@@ -15,9 +15,9 @@ def validation_errors_to_error_messages(validation_errors):
             errorMessages.append(f'{error}')
     return errorMessages
 
-@board_routes.route('/', methods=['GET'])
-def all_default_boards():
-    boards = Board.query.all()
+@board_routes.route('/<int:user_id>', methods=['GET'])
+def all_default_boards(user_id):
+    boards = Board.query.filter(Board.user_id == user_id).all()
     return jsonify([board.to_dict() for board in boards])
 
 @board_routes.route('/<int:id>', methods=['GET'])

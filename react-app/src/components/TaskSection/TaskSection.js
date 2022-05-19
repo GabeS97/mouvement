@@ -19,14 +19,17 @@ const TaskSection = () => {
     const pathname = path.pathname.split('/')
     const name = pathname[pathname.length - 1].split('_').join(' ')
     const boards = Object.values(useSelector(state => state.boards))
-    const board = Object.values(useSelector(state => state.boards))
+    const sessionUser = useSelector(state => state.session.user)
+    // const board = Object.values(useSelector(state => state.boards))
+    const board = boards.filter(board => board.user_id === sessionUser?.id)
     const oneBoard = boards.find(board => board.name.toLowerCase() === name)
     const tasks = Object.values(useSelector(state => state.tasks))
+    const task = tasks.filter(task => task.user_id === sessionUser?.id)
     const boardsArr = Object.values(useSelector(state => state.boards))
     let newBoard = boardsArr[boardsArr.length - 2]
 
     useEffect(() => {
-        dispatch(getBoardThunk())
+        dispatch(getBoardThunk(sessionUser?.id))
     }, [dispatch])
 
     useEffect(() => {
@@ -56,10 +59,8 @@ const TaskSection = () => {
         setShowModal(false)
     }
 
-
-
     if (template === 'quick note') {
-        return <QuickNote boards={boards} hideForm={hideForm} tasks={tasks} handleDelete={handleDelete} />
+        return <QuickNote boards={board} hideForm={hideForm} tasks={tasks} handleDelete={handleDelete} />
     }
     // else if (template === 'task list') {
     //     return <TaskList boards={boards} hideForm={hideForm} tasks={tasks} handleDelete={handleDelete} />
