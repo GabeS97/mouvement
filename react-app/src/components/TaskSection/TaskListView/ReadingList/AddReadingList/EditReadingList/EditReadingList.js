@@ -21,11 +21,11 @@ const EditReadingList = ({ task, boardId, closeTask }) => {
     useEffect(() => {
         let validationErrors = []
         if (currTask.length <= 5) validationErrors.push('Task should not be less than 5 characters.');
-        if (currTask.length >= 100) validationErrors.push('Task should not exceed 100 characters.');
+        if (currTask.length >= 35) validationErrors.push('Task should not exceed 35 characters.');
         if (currMedia.length < 5) validationErrors.push('Media should not be less than 5 characters.');
-        if (currMedia.length >= 100) validationErrors.push('Media should not exceed 100 characters.');
+        if (currMedia.length >= 50) validationErrors.push('Media should not exceed 50 characters.');
         if (currAuthor.length < 5) validationErrors.push('Author should not be less than 5 characters.');
-        if (currAuthor.length >= 100) validationErrors.push('Author should not exceed 100 characters.');
+        if (currAuthor.length > 50) validationErrors.push('Author should not exceed 50 characters.');
         if (!currTask) validationErrors.push('In order to submit this field, a title is required.');
         else {
             setErrors([])
@@ -65,6 +65,7 @@ const EditReadingList = ({ task, boardId, closeTask }) => {
                             placeholder='What are you reading?'
                             value={currTask}
                             onChange={hanldeTask}
+                            maxLength='35'
                         />
                     </label>
                 </div>
@@ -75,6 +76,7 @@ const EditReadingList = ({ task, boardId, closeTask }) => {
                             placeholder='Who wrote this?'
                             value={currAuthor}
                             onChange={handleAuthor}
+                            maxLength='50'
                         />
                     </label>
                 </div>
@@ -86,6 +88,7 @@ const EditReadingList = ({ task, boardId, closeTask }) => {
                             placeholder='Which media is this on?'
                             value={currMedia}
                             onChange={handleMedia}
+                            maxLength='50'
                         />
                     </label>
                 </div>
