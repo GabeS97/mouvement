@@ -9,6 +9,7 @@ import EditBoard from '../../EditBoard/EditBoard';
 import AddReadingList from './AddReadingList/AddReadingList';
 import { deleteTaskThunk, editTaskThunk } from '../../../../store/tasks';
 import EditReadingList from './AddReadingList/EditReadingList/EditReadingList';
+import { Route } from 'react-router-dom';
 
 
 const ReadingList = ({ boards, tasks, handleDelete }) => {
@@ -133,6 +134,8 @@ const ReadingList = ({ boards, tasks, handleDelete }) => {
                                     <i className="fa-solid fa-trash-can quickList__delete" onClick={() => dispatch(deleteTaskThunk(+boardId, task?.id))}></i>
                                 </div>
                             </div>
+
+
                             {taskModal && (
                                 <Modal onClose={() => setTaskModal(false)}>
                                     <EditReadingList task={task} boardId={boardId} closeTask={closeTask} taskId={task?.id} />

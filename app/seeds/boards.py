@@ -27,14 +27,14 @@ def seed_boards():
     #     # image_cover=None,
     #     icon='✔️',
     # )
-    board_four = Board(
-        user_id= 1,
-        template='Reading List',
-        name='Reading List',
-        description='📚 Tell us what you are reading? Now days, reading can be done in so many differnet medias; books, articles, podcasts, media, and more.... tell us all about it! Hover down to where it says "What are you reading," through that you will find that a + button will appear, this will let you create a list... Hover over the list items and notice there is a button on the right side of your list item, that prompt your to confirm either a delete or an edit to your entry',
-        # image_cover=None,
-        icon='📕',
-    )
+    # board_four = Board(
+    #     user_id= 1,
+    #     template='Reading List',
+    #     name='Reading List',
+    #     description='📚 Tell us what you are reading? Now days, reading can be done in so many differnet medias; books, articles, podcasts, media, and more.... tell us all about it! Hover down to where it says "What are you reading," through that you will find that a + button will appear, this will let you create a list... Hover over the list items and notice there is a button on the right side of your list item, that prompt your to confirm either a delete or an edit to your entry',
+    #     # image_cover=None,
+    #     icon='📕',
+    # )
     board_five = Board(
     user_id= 1,
         template='Journal',
@@ -92,7 +92,7 @@ def seed_boards():
     #     icon='🏡',
     # )
 
-    db.session.add_all([board_two, board_four, board_five, board_six, board_seven, board_eight, board_nine, board_ten])
+    db.session.add_all([board_two, board_five, board_six, board_seven, board_eight, board_nine, board_ten])
     db.session.commit()
 
 def undo_boards():

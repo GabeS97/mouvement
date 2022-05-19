@@ -9,10 +9,9 @@ const EditReadingList = ({ task, boardId, closeTask}) => {
     const [currTask, setCurrTask] = useState(task?.tasks ? task?.tasks : '')
     const [currMedia, setCurrMedia] = useState(task?.media ? task?.media : '')
     const [currAuthor, setCurrAuthor] = useState(task?.author ? task?.author : '')
+
+
     const dispatch = useDispatch()
-
-    console.log(currTask)
-
     const hanldeTask = (e) => setCurrTask(e.target.value)
     const handleMedia = (e) => setCurrMedia(e.target.value)
     const handleAuthor = (e) => setCurrAuthor(e.target.value)
@@ -47,7 +46,6 @@ const EditReadingList = ({ task, boardId, closeTask}) => {
             media: currMedia,
             author: currAuthor,
         }
-        console.log('1. this is the payload from component', edit_media)
         await dispatch(editTaskThunk(+boardId, edit_media))
         closeTask()
     }
