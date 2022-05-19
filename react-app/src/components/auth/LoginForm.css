@@ -83,10 +83,9 @@
 }
 
 .login__form input:focus {
-    /* border: solid 5px rgb(196, 192, 227); */
-    outline-color: rgb(171, 220, 239);
-    outline-width: thick;
-
+  /* border: solid 5px rgb(196, 192, 227); */
+  outline-color: rgb(171, 220, 239);
+  outline-width: thick;
 }
 
 .login__form input::placeholder {
@@ -101,4 +100,9 @@
 
 .login__signup:hover {
   color: rgb(235, 87, 87);
+}
+
+.login_loginButton:disabled {
+  background-color: lightgray;
+  color: white;
 }
