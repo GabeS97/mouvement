@@ -33,7 +33,7 @@ const AddBoard = () => {
     console.log(errors)
     console.log(newBoard);
     useEffect(() => {
-        dispatch(getBoardThunk())
+        dispatch(getBoardThunk(sessionUser?.id))
     }, [dispatch])
 
     const handleSumbit = async (e) => {

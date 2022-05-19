@@ -8,14 +8,19 @@ import './BoardSection.css'
 const BoardSection = () => {
     const sessionUser = useSelector(state => state.session.user)
     const boards = Object.values(useSelector(state => state.boards))
-    const userBoards = boards.filter(board => board.user_id === sessionUser?.id)
+    const userBoards = boards.filter(board => board?.user_id === sessionUser?.id)
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(getBoardThunk())
+        dispatch(getBoardThunk(sessionUser?.id))
     }, [dispatch])
 
+    // useEffect(() => {
+    //     dispatch(getBoardThunk(sessionUser?.id))
+    // }, [dispatch])
+
     return (
+
         <div className='boardSection'>
             <div className="boardSection__user__profile">
                 <div className="boardSection__user__image">
@@ -42,25 +47,25 @@ const BoardSection = () => {
                             <div className="boardSection__title">
                                 {board?.name ?
                                     <div>{board?.name}</div> : <div>{board?.template}</div>
-                            }
-                        </div>
-                    </NavLink>
+                                }
+                            </div>
+                        </NavLink>
                     </div>
                 ))}
 
                 <div className="boardSection__addAPage">
                     <div className="boardSection__addPageIcon">
                         <i className="fa-solid fa-plus boardSection__add_page"></i>
-                    <NavLink to='/home/add_page' style={{ color: 'black', textDecoration: 'none', width: '100%' }}>
-                        <div className="">
-                            Add a Page
-                        </div>
-                    </NavLink>
+                        <NavLink to='/home/add_page' style={{ color: 'black', textDecoration: 'none', width: '100%' }}>
+                            <div className="">
+                                Add a Page
+                            </div>
+                        </NavLink>
                     </div>
                 </div>
             </div>
             <div className="boardSection__logoutButton">
-                <LogoutButton/>
+                <LogoutButton />
             </div>
         </div>
     )
