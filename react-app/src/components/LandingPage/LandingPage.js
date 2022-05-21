@@ -17,10 +17,10 @@ const LandingPage = () => {
                             </NavLink>
                         </div>
 
-                        <div className="landingPage__trustedBy">
+                        {/* <div className="landingPage__trustedBy">
                             <p>TRUSTED BY TEAMS AT</p>
                             <p style={{ color: 'red' }}> REMINDER: Fill this up with logos or contacts later, subject to change</p>
-                        </div>
+                        </div> */}
                     </div>
 
                     <div className="landingPage__oneWorkspace__image">

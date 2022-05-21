@@ -54,7 +54,7 @@ const ToDoList = ({ task, boardId }) => {
                 <input style={{ border: 'none', outline: 'none' }} type='text' className='journal__thoughts' id={`journal-task-editable`} value={currTask} onChange={(e) => setCurrTask(e.target.value)} maxLength='100' onBlur={submitEdit} placeholder={`If a value is not inputed, we will revert to your most recent change: ${task?.tasks}`} />
                 <div className="journal__optionsButtons">
                     <div className="journal__moreOptions">
-                        <i className="fa-regular fa-pen-to-square quickList__edit" onClick={submitEdit}></i>
+                        {/* <i className="fa-regular fa-pen-to-square quickList__edit" onClick={submitEdit}></i> */}
                         <i className="fa-regular fa-trash-can journal__trash" onClick={() => dispatch(deleteTaskThunk(+boardId, task?.id))}></i>
                     </div>
                 </div>

@@ -30,7 +30,7 @@ const NavBar = () => {
             <div className="navBar__developerLinks">
               <div className="navBar__links">
                 {/* <div className="navBar__linkedin"> */}
-                <a target='_blank' id="linkedin_icon" href="https://www.linkedin.com/feed/"><i className="fab fa-github-square"></i>LinkedIn</a>
+                <a target='_blank' id="linkedin_icon" href="https://www.linkedin.com/in/gabriel-sitorus/"><i className="fab fa-github-square"></i>LinkedIn</a>
                 {/* </div> */}
                 {/* <div className="navBar__github"> */}
                 <a target='_blank' id="github_icon" href="https://github.com/GabeS97"><i className="fab fa-linkedin"></i>Github</a>

@@ -50,7 +50,6 @@ const AddBoard = () => {
         if (board.errors) {
             setErrors(board.errors)
         } else {
-            alert('Congratulations! You have just created a new board!')
             if (newBoard?.id) {
                 history.push(`/home/boards/${newBoard?.id}/${newBoard?.name.split(' ').join('_').toLowerCase()}`)
             } else {
