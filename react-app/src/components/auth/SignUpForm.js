@@ -89,7 +89,7 @@ const SignUpForm = () => {
             <label>First Name</label>
             <input
               type='text'
-              name='username'
+              name='first_name'
               placeholder='Enter your first name...'
               onChange={updateFirstName}
               value={fName}
@@ -99,8 +99,8 @@ const SignUpForm = () => {
             <label>Last Name</label>
             <input
               type='text'
-              name='username'
-              placeholder='Enter your username...'
+              name='last_name'
+              placeholder='Enter your last name ...'
               onChange={updateLastName}
               value={lName}
             ></input>

@@ -221,11 +221,13 @@
   display: flex;
   justify-content: space-between;
   flex-direction: row;
+
 }
 
 .landingPage__benefit__texts {
   row-gap: 1em;
   display: flex;
+  /* background-color: black; */
 }
 
 .landingPage__benefit__leftText > h3 {
