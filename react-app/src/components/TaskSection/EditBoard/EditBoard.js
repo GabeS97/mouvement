@@ -119,7 +119,7 @@ const EditBoard = ({ board, hideForm }) => {
                         <input
                             className='editBoard__boardDescription'
                             placeholder='Add a description (optional)'
-                            value={currDesc}sadfdsf
+                            value={currDesc} sadfdsf
                             onChange={handleDesc}
                             maxLength='5000'
                         />

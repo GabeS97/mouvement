@@ -78,8 +78,10 @@ const QuickNote = ({ boards, tasks, handleDelete }) => {
 
                                 </h2>
                                 <div className="quickList__instructions">
-                                    <h5>Please click on journal entry to make an edit</h5>
                                     <h5>Hover over your Make a to-do-list or over journal to display + to make a new entry</h5>
+                                    <h5>Please click on journal entry to make an edit</h5>
+                                    <h5>The changes you made will be applied once you click off the input field</h5>
+                                    <h5>Hover over the fields to dispaly a delete option</h5>
                                 </div>
                             </div>
                         </div>
@@ -88,7 +90,7 @@ const QuickNote = ({ boards, tasks, handleDelete }) => {
                         )}
                     </>
                     {/* <div className="quickList__list"> */}
-                        <QuickList tasks={tasks} boardId={boardId} />
+                    <QuickList tasks={tasks} boardId={boardId} />
                     {/* </div> */}
                 </div>
             </div>

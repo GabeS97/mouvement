@@ -76,9 +76,10 @@ const Journal = ({ boards, handleDelete, tasks }) => {
                             <h3 className='journal__description'>{board?.description}</h3>
                         </div>
                         <div className="quickList__instructions" style={{ paddingTop: '5px' }}>
-                            <h5>Please click on journal entry to make an edit</h5>
                             <h5>Click on "+New" or "Daily Reflection" to make a new entry</h5>
-                            <h5>Hover over the fields  to dispaly edit and delete option</h5>
+                            <h5>Please click on journal entry to make an edit</h5>
+                            <h5>The changes you made will be applied once you click off the input field</h5>
+                            <h5>Hover over the fields to dispaly a delete option</h5>
                         </div>
                     </div>
                 </div>
