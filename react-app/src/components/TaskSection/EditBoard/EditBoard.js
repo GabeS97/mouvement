@@ -23,7 +23,6 @@ const EditBoard = ({ board, hideForm }) => {
     const changeIcon = (e) => {
         let emojiId = +e.currentTarget.id
         let emoji = document.getElementById(emojiId).innerText
-        ``
         setCurrIcon(emoji)
         setShowEmoji(false)
     }
