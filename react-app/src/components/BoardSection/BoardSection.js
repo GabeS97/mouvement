@@ -22,15 +22,15 @@ const BoardSection = () => {
         let button = document.getElementsByClassName('boardSection__board__container');
 
         for (let i = 0; i < button.length; i++) {
-            button[i].addEventListener('click', function() {
+            button[i].addEventListener('click', function () {
                 let curr = document.getElementsByClassName('active');
-                console.log(curr)
                 if (curr.length > 0) {
                     curr[0].className = curr[0].className.replace(' active', '');
                 }
                 this.className += ' active';
             })
         }
+        console.log(button)
     }
 
     return (
@@ -61,7 +61,6 @@ const BoardSection = () => {
                             <NavLink
                                 className="boardSection__board"
                                 to={`/home/boards/${board.id}/${board?.name.split(' ').join('_').toLowerCase()}`}
-                                activeClassName='active__boardSection__board'
                                 onClick={() => dispatch(getTasksThunk(board.id))}>
                                 {board?.icon ?
                                     <div>{board?.icon}</div> : <div>📝</div>
@@ -87,8 +86,10 @@ const BoardSection = () => {
                 <div className="boardSection__addAPage">
                     <div className="boardSection__addPageIcon">
                         <i className="fa-solid fa-plus boardSection__add_page"></i>
-                        <NavLink to='/home/add_page' style={{ color: 'black', textDecoration: 'none', width: '100%' }}>
-                            <div className="">
+                        <NavLink
+                            to='/home/add_page'
+                            className='boardSection__navLink'>
+                            <div >
                                 Add a Page
                             </div>
                         </NavLink>
