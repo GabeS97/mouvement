@@ -172,9 +172,9 @@
   padding-left: 5px;
 }
 
-.journal__thinks:hover {
+/* .journal__thinks:hover {
   background-color: rgb(241, 241, 239);
-}
+} */
 
 .journal__newThought {
   color: rgb(207, 207, 206);
