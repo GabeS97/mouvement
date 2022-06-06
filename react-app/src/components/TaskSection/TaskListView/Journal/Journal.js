@@ -2,7 +2,6 @@ import React, { useState, useCallback } from 'react'
 import './Journal.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { Modal } from '../../../context/Modal';
 import { deleteBoardThunk } from '../../../../store/boards';
 import EditBoard from '../../EditBoard/EditBoard';
 import { useEffect } from 'react';
@@ -10,6 +9,7 @@ import { getTasksThunk, deleteTaskThunk, editTaskThunk } from '../../../../store
 import AddTask from '../../AddTask/AddTask';
 import ShowReflection from './ShowReflection/ShowReflection';
 import ToDoList from '../ToDoList/ToDoList';
+import { Modal } from '../../../../context/Modal';
 
 const Journal = ({ boards, handleDelete, tasks }) => {
     const { boardId } = useParams()

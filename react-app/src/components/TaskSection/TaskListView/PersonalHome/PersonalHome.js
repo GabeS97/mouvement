@@ -3,9 +3,9 @@ import './PersonalHome.css'
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { Modal } from '../../../context/Modal';
 import { deleteBoardThunk } from '../../../../store/boards';
 import EditBoard from '../../EditBoard/EditBoard';
+import { Modal } from '../../../../context/Modal';
 
 const PersonalHome = ({ boards, hideForm }) => {
     const { boardId } = useParams()
