@@ -11,7 +11,6 @@ const ToDoList = ({ task, boardId }) => {
     const [currTaskId, setCurrTaskId] = useState(task?.id ? task?.id : null)
     const [errors, setErrors] = useState([])
     let editableElement = document.getElementById(`journal-task-editable`)
-    console.log(editableElement)
 
     const submitEdit = async (e) => {
         e.preventDefault()

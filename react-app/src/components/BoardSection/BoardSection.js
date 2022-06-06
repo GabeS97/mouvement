@@ -15,9 +15,23 @@ const BoardSection = () => {
         dispatch(getBoardThunk(sessionUser?.id))
     }, [dispatch])
 
-    // useEffect(() => {
-    //     dispatch(getBoardThunk(sessionUser?.id))
-    // }, [dispatch])
+    const activeClassName = (e) => {
+        let board_id = +e.currentTarget.id;
+
+        let board = document.getElementById(board_id);
+        let button = document.getElementsByClassName('boardSection__board__container');
+
+        for (let i = 0; i < button.length; i++) {
+            button[i].addEventListener('click', function() {
+                let curr = document.getElementsByClassName('active');
+                console.log(curr)
+                if (curr.length > 0) {
+                    curr[0].className = curr[0].className.replace(' active', '');
+                }
+                this.className += ' active';
+            })
+        }
+    }
 
     return (
 
@@ -25,7 +39,7 @@ const BoardSection = () => {
             <div className="boardSection__user__profile">
                 <div className="boardSection__user__image">
                     {sessionUser?.profile_pic ?
-                        <img src={sessionUser.profile_pic} alt='' /> : <div>{sessionUser.first_name[0]}</div>
+                        <img src={sessionUser.profile_pic} alt='' /> : <div className='boardSection__default__profile'>{sessionUser.first_name[0]}</div>
                     }
                 </div>
 
@@ -34,22 +48,39 @@ const BoardSection = () => {
                 </div>
             </div>
 
+            <div className="boardSection__search">
+                <i className="fa-solid fa-magnifying-glass"></i>
+                Quick Find
+            </div>
+
             <div className="boardSection__user__boards">
                 {userBoards.map(board => (
-                    <div className="boardSection__board__container" key={board.id}  >
-                        <NavLink className="boardSection__board" to={`/home/boards/${board.id}/${board?.name.split(' ').join('_').toLowerCase()}`} style={{ color: 'black', textDecoration: 'none' }} activeStyle={{ backgroundColor: `rgb(232,231, 228)` }} onClick={() => dispatch(getTasksThunk(board.id))}>
-                            {/* <i className="fa-solid fa-caret-right"></i> */}
-                            <div className="boardSection__icon">
+                    <div className="boardSection__board__container" key={board?.id} id={board?.id} onClick={activeClassName}>
+                        <i className="fa-solid fa-caret-right"></i>
+                        <div className="boardSection__iconAndTitle">
+                            <NavLink
+                                className="boardSection__board"
+                                to={`/home/boards/${board.id}/${board?.name.split(' ').join('_').toLowerCase()}`}
+                                activeClassName='active__boardSection__board'
+                                onClick={() => dispatch(getTasksThunk(board.id))}>
                                 {board?.icon ?
                                     <div>{board?.icon}</div> : <div>📝</div>
                                 }
+                                <div className="boardSection__title">
+                                    {board?.name ?
+                                        <div>{board?.name}</div> : <div>{board?.template}</div>
+                                    }
+                                </div>
+                            </NavLink>
+                            <div className="boardSection__options">
+                                <div className="boardSection__option__container">
+                                    <i className="fa-solid fa-ellipsis boardSection__more"></i>
+                                </div>
+                                <div className="boardSection__option__container">
+                                    <i className="fa-solid fa-plus boardSection__add"></i>
+                                </div>
                             </div>
-                            <div className="boardSection__title">
-                                {board?.name ?
-                                    <div>{board?.name}</div> : <div>{board?.template}</div>
-                                }
-                            </div>
-                        </NavLink>
+                        </div>
                     </div>
                 ))}
 
@@ -67,7 +98,7 @@ const BoardSection = () => {
             <div className="boardSection__logoutButton">
                 <LogoutButton />
             </div>
-        </div>
+        </div >
     )
 }
 

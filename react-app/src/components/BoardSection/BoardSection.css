@@ -4,28 +4,62 @@
   width: 100%;
 }
 
+.boardSection__board__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .boardSection__user__profile {
   display: flex;
-  padding-top: 1em;
+  margin-top: 1em;
+  font-size: 14px;
   column-gap: 0.5em;
-  padding-left: 1em;
+  padding-left: 0.8em;
   align-items: center;
 }
 
-.boardSection__user__image {
-  border: dotted black;
-  height: 20px;
-  width: 20px;
+.boardSection__iconAndTitle {
   display: flex;
-  border-radius: 5px;
+  width: 100%;
+}
+
+.boardSection__user__image {
+  height: 15px;
+  width: 15px;
+  display: flex;
+  border-radius: 2.5px;
   justify-content: center;
   align-items: center;
-  background-color: lightpink;
+  background-color: grey;
+}
+
+.boardSection__search {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  column-gap: 1.5em;
+  color: rgb(114, 112, 107);
+  padding-left: 1em;
+  margin-top: 1em;
+  height: 5em;
+}
+
+.boardSection__search:hover {
+  background-color: rgb(232, 231, 228);
+}
+
+.boardSection__default__profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 10px;
+  text-align: center;
 }
 
 .boardSection__user__name {
   display: flex;
-  font-weight: bold;
   text-align: center;
 }
 
@@ -34,50 +68,70 @@
   flex-direction: column;
   justify-content: center;
   padding-top: 1em;
-  /* margin-left: 0.5em; */
   text-indent: 0.5em;
   max-width: 100%;
-
-  /* border: red solid; */
-}
-
-.boardSection__board__container {
-  display: flex;
-  align-items: center;
-  column-gap: 0.5em;
-}
-
-.boardSection__board__container:hover {
-  background-color: rgb(232, 231, 228);
 }
 
 .boardSection__board {
   display: flex;
   align-items: center;
-  column-gap: 0.5em;
+  /* column-gap: 0.5em; */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  /* border: black dotted; */
   height: 2.5em;
   width: 100%;
   flex-direction: row;
   cursor: pointer;
 }
 
-.boardSection__addAPage {
+.boardSection__board {
+  color: black;
+  text-decoration: none;
   display: flex;
-  flex-direction: row;
   align-items: center;
-  cursor: pointer;
-  column-gap: 0.8em;
-  height: 2.5em;
-  text-align: center;
+  font-size: 12px;
+  color: rgb(114, 112, 107);
 }
 
-.boardSection__addAPage:hover,
-.boardSection__board:hover {
+/* .active__boardSection__board {
   background-color: rgb(232, 231, 228);
+} */
+
+.boardSection__board__container:hover .boardSection__options {
+  display: flex;
+}
+.boardSection__addAPage:hover,
+.boardSection__board__container:hover {
+  background-color: rgb(232, 231, 228);
+}
+
+.boardSection__board:hover .boardSection__options {
+  display: flex;
+}
+
+.boardSection__options {
+  display: flex;
+  display: none;
+  font-size: 12px;
+  padding-left: 0.8em;
+  color: rgb(114, 112, 107);
+  align-items: center;
+  justify-content: flex-end;
+  /* width: 100%; */
+  margin-right: 5px;
+}
+
+.boardSection__option__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.boardSection__more:hover,
+.boardSection__add:hover {
+  /* background-color: rgb(218, 217, 214); */
+  cursor: pointer;
 }
 
 .boardSection__more__button {
@@ -89,14 +143,9 @@
   cursor: pointer;
 }
 
-.boardSection__options {
-  position: relative;
-  display: flex;
-}
 .boardSection___more__dropdown {
   position: absolute;
   display: flex;
-  /* display: none; */
   top: 0;
   margin-top: 1em;
   flex-direction: column;
@@ -105,10 +154,8 @@
 
 .boardSection__logoutButton {
   display: flex;
-  /* background-color: black; */
   margin-bottom: 1em;
   justify-content: center;
-  /* position: relative; */
   align-items: flex-end;
   bottom: 0;
   height: 100%;
@@ -130,11 +177,28 @@
 
 .boardSection__addAPage a {
   display: flex;
-  justify-content: flex-endd;
+  justify-content: flex-end;
   flex-direction: row-reverse;
 }
 
 .boardSection__addPageIcon {
   display: flex;
+  height: 2em;
+  font-size: 14px;
+  column-gap: 0.5em;
   align-items: center;
+}
+
+.boardSection__addAPage {
+  display: flex;
+  margin-top: 1em;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  column-gap: 0.8em;
+  text-align: center;
+}
+
+.active {
+  background-color: rgb(232, 231, 228);
 }
