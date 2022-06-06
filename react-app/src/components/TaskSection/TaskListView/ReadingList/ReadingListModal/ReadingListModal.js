@@ -1,8 +1,8 @@
 import React, { createContext, useContext, useState } from 'react'
 import { deleteTaskThunk } from '../../../../../store/tasks'
-import { Modal } from '../../../../context/Modal'
 import { useDispatch, useSelector } from 'react-redux';
 import EditReadingList from '../EditReadingList/EditReadingList'
+import { Modal } from '../../../../../context/Modal';
 
 export const ReadingListModalContext = createContext()
 export const useReadingListModal = () => useContext(ReadingListModalContext)
