@@ -17,7 +17,6 @@ const BoardSection = () => {
     const [errors, setErrors] = useState([])
     const [currIcon, setCurrIcon] = useState('📝')
     let newBoard = boards[boards.length - 1]
-    console.log(useSelector(state => state))
     const dispatch = useDispatch()
     const history = useHistory()
 
@@ -68,12 +67,12 @@ const BoardSection = () => {
             <div className="boardSection__user__profile">
                 <div className="boardSection__user__image">
                     {sessionUser?.profile_pic ?
-                        <img src={sessionUser.profile_pic} alt='' /> : <div className='boardSection__default__profile'>{sessionUser.first_name[0]}</div>
+                        <img src={sessionUser?.profile_pic} alt='' /> : <div className='boardSection__default__profile'>{sessionUser?.first_name[0]}</div>
                     }
                 </div>
 
                 <div className="boardSection__user__name">
-                    <p>{sessionUser.first_name} {sessionUser.last_name}</p>
+                    <p>{sessionUser?.first_name} {sessionUser?.last_name}</p>
                 </div>
             </div>
 
@@ -83,7 +82,7 @@ const BoardSection = () => {
             </div>
 
             <div className="boardSection__user__boards">
-                {userBoards.map(board => (
+                {userBoards?.map(board => (
                     <div className="boardSection__board__container"
                         key={board?.id}
                         id={`boardSection__board__container__${board?.id}`}

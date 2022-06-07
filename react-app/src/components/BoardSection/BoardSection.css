@@ -2,8 +2,12 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  overflow-y: scroll;
 }
 
+.boardSection::-webkit-scrollbar {
+  display: none;
+}
 .boardSection__board__container {
   display: flex;
   align-items: center;
@@ -68,6 +72,7 @@
   flex-direction: column;
   justify-content: center;
   padding-top: 1em;
+;
   text-indent: 0.5em;
   max-width: 100%;
 }

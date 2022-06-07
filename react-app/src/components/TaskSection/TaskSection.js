@@ -3,13 +3,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams, useLocation, useHistory } from 'react-router-dom'
 import { deleteBoardThunk, getBoardThunk, getOneBoardThunk } from '../../store/boards'
 import { getTasksThunk } from '../../store/tasks'
-import BoardSection from '../BoardSection/BoardSection'
 import Empty from './TaskListView/Empty/Empty'
 import Journal from './TaskListView/Journal/Journal'
-import PersonalHome from './TaskListView/PersonalHome/PersonalHome'
 import QuickNote from './TaskListView/QuickNote/QuickNote'
 import ReadingList from './TaskListView/ReadingList/ReadingList'
-import TaskList from './TaskListView/TaskList/TaskList'
 import './TaskSelection.css'
 
 const TaskSection = () => {
