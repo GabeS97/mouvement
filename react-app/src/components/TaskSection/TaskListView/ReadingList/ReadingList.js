@@ -46,28 +46,6 @@ const ReadingList = ({ boards, tasks, handleDelete }) => {
         setCurrTaskId(taskId)
         setCurrTask(task)
     }
-
-    // const submitEdit = async (e) => {
-    //     e.preventDefault()
-    //     let editCategory = document.getElementById(`readingList-category-edit-${currTaskId}`).innerText.split(':')
-    //     let category = editCategory[editCategory.length - 1]
-
-
-    //     let readInfo = document.getElementById(`readingList-tasks-edit-${currTaskId}`).innerText.split('By:')
-    //     let bookAuthor = readInfo[readInfo.length - 1]
-    //     let book = readInfo[0]
-
-    //     const edit_readingList = {
-    //         id: +e.currentTarget.id,
-    //         user_id: sessionUser?.id,
-    //         boardId: +boardId,
-    //         tasks: book,
-    //         media: category,
-    //         author: bookAuthor,
-    //     }
-    //     await dispatch(editTaskThunk(+boardId, edit_readingList))
-    // }
-
     return (
         <div className='readingList'>
             <div className="readingList__contents">
@@ -117,7 +95,7 @@ const ReadingList = ({ boards, tasks, handleDelete }) => {
                         </Modal>
                     }
                     {tasks?.map(task => (
-                        <ReadingListModal task={task} closeTask={closeTask} boardId={boardId} />
+                        <ReadingListModal task={task} closeTask={closeTask} boardId={boardId} key={task.id} />
                     ))}
                 </div>
             </div>

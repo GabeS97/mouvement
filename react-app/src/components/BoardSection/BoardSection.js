@@ -5,6 +5,7 @@ import { deleteBoardThunk, getBoardThunk } from '../../store/boards'
 import { getTasksThunk } from '../../store/tasks'
 import LogoutButton from '../auth/LogoutButton'
 import './BoardSection.css'
+
 const BoardSection = () => {
     const sessionUser = useSelector(state => state.session.user)
     const boards = Object.values(useSelector(state => state.boards))
@@ -25,12 +26,10 @@ const BoardSection = () => {
             button[i].addEventListener('click', function () {
                 let curr = document.getElementsByClassName('active');
                 if (curr.length > 0) {
-                    curr[0].className = curr[0].className.replace(' active', '');
+                    curr[0].className = curr[0].className.replace('active', '');
                 }
-                this.className += ' active';
             })
         }
-        console.log(button)
     }
 
     return (
@@ -55,9 +54,13 @@ const BoardSection = () => {
 
             <div className="boardSection__user__boards">
                 {userBoards.map(board => (
-                    <div className="boardSection__board__container" key={board?.id} id={board?.id} onClick={activeClassName}>
-                        <i className="fa-solid fa-caret-right"></i>
+                    <div className="boardSection__board__container"
+                        key={board?.id}
+                        id={board?.id}
+                        onClick={activeClassName}>
+
                         <div className="boardSection__iconAndTitle">
+                            <i className="fa-solid fa-caret-right"></i>
                             <NavLink
                                 className="boardSection__board"
                                 to={`/home/boards/${board.id}/${board?.name.split(' ').join('_').toLowerCase()}`}
@@ -71,6 +74,7 @@ const BoardSection = () => {
                                     }
                                 </div>
                             </NavLink>
+
                             <div className="boardSection__options">
                                 <div className="boardSection__option__container">
                                     <i className="fa-solid fa-ellipsis boardSection__more"></i>
