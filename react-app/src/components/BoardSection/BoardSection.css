@@ -98,7 +98,7 @@
   background-color: rgb(232, 231, 228);
 } */
 
-.boardSection__board__container:hover .boardSection__options {
+.boardSection__board__container:hover .boardSection__option {
   display: flex;
 }
 .boardSection__addAPage:hover,
@@ -106,26 +106,31 @@
   background-color: rgb(232, 231, 228);
 }
 
-.boardSection__board:hover .boardSection__options {
+.boardSection__options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.boardSection__board:hover .boardSection__option {
   display: flex;
 }
 
-.boardSection__options {
+.boardSection__option {
   display: flex;
   display: none;
+  height: 100%;
   font-size: 12px;
-  padding-left: 0.8em;
+  /* padding-left: 0.8em; */
   color: rgb(114, 112, 107);
   align-items: center;
   justify-content: flex-end;
-  /* column-gap: 2px; */
   /* margin-right: 5px; */
 }
 
 .boardSection__option__container {
   display: flex;
-  height: 100%;
-  width: 100%;
+  height: inherit;
 }
 
 .boardSection__more,

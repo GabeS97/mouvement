@@ -1,25 +1,55 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { NavLink } from 'react-router-dom'
-import { deleteBoardThunk, getBoardThunk } from '../../store/boards'
+import { useHistory, NavLink } from 'react-router-dom'
+import { addBoardThunk, deleteBoardThunk, getBoardThunk } from '../../store/boards'
 import { getTasksThunk } from '../../store/tasks'
 import LogoutButton from '../auth/LogoutButton'
 import './BoardSection.css'
+import BoardSectionEditAndRename from './BoardSectionEditAndRename/BoardSectionEditAndRename'
 
 const BoardSection = () => {
     const sessionUser = useSelector(state => state.session.user)
     const boards = Object.values(useSelector(state => state.boards))
     const userBoards = boards.filter(board => board?.user_id === sessionUser?.id)
+    const [currName, setCurrName] = useState('Untitled')
+    const [currDesc, setCurrDesc] = useState('')
+    const [currSelect, setCurrSelect] = useState('Empty')
+    const [errors, setErrors] = useState([])
+    const [currIcon, setCurrIcon] = useState('📝')
+    let newBoard = boards[boards.length - 1]
+    console.log(useSelector(state => state))
     const dispatch = useDispatch()
+    const history = useHistory()
 
     useEffect(() => {
         dispatch(getBoardThunk(sessionUser?.id))
     }, [dispatch])
 
-    const activeClassName = (e) => {
-        let board_id = +e.currentTarget.id;
+    const createDefault = async (e) => {
+        e.preventDefault()
 
-        let board = document.getElementById(board_id);
+        const add_board = {
+            user_id: sessionUser?.id,
+            name: currName,
+            template: currSelect,
+            description: currDesc,
+            icon: currIcon
+        }
+
+        const board = await dispatch(addBoardThunk(add_board))
+        if (board?.errors) {
+            setErrors(board.errors)
+        } else {
+            if (newBoard?.id) {
+                history.push(`/home/boards/${newBoard?.id}/${newBoard?.name.split(' ').join('_').toLowerCase()}`)
+            } else {
+                history.push('/')
+            }
+        }
+    }
+
+
+    const activeClassName = (e) => {
         let button = document.getElementsByClassName('boardSection__board__container');
 
         for (let i = 0; i < button.length; i++) {
@@ -56,11 +86,11 @@ const BoardSection = () => {
                 {userBoards.map(board => (
                     <div className="boardSection__board__container"
                         key={board?.id}
-                        id={board?.id}
+                        id={`boardSection__board__container__${board?.id}`}
                         onClick={activeClassName}>
 
+                        <i className="fa-solid fa-caret-right"></i>
                         <div className="boardSection__iconAndTitle">
-                            <i className="fa-solid fa-caret-right"></i>
                             <NavLink
                                 className="boardSection__board"
                                 to={`/home/boards/${board.id}/${board?.name.split(' ').join('_').toLowerCase()}`}
@@ -76,27 +106,34 @@ const BoardSection = () => {
                             </NavLink>
 
                             <div className="boardSection__options">
-                                <div className="boardSection__option__container">
-                                    <i className="fa-solid fa-ellipsis boardSection__more"></i>
-                                </div>
-                                <div className="boardSection__option__container">
-                                    <i className="fa-solid fa-plus boardSection__add"></i>
+                                <div className="boardSection__option">
+                                    <div className="boardSection__option__container">
+                                        <i
+                                            className="fa-solid fa-ellipsis boardSection__more"
+                                        ></i>
+                                    </div>
+                                    <div className="boardSection__option__container">
+                                        <i className="fa-solid fa-plus boardSection__add"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 ))}
 
-                <div className="boardSection__addAPage">
+                <div
+                    className="boardSection__addAPage"
+                    onClick={createDefault}
+                >
                     <div className="boardSection__addPageIcon">
                         <i className="fa-solid fa-plus boardSection__add_page"></i>
-                        <NavLink
-                            to='/home/add_page'
+                        <div
                             className='boardSection__navLink'>
                             <div >
                                 Add a Page
+
                             </div>
-                        </NavLink>
+                        </div>
                     </div>
                 </div>
             </div>

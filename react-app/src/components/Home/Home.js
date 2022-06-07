@@ -22,9 +22,9 @@ const Home = () => {
                         <TaskSection />
                     </Route>
 
-                    <Route path='/home/add_page'>
+                    {/* <Route path='/home/add_page'>
                         <AddBoard />
-                    </Route>
+                    </Route> */}
                 </Switch>
             </div>
 

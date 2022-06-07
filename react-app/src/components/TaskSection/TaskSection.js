@@ -4,6 +4,7 @@ import { useParams, useLocation, useHistory } from 'react-router-dom'
 import { deleteBoardThunk, getBoardThunk, getOneBoardThunk } from '../../store/boards'
 import { getTasksThunk } from '../../store/tasks'
 import BoardSection from '../BoardSection/BoardSection'
+import Empty from './TaskListView/Empty/Empty'
 import Journal from './TaskListView/Journal/Journal'
 import PersonalHome from './TaskListView/PersonalHome/PersonalHome'
 import QuickNote from './TaskListView/QuickNote/QuickNote'
@@ -27,6 +28,8 @@ const TaskSection = () => {
     const task = tasks.filter(task => task.user_id === sessionUser?.id)
     const boardsArr = Object.values(useSelector(state => state.boards))
     let newBoard = boardsArr[boardsArr.length - 2]
+    const [showModal, setShowModal] = useState(false)
+
 
     useEffect(() => {
         dispatch(getBoardThunk(sessionUser?.id))
@@ -47,9 +50,6 @@ const TaskSection = () => {
         }
     }
 
-
-    const [showModal, setShowModal] = useState(false)
-
     let template;
     if (oneBoard?.template) {
         template = oneBoard?.template.toLowerCase()
@@ -64,15 +64,12 @@ const TaskSection = () => {
     }
     else if (template === 'reading list') {
         return <ReadingList boards={boards} hideForm={hideForm} tasks={tasks} handleDelete={handleDelete} />
-        // return <ReadingList boards={boards} hideForm={hideForm}  handleDelete={handleDelete} />
     }
     else if (template === 'journal') {
-        // return <Journal boards={boards} hideForm={hideForm}  handleDelete={handleDelete} />
         return <Journal boards={boards} hideForm={hideForm} tasks={tasks} handleDelete={handleDelete} />
-        // } else if (template === 'personal home') {
-        //     return <PersonalHome boards={boards} hideForm={hideForm} />
-        // } else {
-        //     return 'Change this to a defautl task list page (make later) '
+    }
+    else if (template === 'empty') {
+        return <Empty boards={boards} hideForm={hideForm} tasks={tasks} handleDelete={handleDelete} />
     }
 
 
