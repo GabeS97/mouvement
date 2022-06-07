@@ -6,9 +6,6 @@ import { useParams } from 'react-router-dom';
 import { deleteBoardThunk } from '../../../../store/boards';
 import EditBoard from '../../EditBoard/EditBoard';
 import AddReadingList from './AddReadingList/AddReadingList';
-import { deleteTaskThunk, editTaskThunk } from '../../../../store/tasks';
-import { Route } from 'react-router-dom';
-import EditReadingList from './EditReadingList/EditReadingList';
 import ReadingListModal from './ReadingListModal/ReadingListModal';
 import { Modal } from '../../../../context/Modal';
 

@@ -1,0 +1,46 @@
+.default__empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.default__header {
+  display: flex;
+  align-items: center;
+  padding-bottom: 7em;
+  /* flex-direction: column; */
+  justify-content: flex-start;
+  height: 100%;
+  width: 50%;
+}
+
+.default__title {
+  color: rgb(225, 224, 224);
+  font-size: 40px;
+}
+
+.default__icon {
+  display: flex;
+  column-gap: 5px;
+  display: none;
+}
+
+.default__addIcon,
+.default__addCover,
+.default__addComment {
+  color: rgb(179, 179, 177);
+  text-align: center;
+  width: 9em;
+  display: flex;
+  cursor: pointer;
+  font-size: 13px;
+  align-items: center;
+  column-gap: 5px;
+}
+
+.default__addIcon:hover,
+.default__addCover:hover,
+.default__addComment:hover {
+  background-color: rgb(239, 239, 239);
+}
