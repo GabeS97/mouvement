@@ -1,9 +1,40 @@
-import React from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useHistory, useParams } from 'react-router-dom'
+import { editBoardThunk } from '../../../../store/boards'
 import './Empty.css'
+
 const Empty = ({ boards, tasks, handleDelete }) => {
     const { boardId } = useParams()
     const board = boards.find(board => board?.id === +boardId)
+    const { user_id, template, name, description, icon } = board
+    const sessionUser = useSelector(state => state.session.user)
+    const [currName, setCurrName] = useState(name ? name : 'Untitled')
+    const [currDesc, setCurrDesc] = useState(description ? description : '')
+    const [currSelect, setCurrSelect] = useState(template ? template : 'Empty')
+    const [currIcon, setCurrIcon] = useState(icon ? icon : '📗')
+    const [errors, setErrors] = useState([])
+    const [showEmoji, setShowEmoji] = useState(false)
+    const history = useHistory()
+    const dispatch = useDispatch()
+
+    const handleEdit = async (e) => {
+        e.preventDefault()
+
+        const edit_board = {
+            id: +boardId,
+            user_id: sessionUser?.id,
+            name: currName,
+            template: currSelect,
+            description: currDesc,
+            icon: currIcon
+        }
+
+        await dispatch(editBoardThunk(edit_board))
+        console.log(edit_board)
+        history.push(`/home/boards/${+boardId}/${currName.split(' ').join('_').toLowerCase()}`)
+        // hideForm()
+    }
 
     return (
         <div className='default__empty'>
@@ -29,12 +60,16 @@ const Empty = ({ boards, tasks, handleDelete }) => {
                             <div className="default__addACommet">
                                 Add Comment
                             </div>
-
                         </div>
                     </div>
-                    <div className="default__title">
-                        {board?.name}
-                    </div>
+                    <input
+                        onBlur={handleEdit}
+                        className="default__title"
+                        value={currName}
+                        placeholder='Untitled'
+                        onChange={(e) => setCurrName(e.target.value)}
+                    >
+                    </input>
                 </div>
             </div>
         </div>

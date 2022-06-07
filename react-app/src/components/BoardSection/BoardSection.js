@@ -131,7 +131,6 @@ const BoardSection = () => {
                             className='boardSection__navLink'>
                             <div >
                                 Add a Page
-
                             </div>
                         </div>
                     </div>

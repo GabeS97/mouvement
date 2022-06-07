@@ -16,14 +16,25 @@
 }
 
 .default__title {
-  color: rgb(225, 224, 224);
   font-size: 40px;
+  margin-top: 5px;
+  border: none;
+  outline: none;
+}
+
+.default__title::placeholder {
+  color: rgb(225, 224, 224);
 }
 
 .default__icon {
-  display: flex;
   column-gap: 5px;
+  display: flex;
+  position: absolute;
   display: none;
+}
+
+.default__top:hover .default__icon {
+  display: flex;
 }
 
 .default__addIcon,
@@ -33,6 +44,7 @@
   text-align: center;
   width: 9em;
   display: flex;
+  position: relative;
   cursor: pointer;
   font-size: 13px;
   align-items: center;
