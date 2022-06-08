@@ -40,7 +40,24 @@ const QuickNote = ({ boards, tasks, handleDelete }) => {
                     <div className="quickNote__boardInfo">
                         <div className="quickNote__descs">
                             <div className="quickNote__options">
-                                <h1 className='quickNote__title'>{board?.name}</h1>
+                                <div className="quickNote__header">
+                                    <div className="quickNote__icons">
+                                        <div className="quickNote__addIcon">
+                                            <i className="fa-solid fa-face-smile add__icon"></i>
+                                            <div className="quickNote__addAIcon">
+                                                Add icon
+                                            </div>
+                                        </div>
+
+                                        <div className="quickNote__addCover">
+                                            <i className="fa-regular fa-image"></i>
+                                            <div className="quickNote__addACover">
+                                                Add Cover
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h1 className='quickNote__title'>{board?.name}</h1>
+                                </div>
                                 <div className="quickNote__editAndDelete">
                                     <div className="quickNote__edit" onClick={() => setShowModal(true)}>
                                         Edit

@@ -1,21 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, NavLink } from 'react-router-dom'
-import { addBoardThunk, deleteBoardThunk, getBoardThunk } from '../../store/boards'
+import { getBoardThunk } from '../../store/boards'
 import { getTasksThunk } from '../../store/tasks'
 import LogoutButton from '../auth/LogoutButton'
 import './BoardSection.css'
-import BoardSectionEditAndRename from './BoardSectionEditAndRename/BoardSectionEditAndRename'
 
 const BoardSection = () => {
     const sessionUser = useSelector(state => state.session.user)
     const boards = Object.values(useSelector(state => state.boards))
     const userBoards = boards.filter(board => board?.user_id === sessionUser?.id)
-    const [currName, setCurrName] = useState('Untitled')
-    const [currDesc, setCurrDesc] = useState('')
-    const [currSelect, setCurrSelect] = useState('Empty')
-    const [errors, setErrors] = useState([])
-    const [currIcon, setCurrIcon] = useState('📝')
     let newBoard = boards[boards.length - 1]
     const dispatch = useDispatch()
     const history = useHistory()
@@ -24,28 +18,28 @@ const BoardSection = () => {
         dispatch(getBoardThunk(sessionUser?.id))
     }, [dispatch])
 
-    const createDefault = async (e) => {
-        e.preventDefault()
+    // const createDefault = async (e) => {
+    //     e.preventDefault()
 
-        const add_board = {
-            user_id: sessionUser?.id,
-            name: currName,
-            template: currSelect,
-            description: currDesc,
-            icon: currIcon
-        }
+    //     const add_board = {
+    //         user_id: sessionUser?.id,
+    //         name: currName,
+    //         template: currSelect,
+    //         description: currDesc,
+    //         icon: currIcon
+    //     }
 
-        const board = await dispatch(addBoardThunk(add_board))
-        if (board?.errors) {
-            setErrors(board.errors)
-        } else {
-            if (newBoard?.id) {
-                history.push(`/home/boards/${newBoard?.id}/${newBoard?.name.split(' ').join('_').toLowerCase()}`)
-            } else {
-                history.push('/')
-            }
-        }
-    }
+    //     const board = await dispatch(addBoardThunk(add_board))
+    //     if (board?.errors) {
+    //         setErrors(board.errors)
+    //     } else {
+    //         if (newBoard?.id) {
+    //             history.push(`/home/boards/${newBoard?.id}/${newBoard?.name.split(' ').join('_').toLowerCase()}`)
+    //         } else {
+    //             history.push('/')
+    //         }
+    //     }
+    // }
 
 
     const activeClassName = (e) => {
@@ -122,16 +116,15 @@ const BoardSection = () => {
 
                 <div
                     className="boardSection__addAPage"
-                    onClick={createDefault}
+                // onClick={createDefault}
                 >
                     <div className="boardSection__addPageIcon">
                         <i className="fa-solid fa-plus boardSection__add_page"></i>
-                        <div
-                            className='boardSection__navLink'>
+                        <NavLink to='/home/add_page' className='boardSection__navLink'>
                             <div >
                                 Add a Page
                             </div>
-                        </div>
+                        </NavLink>
                     </div>
                 </div>
             </div>
