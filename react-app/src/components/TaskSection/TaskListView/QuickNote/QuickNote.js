@@ -41,7 +41,7 @@ const QuickNote = ({ boards, tasks, handleDelete }) => {
                         <div className="quickNote__descs">
                             <div className="quickNote__options">
                                 <div className="quickNote__header">
-                                    <div className="quickNote__icons">
+                                    {/* <div className="quickNote__icons">
                                         <div className="quickNote__addIcon">
                                             <i className="fa-solid fa-face-smile add__icon"></i>
                                             <div className="quickNote__addAIcon">
@@ -55,7 +55,7 @@ const QuickNote = ({ boards, tasks, handleDelete }) => {
                                                 Add Cover
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> */}
                                     <h1 className='quickNote__title'>{board?.name}</h1>
                                 </div>
                                 <div className="quickNote__editAndDelete">

@@ -27,7 +27,6 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  /* background-color: black; */
   row-gap: 1em;
   height: 100%;
 }
