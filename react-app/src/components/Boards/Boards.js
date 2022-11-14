@@ -5,8 +5,16 @@ import { useSelector } from 'react-redux'
 import LogoutButton from '../auth/LogoutButton'
 import './Boards.css'
 function Boards() {
-    const user = useSelector(state => state.session.user).username
+    const user = useSelector(state => state.session.user)
 
+    const addPage = (e) => {
+        e.preventDefault();
+
+        const addPage = {
+            user_id: user?.id,
+            
+        }
+    }
     const truncate = (string, n) => {
         return string?.length > n ? string.substr(0, n - 1) + '...' : string
     }
@@ -17,7 +25,7 @@ function Boards() {
             <div className='boards__owner boards__sections'>
                 <div className="owner__container  boards__containers">
                     <img className='boards__profilepic' src="https://www.si.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTg5ODc5NTY3MDQ3OTkzMDg2/gervonta-davis-vs-rolando-romero---052822_05_28_2022_fight_ryan-hafey-_-premier-boxing-champions.jpg" alt="" />
-                    <p>{truncate(user, 25)}</p>
+                    <p>{truncate(user.username, 25)}</p>
                 </div>
             </div>
 
@@ -33,7 +41,7 @@ function Boards() {
             </div>
             <div className="divider" />
             <div className="boards__buttons">
-                <div className="boards__newpage hoverable__container " onClick={}>
+                <div className="boards__newpage hoverable__container " >
                     <i className="fa-solid fa-plus plus"></i>
                     <h2>New Page</h2>
                 </div>
