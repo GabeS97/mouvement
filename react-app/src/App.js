@@ -8,13 +8,10 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import { authenticate } from './store/session';
 import Home from './components/Home/Home';
 import { Redirect } from 'react-router-dom';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const user = useSelector(state => state.session.user)
-  const history = useHistory();
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -29,21 +26,22 @@ function App() {
   }
   return (
     <BrowserRouter>
-      {!user &&
-        <Redirect to='/login' />}
-      <NavBar />
-      <Route path='/signup' exact={true}>
-        <SignUpForm />
-      </Route>
-      <Route path='/login' exact={true}>
-        <LoginForm />
-      </Route>
+      {!user && <Redirect to='/login' />}
 
-      <Switch>
-        <ProtectedRoute path='/home' >
-          <Home />
-        </ProtectedRoute>
-      </Switch>
+      {!user &&
+        <>
+          <NavBar />
+          <Route path='/signup' exact={true}>
+            <SignUpForm />
+          </Route>
+          <Route path='/login' exact={true}>
+            <LoginForm />
+          </Route>
+        </>
+      }
+      <ProtectedRoute path='/' >
+        <Home />
+      </ProtectedRoute>
     </BrowserRouter>
   );
 }

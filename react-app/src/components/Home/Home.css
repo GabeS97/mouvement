@@ -1,19 +1,14 @@
 .home {
   display: flex;
   height: 100vh;
-  flex-direction: row;
 }
 
 .home__leftBar {
-  width: 5em;
-  flex: 0.12;
-  z-index: 1;
-  display: flex;
-  background-color: rgb(247, 246, 243);
-  height: 100%;
+  flex: 0.18;
+  position: relative;
+  background-color: rgb(251, 251, 250);
 }
 
 .home__rightBar {
-  flex: 0.88;
-  z-index: 1;
+  flex-grow: 1;
 }
