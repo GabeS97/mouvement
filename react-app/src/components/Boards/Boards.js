@@ -1,4 +1,6 @@
 import React from 'react'
+import { useEffect } from 'react'
+import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import LogoutButton from '../auth/LogoutButton'
 import './Boards.css'
@@ -26,10 +28,12 @@ function Boards() {
                 </div>
             </div>
 
+            <div className="boards__board" id='boards__board'>
 
+            </div>
             <div className="divider" />
             <div className="boards__buttons">
-                <div className="boards__newpage hoverable__container ">
+                <div className="boards__newpage hoverable__container " onClick={}>
                     <i className="fa-solid fa-plus plus"></i>
                     <h2>New Page</h2>
                 </div>
