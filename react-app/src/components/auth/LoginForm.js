@@ -33,7 +33,7 @@ const LoginForm = () => {
       password: 'password'
     }
     await dispatch(login(demo.email, demo.password))
-    history.push('/')
+    history.push('/home')
   }
 
   const updateEmail = (e) => {

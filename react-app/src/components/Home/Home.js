@@ -1,5 +1,6 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
+import Boards from '../Boards/Boards'
 import BoardSection from '../BoardSection/BoardSection'
 import AddBoard from '../TaskSection/AddBoard/AddBoard'
 import TaskSection from '../TaskSection/TaskSection'
@@ -10,12 +11,14 @@ const Home = () => {
     return (
         <div className='home'>
             <div className="home__leftBar">
-                <BoardSection />
+                {/* <BoardSection /> */}
+                <Boards />
             </div>
 
             <div className="home__rightBar">
+                hey
                 <Switch>
-                    <Route path='/' exact={true}>
+                    {/* <Route path='/' exact={true}>
                         <DefaultHome />
                     </Route>
                     <Route path='/home/boards/:boardId/:path'>
@@ -24,7 +27,7 @@ const Home = () => {
 
                     <Route path='/home/add_page'>
                         <AddBoard />
-                    </Route>
+                    </Route> */}
                 </Switch>
             </div>
 
