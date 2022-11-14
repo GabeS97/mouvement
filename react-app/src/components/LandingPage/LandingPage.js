@@ -13,7 +13,7 @@ const LandingPage = () => {
 
                         <div className="landingPage__freeTrial">
                             <NavLink to='/signup' style={{ textDecoration: 'none', color: 'white' }}>
-                                Try Mouvement free
+                                Try Motion free
                             </NavLink>
                         </div>
 

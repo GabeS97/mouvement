@@ -1,0 +1,81 @@
+.auth {
+  height: 100vh;
+  position: relative;
+}
+
+.auth__header {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+.auth__container {
+  display: flex;
+  flex-direction: column;
+  width: 20rem;
+  row-gap: 1rem;
+}
+
+.auth__inputs {
+  display: flex;
+  flex-direction: column;
+  row-gap: .5rem;
+}
+
+.auth__inputs > input::placeholder {
+  text-indent: 1rem;
+}
+.auth__inputs > label {
+  color: rgb(143, 141, 138);
+}
+
+.auth__inputs > input:active {
+  outline: solid 1px rgb (193, 212, 243);
+
+}
+.auth__inputs > input {
+  text-indent: 1rem;
+  border: rgb(227, 226, 225) solid 1px;
+  height: 2rem;
+  background-color: rgb(248, 246, 245);
+}
+.auth__form {
+  position: absolute;
+  left: 50%;
+  top: 35%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.auth__inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+.divider {
+  width: 100%;
+  margin: 1.5rem 0;
+  border-bottom: 2px solid rgb(227, 225, 223);
+}
+
+.auth__buttons {
+  height: 2rem;
+  background-color: rgb(251, 235, 232);
+  border: rgb(247, 195, 191) solid 1px;
+  cursor: pointer;
+  color: rgb(237, 96, 95);
+}
+
+.auth__redirect {
+  display: flex;
+  align-items: center;
+  position: relative;
+  justify-content: center;
+  color: rgb(153, 152, 149);
+}
+
+.redirect {
+  padding-left: .5rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
