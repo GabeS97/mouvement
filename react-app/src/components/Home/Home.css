@@ -1,6 +1,7 @@
 .home {
   display: flex;
   height: 100vh;
+  overflow: hidden;
 }
 
 .home__leftBar {
@@ -10,5 +11,6 @@
 }
 
 .home__rightBar {
+  position: relative;
   flex-grow: 1;
 }

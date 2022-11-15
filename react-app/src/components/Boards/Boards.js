@@ -4,15 +4,19 @@ import { addBoardThunk, getBoardThunk } from '../../store/boards'
 import { ChevronRightIcon } from '@heroicons/react/24/outline';
 import LogoutButton from '../auth/LogoutButton'
 import './Boards.css'
+import { useHistory } from 'react-router-dom';
 function Boards() {
     const user = useSelector(state => state.session.user)
     const boards = useSelector(state => state.boards)
+    const history = useHistory();
     const boardsValues = Object.values(boards)
     const dispatch = useDispatch()
 
     const truncate = (string, n) => {
         return string?.length > n ? string.substr(0, n - 1) + '...' : string
     }
+
+    const changePage = (id) => history.push(`/boards/${id}`)
     const addPage = async (e) => {
         e.preventDefault();
 
@@ -50,9 +54,12 @@ function Boards() {
 
             <div className="boards__board" id='boards__board'>
                 {boardsValues.map(board => (
-                    <div key={board.id} className='hoverable__container boards__containers board__container'>
+                    <div
+                        onClick={() => changePage(board?.id)}
+                        key={board.id}
+                        className='hoverable__container boards__containers board__container'>
                         {board?.icon ? <span>{board?.icon}</span> :
-                        <i class="fa-regular fa-file-lines file"></i>
+                            <i className="fa-regular fa-file-lines file"></i>
                         }
                         <ChevronRightIcon height={15} />
                         <p>{board.name}</p>
@@ -60,8 +67,8 @@ function Boards() {
                 ))}
             </div>
 
-            <div className="divider" />
             <div className="boards__buttons">
+                <div className="divider" />
                 <div
                     onClick={addPage}
                     className="boards__newpage hoverable__container" >

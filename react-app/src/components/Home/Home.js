@@ -1,6 +1,7 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import Boards from '../Boards/Boards'
+import Main from '../Main/Main'
 import './Home.css'
 
 const Home = () => {
@@ -13,7 +14,9 @@ const Home = () => {
 
             <div className="home__rightBar">
                 <Switch>
-                    <Route></Route>
+                    <Route path='/boards/:boardId'>
+                        <Main />
+                    </Route>
                 </Switch>
             </div>
 
