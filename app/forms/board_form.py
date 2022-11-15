@@ -4,7 +4,7 @@ from wtforms.validators import DataRequired, Length
 
 class BoardForm(FlaskForm):
     user_id = IntegerField('user_id', validators=[DataRequired()])
-    template = SelectField('template', choices=['Untitled', 'Calendar', 'Travel Plans', 'Journal'])
+    template = SelectField('template', choices=['Untitled', 'Calendar', 'Travel Planner', 'Journal'])
     name = StringField('name')
     description = StringField('description')
     icon= StringField('icon')

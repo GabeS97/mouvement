@@ -28,6 +28,7 @@ export const getOneBoardThunk = (board_id) => async dispatch => {
 }
 
 export const editBoardThunk = (board) => async dispatch => {
+    console.log(board)
     const response = await fetch(`/api/boards/${board.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
