@@ -33,7 +33,7 @@ function Main() {
             user_id: user?.id,
             template
         }
-        await dispatch(editBoardThunk(editPage))
+        // await dispatch(editBoardThunk(editPage))
     }
 
     console.log(template)
@@ -55,24 +55,25 @@ function Main() {
                     </div>
                     <div className="main__templates">
                         <h2 className='template__title'>Templates</h2>
-                        
+
                         <div className='template__options' onClick={editBoard} >
                             <h2>
                                 ✈️
                             </h2>
                             <h2 id='template__title'>Travel Planner</h2>
                         </div>
-                        <div className='template__options'>
+
+                        <div className='template__options' onClick={editBoard}>
                             <h2>✔️</h2>
-                            <h2>Task List</h2>
+                            <h2 id='template__title'>Task List</h2>
                         </div>
                         <div className='template__options'>
                             <h2>📓</h2>
-                            <h2>Journal</h2>
+                            <h2 id='template__title'>Journal</h2>
                         </div>
                         <div className='template__options'>
                             <h2>📥</h2>
-                            <h2>Job Applications</h2>
+                            <h2 id='template__title'>Job Applications</h2>
                         </div>
                     </div>
                 </div>
