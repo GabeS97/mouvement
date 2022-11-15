@@ -1,26 +1,38 @@
-import React from 'react'
-import { useEffect } from 'react'
-import { useState } from 'react'
-import { useSelector } from 'react-redux'
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { addBoardThunk, getBoardThunk } from '../../store/boards'
+import { ChevronRightIcon } from '@heroicons/react/24/outline';
 import LogoutButton from '../auth/LogoutButton'
 import './Boards.css'
 function Boards() {
     const user = useSelector(state => state.session.user)
+    const boards = useSelector(state => state.boards)
+    const boardsValues = Object.values(boards)
+    const dispatch = useDispatch()
 
-    const addPage = (e) => {
+    const truncate = (string, n) => {
+        return string?.length > n ? string.substr(0, n - 1) + '...' : string
+    }
+    const addPage = async (e) => {
         e.preventDefault();
 
         const addPage = {
             user_id: user?.id,
-            
+            name: 'Untitled',
+            template: 'Untitled',
+            description: '',
+            icon: ''
         }
+        await dispatch(addBoardThunk(addPage))
     }
-    const truncate = (string, n) => {
-        return string?.length > n ? string.substr(0, n - 1) + '...' : string
-    }
+
+    useEffect(async () => {
+        await dispatch(getBoardThunk(user?.id))
+    }, [dispatch])
 
     return (
         <div className='boards'>
+
 
             <div className='boards__owner boards__sections'>
                 <div className="owner__container  boards__containers">
@@ -37,11 +49,22 @@ function Boards() {
             </div>
 
             <div className="boards__board" id='boards__board'>
-
+                {boardsValues.map(board => (
+                    <div key={board.id} className='hoverable__container boards__containers board__container'>
+                        {board?.icon ? <span>{board?.icon}</span> :
+                        <i class="fa-regular fa-file-lines file"></i>
+                        }
+                        <ChevronRightIcon height={15} />
+                        <p>{board.name}</p>
+                    </div>
+                ))}
             </div>
+
             <div className="divider" />
             <div className="boards__buttons">
-                <div className="boards__newpage hoverable__container " >
+                <div
+                    onClick={addPage}
+                    className="boards__newpage hoverable__container" >
                     <i className="fa-solid fa-plus plus"></i>
                     <h2>New Page</h2>
                 </div>

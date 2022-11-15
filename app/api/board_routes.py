@@ -34,7 +34,6 @@ def post_new_board():
         form.populate_obj(new_board)
         db.session.add(new_board)
         db.session.commit()
-
         return new_board.to_dict()
     else:
         return {"errors": validation_errors_to_error_messages(form.errors)}, 400

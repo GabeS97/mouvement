@@ -12,6 +12,7 @@
   flex-direction: column;
   width: 20rem;
   row-gap: 1rem;
+
 }
 
 .auth__inputs {
@@ -78,4 +79,8 @@
   padding-left: .5rem;
   text-decoration: underline;
   cursor: pointer;
+}
+
+.logout__button {
+  
 }

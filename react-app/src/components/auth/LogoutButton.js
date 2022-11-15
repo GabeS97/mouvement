@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { logout } from '../../store/session';
-import '../BoardSection/BoardSection.css'
+import './Auth.css'
 const LogoutButton = () => {
   const dispatch = useDispatch()
   const history = useHistory()

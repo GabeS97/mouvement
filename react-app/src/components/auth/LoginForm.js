@@ -82,7 +82,8 @@ const LoginForm = () => {
             />
           </div>
 
-          <div className="divider" />
+          {/* <div className="divider" /> */}
+
 
           <button className='login_loginButton auth__buttons login__buttons' type='submit' disabled={errors.length > 0}>Login</button>
           <button className='login__demoButton auth__buttons login__buttons' type='button' onClick={handleDemo}>Demo</button>
