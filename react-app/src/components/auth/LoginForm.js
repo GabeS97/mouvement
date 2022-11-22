@@ -29,7 +29,7 @@ const LoginForm = () => {
     e.preventDefault()
 
     const demo = {
-      email: 'demo@aa.io',
+      email: 'esherman@gmail.com',
       password: 'password'
     }
     await dispatch(login(demo.email, demo.password))
